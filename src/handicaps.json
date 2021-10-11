@@ -1,0 +1,26 @@
+[
+    {
+        "team": "Arsenal",
+        "handicap": 12
+    },
+    {
+        "team": "Everton",
+        "handicap": 14
+    },
+    {
+        "team": "Man City",
+        "handicap": 16
+    },
+    {
+        "team": "Liverpool",
+        "handicap": 18
+    },
+    {
+        "team": "Man United",
+        "handicap": 20
+    },
+    {
+        "team": "Wolves",
+        "handicap": 22
+    }
+]

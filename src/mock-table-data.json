@@ -1,0 +1,32 @@
+[
+    {
+        "team": "Leyton Orient",
+        "position": 1,
+        "points": 54
+    },
+    {
+        "team": "Preston North End",
+        "position": 2,
+        "points": 50
+    },
+    {
+        "team": "Arsenal",
+        "position": 3,
+        "points": 48
+    },
+    {
+        "team": "Portsmouth",
+        "position": 4,
+        "points": 48
+    },
+    {
+        "team": "Aston Villa",
+        "position": 5,
+        "points": 44
+    },
+    {
+        "team": "Norwich",
+        "position": 6,
+        "points": 41
+    }
+]
