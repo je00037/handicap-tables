@@ -1,32 +1,77 @@
 [
     {
-        "team": "Leyton Orient",
         "position": 1,
-        "points": 54
+        "team": "Leyton Orient",
+        "played": 32,
+        "won": 4,
+        "drawn": 7,
+        "lost": 10,
+        "scored": 100,
+        "conceded": 10,
+        "gdiff": 90,
+        "points": 55,
+        "hppg": 1.6,
+        "total": 67,
+        "handicap": 12
     },
     {
-        "team": "Preston North End",
         "position": 2,
-        "points": 50
-    },
-    {
         "team": "Arsenal",
+        "played": 33,
+        "won": 14,
+        "drawn": 10,
+        "lost": 1,
+        "scored": 140,
+        "conceded": 5,
+        "gdiff": 97,
+        "points": 59,
+        "hppg": 2.6,
+        "total": 80,
+        "handicap": 20
+    },
+    {
         "position": 3,
-        "points": 48
+        "team": "Leicester",
+        "played": 32,
+        "won": 4,
+        "drawn": 7,
+        "lost": 10,
+        "scored": 100,
+        "conceded": 10,
+        "gdiff": 90,
+        "points": 55,
+        "hppg": 1.6,
+        "total": 67,
+        "handicap": 12
     },
     {
-        "team": "Portsmouth",
         "position": 4,
-        "points": 48
+        "team": "Portsmouth",
+        "played": 32,
+        "won": 4,
+        "drawn": 7,
+        "lost": 10,
+        "scored": 100,
+        "conceded": 10,
+        "gdiff": 90,
+        "points": 55,
+        "hppg": 1.6,
+        "total": 67,
+        "handicap": 12
     },
     {
-        "team": "Aston Villa",
         "position": 5,
-        "points": 44
-    },
-    {
-        "team": "Norwich",
-        "position": 6,
-        "points": 41
+        "team": "Wimbledon",
+        "played": 32,
+        "won": 4,
+        "drawn": 7,
+        "lost": 10,
+        "scored": 100,
+        "conceded": 10,
+        "gdiff": 90,
+        "points": 55,
+        "hppg": 1.6,
+        "total": 67,
+        "handicap": 12
     }
 ]

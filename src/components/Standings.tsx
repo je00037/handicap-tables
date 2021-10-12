@@ -1,40 +1,46 @@
 import React, { FC } from "react";
-import Row from './Row';
+import data from '../mock-table-data.json';
+
+const dataToMap = data;
 
 const Standings: FC = () => (
         <>
         <table className="table-auto w-6/12 text-center text-green-50">
                 <thead>
                         <tr>
-                        <th>Position</th>
+                        <th>#</th>
                         <th>Team</th>
-                        <th>Games</th>
-                        <th>Handicap</th>
-                        <th>Points</th>
+                        <th>P</th>
+                        <th>W</th>
+                        <th>D</th>
+                        <th>L</th>
+                        <th>GF</th>
+                        <th>GA</th>
+                        <th>GD</th>
+                        <th>Pts</th>
+                        <th>HPpG</th>
+                        <th>Total</th>
+                        <th>Hcap</th>
                         </tr>
                 </thead>
                 <tbody>
-                        <tr>
-                        <td>1st</td>
-                        <td>Arsenal</td>
-                        <td>15</td>
-                        <td>-22pts</td>
-                        <td>44pts</td>
-                        </tr>
-                        <tr>
-                        <td>2nd</td>
-                        <td>Everton</td>
-                        <td>14</td>
-                        <td>-20pts</td>
-                        <td>40pts</td>
-                        </tr>
-                        <tr>
-                        <td>3rd</td>
-                        <td>Wolves</td>
-                        <td>13</td>
-                        <td>-18pts</td>
-                        <td>39pts</td>
-                        </tr>
+                        {dataToMap.map((item) => { return (
+                                <tr>
+                                        <td>{item.position}</td>
+                                        <td>{item.team}</td>
+                                        <td>{item.played}</td>
+                                        <td>{item.won}</td>
+                                        <td>{item.drawn}</td>
+                                        <td>{item.lost}</td>
+                                        <td>{item.scored}</td>
+                                        <td>{item.conceded}</td>
+                                        <td>{item.gdiff}</td>
+                                        <td>{item.points}</td>
+                                        <td>{item.hppg}</td>
+                                        <td>{item.total}</td>
+                                        <td>{item.handicap}</td>
+                                </tr> )
+                        })}
                 </tbody>
         </table>
         </>
