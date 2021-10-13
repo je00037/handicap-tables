@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import data from '../mock-table-data.json';
+import Row from './Row';
 
 const dataToMap = data;
 
@@ -25,21 +26,8 @@ const Standings: FC = () => (
                 </thead>
                 <tbody>
                         {dataToMap.map((item) => { return (
-                                <tr>
-                                        <td>{item.position}</td>
-                                        <td>{item.team}</td>
-                                        <td>{item.played}</td>
-                                        <td>{item.won}</td>
-                                        <td>{item.drawn}</td>
-                                        <td>{item.lost}</td>
-                                        <td>{item.scored}</td>
-                                        <td>{item.conceded}</td>
-                                        <td>{item.gdiff}</td>
-                                        <td>{item.points}</td>
-                                        <td>{item.hppg}</td>
-                                        <td>{item.total}</td>
-                                        <td>{item.handicap}</td>
-                                </tr> )
+                                <Row rowData={item} /> 
+                        )
                         })}
                 </tbody>
         </table>
