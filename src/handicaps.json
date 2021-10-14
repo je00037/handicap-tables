@@ -1,26 +1,505 @@
 [
     {
-        "team": "Arsenal",
-        "handicap": 12
+        "team": "Fulham",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 1
+            }, {
+                "bookie": "Lads",
+                "value": 0
+            }, {
+                "bookie": "PPBF",
+                "value": 1
+            }, {
+                "bookie": "Hills",
+                "value": 0
+            }, {
+                "bookie": "Bet365",
+                "value": 0
+            }
+        ]
     },
     {
-        "team": "Everton",
-        "handicap": 14
+        "team": "WBA",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 0
+            }, {
+                "bookie": "Lads",
+                "value": 2
+            }, {
+                "bookie": "PPBF",
+                "value": 0
+            }, {
+                "bookie": "Hills",
+                "value": 3
+            }, {
+                "bookie": "Bet365",
+                "value": 4
+            }
+        ]
     },
     {
-        "team": "Man City",
-        "handicap": 16
+        "team": "Sheff Utd",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 2
+            }, {
+                "bookie": "Lads",
+                "value": 4
+            }, {
+                "bookie": "PPBF",
+                "value": 2
+            }, {
+                "bookie": "Hills",
+                "value": 4
+            }, {
+                "bookie": "Bet365",
+                "value": 4
+            }
+        ]
     },
     {
-        "team": "Liverpool",
-        "handicap": 18
+        "team": "Bournemouth",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 4
+            }, {
+                "bookie": "Lads",
+                "value": 5
+            }, {
+                "bookie": "PPBF",
+                "value": 4
+            }, {
+                "bookie": "Hills",
+                "value": 8
+            }, {
+                "bookie": "Bet365",
+                "value": 8
+            }
+        ]
     },
     {
-        "team": "Man United",
-        "handicap": 20
+        "team": "Middlesbrough",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 10
+            }, {
+                "bookie": "Lads",
+                "value": 11
+            }, {
+                "bookie": "PPBF",
+                "value": 10
+            }, {
+                "bookie": "Hills",
+                "value": 10
+            }, {
+                "bookie": "Bet365",
+                "value": 12
+            }
+        ]
     },
     {
-        "team": "Wolves",
-        "handicap": 22
+        "team": "Cardiff",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 10
+            }, {
+                "bookie": "Lads",
+                "value": 10
+            }, {
+                "bookie": "PPBF",
+                "value": 10
+            }, {
+                "bookie": "Hills",
+                "value": 12
+            }, {
+                "bookie": "Bet365",
+                "value": 10
+            }
+        ]
+    },
+    {
+        "team": "Notts Forest",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 13
+            }, {
+                "bookie": "Lads",
+                "value": 13
+            }, {
+                "bookie": "PPBF",
+                "value": 13
+            }, {
+                "bookie": "Hills",
+                "value": 12
+            }, {
+                "bookie": "Bet365",
+                "value": 12
+            }
+        ]
+    },
+    {
+        "team": "Swansea",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 16
+            }, {
+                "bookie": "Lads",
+                "value": 14
+            }, {
+                "bookie": "PPBF",
+                "value": 16
+            }, {
+                "bookie": "Hills",
+                "value": 12
+            }, {
+                "bookie": "Bet365",
+                "value": 14
+            }
+        ]
+    },
+    {
+        "team": "Stoke",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 16
+            }, {
+                "bookie": "Lads",
+                "value": 12
+            }, {
+                "bookie": "PPBF",
+                "value": 16
+            }, {
+                "bookie": "Hills",
+                "value": 14
+            }, {
+                "bookie": "Bet365",
+                "value": 12
+            }
+        ]
+    },
+    {
+        "team": "Barnsley",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 14
+            }, {
+                "bookie": "Lads",
+                "value": 14
+            }, {
+                "bookie": "PPBF",
+                "value": 14
+            }, {
+                "bookie": "Hills",
+                "value": 14
+            }, {
+                "bookie": "Bet365",
+                "value": 16
+            }
+        ]
+    },
+    {
+        "team": "QPR",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 12
+            }, {
+                "bookie": "Lads",
+                "value": 12
+            }, {
+                "bookie": "PPBF",
+                "value": 12
+            }, {
+                "bookie": "Hills",
+                "value": 16
+            }, {
+                "bookie": "Bet365",
+                "value": 18
+            }
+        ]
+    },
+    {
+        "team": "Blackburn",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 20
+            }, {
+                "bookie": "Lads",
+                "value": 18
+            }, {
+                "bookie": "PPBF",
+                "value": 20
+            }, {
+                "bookie": "Hills",
+                "value": 20
+            }, {
+                "bookie": "Bet365",
+                "value": 16
+            }
+        ]
+    },
+    {
+        "team": "Millwall",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 16
+            }, {
+                "bookie": "Lads",
+                "value": 16
+            }, {
+                "bookie": "PPBF",
+                "value": 16
+            }, {
+                "bookie": "Hills",
+                "value": 20
+            }, {
+                "bookie": "Bet365",
+                "value": 20
+            }
+        ]
+    },
+    {
+        "team": "Reading",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 19
+            }, {
+                "bookie": "Lads",
+                "value": 19
+            }, {
+                "bookie": "PPBF",
+                "value": 19
+            }, {
+                "bookie": "Hills",
+                "value": 20
+            }, {
+                "bookie": "Bet365",
+                "value": 20
+            }
+        ]
+    },
+    {
+        "team": "Luton",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 20
+            }, {
+                "bookie": "Lads",
+                "value": 17
+            }, {
+                "bookie": "PPBF",
+                "value": 20
+            }, {
+                "bookie": "Hills",
+                "value": 20
+            }, {
+                "bookie": "Bet365",
+                "value": 20
+            }
+        ]
+    },
+    {
+        "team": "Bristol City",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 23
+            }, {
+                "bookie": "Lads",
+                "value": 21
+            }, {
+                "bookie": "PPBF",
+                "value": 23
+            }, {
+                "bookie": "Hills",
+                "value": 22
+            }, {
+                "bookie": "Bet365",
+                "value": 20
+            }
+        ]
+    },{
+        "team": "Hull City",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 24
+            }, {
+                "bookie": "Lads",
+                "value": 22
+            }, {
+                "bookie": "PPBF",
+                "value": 24
+            }, {
+                "bookie": "Hills",
+                "value": 22
+            }, {
+                "bookie": "Bet365",
+                "value": 24
+            }
+        ]
+    },
+    {
+        "team": "Birmingham",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 22
+            }, {
+                "bookie": "Lads",
+                "value": 20
+            }, {
+                "bookie": "PPBF",
+                "value": 22
+            }, {
+                "bookie": "Hills",
+                "value": 22
+            }, {
+                "bookie": "Bet365",
+                "value": 24
+            }
+        ]
+    },
+    {
+        "team": "Preston NE",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 24
+            }, {
+                "bookie": "Lads",
+                "value": 22
+            }, {
+                "bookie": "PPBF",
+                "value": 24
+            }, {
+                "bookie": "Hills",
+                "value": 22
+            }, {
+                "bookie": "Bet365",
+                "value": 22
+            }
+        ]
+    },
+    {
+        "team": "Coventry",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 25
+            }, {
+                "bookie": "Lads",
+                "value": 23
+            }, {
+                "bookie": "PPBF",
+                "value": 25
+            }, {
+                "bookie": "Hills",
+                "value": 24
+            }, {
+                "bookie": "Bet365",
+                "value": 24
+            }
+        ]
+    },
+    {
+        "team": "Derby",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 26
+            }, {
+                "bookie": "Lads",
+                "value": 26
+            }, {
+                "bookie": "PPBF",
+                "value": 26
+            }, {
+                "bookie": "Hills",
+                "value": 26
+            }, {
+                "bookie": "Bet365",
+                "value": 24
+            }
+        ]
+    },
+    {
+        "team": "Huddersfield",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 27
+            }, {
+                "bookie": "Lads",
+                "value": 26
+            }, {
+                "bookie": "PPBF",
+                "value": 27
+            }, {
+                "bookie": "Hills",
+                "value": 26
+            }, {
+                "bookie": "Bet365",
+                "value": 28
+            }
+        ]
+    },
+    {
+        "team": "Blackpool",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 28
+            }, {
+                "bookie": "Lads",
+                "value": 27
+            }, {
+                "bookie": "PPBF",
+                "value": 28
+            }, {
+                "bookie": "Hills",
+                "value": 28
+            }, {
+                "bookie": "Bet365",
+                "value": 28
+            }
+        ]
+    },
+    {
+        "team": "Peterborough",
+        "handicaps": [
+            {
+                "bookie": "SkyBet",
+                "value": 29
+            }, {
+                "bookie": "Lads",
+                "value": 26
+            }, {
+                "bookie": "PPBF",
+                "value": 29
+            }, {
+                "bookie": "Hills",
+                "value": 28
+            }, {
+                "bookie": "Bet365",
+                "value": 28
+            }
+        ]
     }
 ]
