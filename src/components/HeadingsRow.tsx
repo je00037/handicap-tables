@@ -2,6 +2,7 @@ import React, { FC } from "react";
 
 const HeadingsRow: FC = () => { return (
     <tr>
+        <th></th>
         <th>#</th>
         <th>Team</th>
         <th>P</th>
