@@ -1,7 +1,8 @@
 import React, { FC } from "react";
-import handicaps from '../handicaps.json';
 
-const handicapData = handicaps;
+// definitions for each handicap column heading: 
+// points incl hcap = normal points plus the hppg value for games played so far, so 10 points plus (hppg * games played so far)
+//
 
 export interface RowData {
     crest: string,
@@ -15,9 +16,9 @@ export interface RowData {
     conceded: number | string;
     difference: number | string;
     points: number | string;
-    // hppg: number;
-    // total: number;
-    // handicap: number;
+    handicap: number | string;
+    hppg: number | string;
+    total: number | string;
 }
 
 interface RowProps {
@@ -38,9 +39,9 @@ const Row: FC<RowProps> = ( {rowData} ) => {
             <td>{rowData.conceded}</td>
             <td>{rowData.difference}</td>
             <td>{rowData.points}</td>
-            {/* <td>{rowData.hppg}</td>
-            <td>{rowData.total}</td>
-            <td>{rowData.handicap}</td> */}
+            <td className="text-orange-300">{rowData.handicap}</td>
+            <td className="text-orange-300">{rowData.hppg}</td>
+            <td className="text-orange-400">{rowData.total}</td>
         </tr> 
     )
 };

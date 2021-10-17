@@ -4,7 +4,7 @@
 
 @layer base {
   p {
-    @apply text-green-200;
+    @apply text-lime-200;
     @apply font-dosis;
   }
 }

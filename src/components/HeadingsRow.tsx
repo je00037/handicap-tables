@@ -13,9 +13,9 @@ const HeadingsRow: FC = () => { return (
         <th>GA</th>
         <th>GD</th>
         <th>Pts</th>
-        <th>HPpG</th>
-        <th>Total</th>
-        <th>Hcap</th>
+        <th className="text-orange-300">Hcap</th>
+        <th className="text-orange-300">HPpG</th>
+        <th className="text-orange-400">Total</th>
     </tr>
     )
 }
