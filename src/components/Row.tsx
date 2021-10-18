@@ -1,9 +1,4 @@
 import React, { FC } from "react";
-
-// definitions for each handicap column heading: 
-// points incl hcap = normal points plus the hppg value for games played so far, so 10 points plus (hppg * games played so far)
-//
-
 export interface RowData {
     crest: string,
     position: number | string;
@@ -30,7 +25,7 @@ const Row: FC<RowProps> = ( {rowData} ) => {
         <tr>
             <td><img src={rowData.crest} alt="club crest" className="w-4" /></td>
             <td>{rowData.position}</td>
-            <td>{rowData.team}</td>
+            <td className="px-8">{rowData.team}</td>
             <td>{rowData.played}</td>
             <td>{rowData.won}</td>
             <td>{rowData.drawn}</td>
@@ -41,7 +36,7 @@ const Row: FC<RowProps> = ( {rowData} ) => {
             <td>{rowData.points}</td>
             <td className="text-orange-300">{rowData.handicap}</td>
             <td className="text-orange-300">{rowData.hppg}</td>
-            <td className="text-orange-400">{rowData.total}</td>
+            <td className="text-lime-200">{rowData.total}</td>
         </tr> 
     )
 };
