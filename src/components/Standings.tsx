@@ -11,6 +11,10 @@ const handicapData = handicaps;
 
 let standingsArray: Array<RowData> = [];
 
+const sortStandings = (a: any, b: any) => {
+        return (b.total - a.total)
+}
+
 const Standings: FC<StandingsProps> = ( {data} ) => {
 
         const getStandingsArray = (data: any) => {
@@ -40,12 +44,14 @@ const Standings: FC<StandingsProps> = ( {data} ) => {
                         "total": currentTeamTotal.toFixed(2)
                         }
                         standingsArray.push(teamObject);
-                }        
-        }
+                }   
+                // sort the array here based on total (points + hcap)
+                standingsArray.sort((a: any, b: any) => {
+                        return (b.total - a.total)
+                });
+        } 
 
         getStandingsArray(data);
-
-        console.log(standingsArray); // this has length of 3 so the array is being formed correctly and getStandingsArray must be working fine
 
         return (
         <>
