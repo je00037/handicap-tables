@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
 import Loading from './components/Loading';
+import BookiePicker from './components/BookiePicker';
 
 const App: any = () => {
 
@@ -33,6 +34,7 @@ const App: any = () => {
     return isLoading ? <Loading /> :
     <div className='h-screen flex flex-col justify-between items-center'>
         <Header />
+        <BookiePicker />
         <Standings data={apiData} />
         <Footer />
     </div>
