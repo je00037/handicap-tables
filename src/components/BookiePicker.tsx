@@ -1,16 +1,17 @@
 import React, { FC } from "react";
 
+// change this to a button set of pill buttons, will look much better
+
 const BookiePicker = () => {
     return (
-        <>
-        <label htmlFor="bookies" className="text-orange-300 mb-1">Choose a bookmaker:</label>
-        <select name="bookies" id="bookies" className="rounded w-60 mb-6">
-            <option selected value="sky-bet">Sky Bet</option>
-            <option value="pp">Paddy Power</option>
-            <option value="betfair">Betfair</option>
-            <option value="hills">William Hill</option>
-            <option value="lads">Ladbrokes</option>
-        </select>
+        <> 
+        <div>
+            <button className="bookie-button">Sky Bet</button>
+            <button className="bookie-button">PP/BF</button>
+            <button className="bookie-button">Ladbrokes</button>
+            <button className="bookie-button">William Hill</button>
+            <button className="bookie-button">Bet 365</button>
+        </div>
     </>
     )
 }
