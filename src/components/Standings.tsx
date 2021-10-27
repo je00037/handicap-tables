@@ -1,28 +1,45 @@
 import React, { FC } from "react";
-import handicaps from '../handicaps.json';
+import handicaps from '../handicaps-2.json';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import { RowData } from './Row';
 interface StandingsProps {
         data: any //fix this in future to a better type
+        bookie: any;
 }
+
 
 const handicapData = handicaps;
 
 let standingsArray: Array<RowData> = [];
 
-const sortStandings = (a: any, b: any) => {
-        return (b.total - a.total)
-}
-
-const Standings: FC<StandingsProps> = ( {data} ) => {
+const Standings: FC<StandingsProps> = ( {data, bookie = 'SkyBet'} ) => {
 
         const getStandingsArray = (data: any) => {
+                standingsArray = [];
                 for ( let i = 0; i < 24; i++ ) {
-                        let currentTeamId = data.standings[0].table[i].team.id;
-                        let currentTeamHandicapObject = handicapData.find(item => item.id === currentTeamId);
-                        let currentTeamHandicap = currentTeamHandicapObject!.handicaps[0].value; 
-                        let currentTeamHppg = currentTeamHandicapObject!.handicaps[0].hppg; 
+                        let currentTeamId: any;
+                        let currentTeamHandicapObject: any;
+                        currentTeamId = data.standings[0].table[i].team.id;
+                        switch(bookie) {
+                                case "William Hill":
+                                        currentTeamHandicapObject = handicapData.bookmaker.Hills.Championship.find(item => item.id === currentTeamId);
+                                        break;
+                                case "PP/BF":
+                                        currentTeamHandicapObject = handicapData.bookmaker.PPBF.Championship.find(item => item.id === currentTeamId);
+                                        break;
+                                case "Ladbrokes":
+                                        currentTeamHandicapObject = handicapData.bookmaker.Ladbrokes.Championship.find(item => item.id === currentTeamId);
+                                        break;
+                                case "Bet 365":
+                                        currentTeamHandicapObject = handicapData.bookmaker.Bet365.Championship.find(item => item.id === currentTeamId);
+                                        break;
+                                case "SkyBet":
+                                        currentTeamHandicapObject = handicapData.bookmaker.SkyBet.Championship.find(item => item.id === currentTeamId);
+                                        break;
+                        }
+                        let currentTeamHandicap = currentTeamHandicapObject!.hcap; 
+                        let currentTeamHppg = currentTeamHandicapObject!.ppg; 
                         let currentTeamGamesPlayed = data.standings[0].table[i].playedGames;
                         let currentTeamCurrentHcap = currentTeamGamesPlayed * currentTeamHppg!;
                         let currentTeamTotal = data.standings[0].table[i].points + currentTeamCurrentHcap;

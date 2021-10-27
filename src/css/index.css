@@ -10,10 +10,10 @@
 }
 
 @layer components {
-  .bookie-button {
-    @apply m-4 bg-lime-50 rounded-full py-1 px-6 text-black border border-solid border-lime-300 font-dosis text-lg;
+  .button {
+    @apply m-4 bg-indigo-100 rounded-full py-1 px-6 text-black border-2 border-solid border-indigo-500 font-dosis text-lg;
   }
-  .bookie-button-selected {
-    @apply m-4 bg-pink-50 rounded-full py-1 px-6 text-black border-2 border-solid border-pink-500 font-dosis text-lg;
+  .button-selected {
+    @apply m-4 bg-lime-50 rounded-full py-1 px-6 text-black border-2 border-solid border-lime-300 font-dosis text-lg;
   }
 }

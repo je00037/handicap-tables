@@ -2,8 +2,9 @@ import React, { FC, useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
-import Loading from './components/Loading';
 import BookiePicker from './components/BookiePicker';
+import LeaguePicker from './components/LeaguePicker';
+import LoadingDots from './components/LoadingDots';
 
 const App: FC = () => {
 
@@ -31,10 +32,15 @@ const App: FC = () => {
 
     const [apiData, setApiData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
-    const [currentBookie, setCurrentBookie] = useState('Sky Bet');
+    const [currentBookie, setCurrentBookie] = useState('SkyBet');
+    const [currentLeague, setCurrentLeague] = useState('Championship');
 
-    const clickHandler = (newBookie: string) => {
+    const clickHandlerBookie = (newBookie: string) => {
         setCurrentBookie(newBookie);
+    }
+
+    const clickHandlerLeague = (newLeague: string) => {
+        setCurrentLeague(newLeague);
     }
 
     useEffect (() => {
@@ -43,11 +49,12 @@ const App: FC = () => {
         }
     }, []);
 
-    return isLoading ? <Loading /> :
+    return isLoading ? <LoadingDots /> :
     <div className='h-screen flex flex-col justify-between items-center'>
         <Header />
-        <BookiePicker bookie={currentBookie} handleClick={clickHandler} />
-        <Standings data={apiData} />
+        <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
+        <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
+        <Standings data={apiData} bookie={currentBookie} />
         <Footer />
     </div>
 }
