@@ -5,7 +5,7 @@ import HeadingsRow from './HeadingsRow';
 import { RowData } from './Row';
 interface StandingsProps {
         data: any //fix this in future to a better type
-        bookie: any;
+        bookie: string;
 }
 
 

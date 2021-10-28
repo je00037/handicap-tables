@@ -45,7 +45,7 @@ const App: FC = () => {
 
     useEffect (() => {
         if (isLoading === true) {
-            apiCall();
+            setTimeout(() => apiCall(), 3000);
         }
     }, []);
 
