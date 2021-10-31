@@ -15,16 +15,18 @@ export interface RowData {
     hppg: number | string;
     total: number | string;
 }
-
 interface RowProps {
         rowData: RowData;
-    }
+        key: number
+        hcapPos: number;
+}
 
-const Row: FC<RowProps> = ( {rowData} ) => {
+const Row: FC<RowProps> = ( {rowData, hcapPos} ) => {
     return (
         <tr>
             <td><img src={rowData.crest} alt="club crest" className="w-4" /></td>
             <td>{rowData.position}</td>
+            <td className="text-orange-300">{hcapPos}</td>
             <td className="px-8">{rowData.team}</td>
             <td>{rowData.played}</td>
             <td>{rowData.won}</td>

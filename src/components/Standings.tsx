@@ -4,40 +4,41 @@ import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import { RowData } from './Row';
 interface StandingsProps {
-        data: any //fix this in future to a better type
-        bookie: string;
+        data: any
+        bookie: string
+        league: string
+}
+interface HandicapData {
+        [bookmaker: string]: BookmakerObject
+}
+interface BookmakerObject {
+        [bookmaker: string]: LeagueArray
 }
 
+interface LeagueArray {
+        [league: string]: Array<TeamObject>
+}
 
-const handicapData = handicaps;
+interface TeamObject {
+        id: number,
+        team: string,
+        hcap: number,
+        ppg: number
+}
+
+const handicapData: HandicapData = handicaps;
 
 let standingsArray: Array<RowData> = [];
 
-const Standings: FC<StandingsProps> = ( {data, bookie = 'SkyBet'} ) => {
+const Standings: FC<StandingsProps> = ( {data, bookie = 'SkyBet', league = 'Championship'} ) => {
 
         const getStandingsArray = (data: any) => {
                 standingsArray = [];
                 for ( let i = 0; i < 24; i++ ) {
-                        let currentTeamId: any;
+                        let currentTeamId: number;
                         let currentTeamHandicapObject: any;
                         currentTeamId = data.standings[0].table[i].team.id;
-                        switch(bookie) {
-                                case "William Hill":
-                                        currentTeamHandicapObject = handicapData.bookmaker.Hills.Championship.find(item => item.id === currentTeamId);
-                                        break;
-                                case "PP/BF":
-                                        currentTeamHandicapObject = handicapData.bookmaker.PPBF.Championship.find(item => item.id === currentTeamId);
-                                        break;
-                                case "Ladbrokes":
-                                        currentTeamHandicapObject = handicapData.bookmaker.Ladbrokes.Championship.find(item => item.id === currentTeamId);
-                                        break;
-                                case "Bet 365":
-                                        currentTeamHandicapObject = handicapData.bookmaker.Bet365.Championship.find(item => item.id === currentTeamId);
-                                        break;
-                                case "SkyBet":
-                                        currentTeamHandicapObject = handicapData.bookmaker.SkyBet.Championship.find(item => item.id === currentTeamId);
-                                        break;
-                        }
+                        currentTeamHandicapObject = handicapData.bookmaker[bookie as keyof BookmakerObject][league as keyof LeagueArray].find((item: TeamObject) => item.id === currentTeamId);
                         let currentTeamHandicap = currentTeamHandicapObject!.hcap; 
                         let currentTeamHppg = currentTeamHandicapObject!.ppg; 
                         let currentTeamGamesPlayed = data.standings[0].table[i].playedGames;
@@ -77,7 +78,11 @@ const Standings: FC<StandingsProps> = ( {data, bookie = 'SkyBet'} ) => {
                         <HeadingsRow />
                 </thead>
                 <tbody>
-                        {standingsArray.map((item, index) => <Row rowData={item} key={index} />)}
+                        {standingsArray.map((item, index) =>
+                                {
+                                        let hcapPos = index + 1;
+                                        return <Row rowData={item} key={index} hcapPos={hcapPos} />
+                                })}
                 </tbody>
         </table>
         </>

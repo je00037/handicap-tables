@@ -4,6 +4,7 @@ const HeadingsRow: FC = () => { return (
     <tr>
         <th></th>
         <th>#</th>
+        <th className="text-orange-300">Hc#</th>
         <th>Team</th>
         <th>P</th>
         <th>W</th>

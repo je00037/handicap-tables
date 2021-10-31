@@ -54,7 +54,7 @@ const App: FC = () => {
         <Header />
         <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
         <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
-        <Standings data={apiData} bookie={currentBookie} />
+        <Standings data={apiData} bookie={currentBookie} league={currentLeague} />
         <Footer />
     </div>
 }
