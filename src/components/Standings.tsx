@@ -23,7 +23,7 @@ const Standings: FC<StandingsProps> = ({
   bookie = 'SkyBet',
   league = 'Championship',
 }) => {
-  // could definitely memoize this function I think...
+  // could memoize this function I think?...
   const getStandingsArray = (data: ApiData | null) => {
     standingsArray = [];
     for (let i = 0; i < 24; i++) {
