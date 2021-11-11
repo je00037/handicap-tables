@@ -5,6 +5,61 @@ import Standings from './components/Standings';
 import BookiePicker from './components/BookiePicker';
 import LeaguePicker from './components/LeaguePicker';
 import LoadingDots from './components/LoadingDots';
+interface ApiData {
+    filters: object,
+    competition: ApiDataCompetition,
+    season: ApiDataSeason,
+    standings: Array<ApiDataStandings>,
+}
+
+interface ApiDataTeam {
+    id: number,
+    name: string,
+    crestURL: string,
+}
+
+interface ApiDataTable {
+    position: number,
+    team: ApiDataTeam,
+    playedGames: number,
+    form?: any,
+    won: number,
+    draw: number,
+    lost: number,
+    points: number,
+    goalsFor: number,
+    goalsAgainst: number,
+    goalDifference: number,
+}
+
+interface ApiDataStandings {
+    stage: string,
+    type: string,
+    group?: any,
+    table: Array<ApiDataTable>
+}
+
+interface ApiDataSeason {
+    id: number,
+    startDate: string,
+    endDate: string,
+    currentMatchday: number,
+    winner?: string
+}
+
+interface ApiDataArea {
+    id: number,
+    name: string,
+}
+
+interface ApiDataCompetition {
+    id: number,
+    area: ApiDataArea,
+    name: string,
+    code: string,
+    plan: string,
+    lastUpdated: string,
+}
 
 const App: FC = () => {
 
@@ -15,7 +70,7 @@ const App: FC = () => {
     // Standings will use that selected bookie for retrieving the handicap values in getStandingsArray
     // in Bookie Picker each button needs to call onClick with the dynamic value of that button, the argument passed to it being a variable which holds the value of the button?
 
-    let dataPlaceholder: any;
+    let dataPlaceholder: ApiData;
 
     const requestHeaders = {
         headers: {
@@ -23,14 +78,14 @@ const App: FC = () => {
         }
     }
 
-    const apiCall: any = async () => {
+    const apiCall = async () => {
         const response = await fetch('http://api.football-data.org/v2/competitions/2016/standings', requestHeaders);
         dataPlaceholder = await response.json();
         setApiData(dataPlaceholder);
         setIsLoading(false);
     }
 
-    const [apiData, setApiData] = useState(null);
+    const [apiData, setApiData] = useState<ApiData | null >(null);
     const [isLoading, setIsLoading] = useState(true);
     const [currentBookie, setCurrentBookie] = useState('SkyBet');
     const [currentLeague, setCurrentLeague] = useState('Championship');
