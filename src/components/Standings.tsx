@@ -23,6 +23,7 @@ const Standings: FC<StandingsProps> = ({
   bookie = 'SkyBet',
   league = 'Championship',
 }) => {
+  // could definitely memoize this function I think...
   const getStandingsArray = (data: ApiData | null) => {
     standingsArray = [];
     for (let i = 0; i < 24; i++) {
@@ -38,7 +39,7 @@ const Standings: FC<StandingsProps> = ({
       let currentTeamCurrentHcap = currentTeamGamesPlayed * currentTeamHppg!;
       let currentTeamTotal =
         data!.standings[0].table[i].points + currentTeamCurrentHcap;
-      currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2;
+      currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2; // round to two decimal places
 
       const teamObject: RowData = {
         crest: data!.standings[0].table[i].team.crestUrl,
@@ -62,6 +63,7 @@ const Standings: FC<StandingsProps> = ({
     standingsArray.sort((a, b) => {
       return b.total - a.total;
     });
+    return standingsArray;
   };
 
   getStandingsArray(data);

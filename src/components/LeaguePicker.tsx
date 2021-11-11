@@ -9,6 +9,18 @@ const LeaguePicker: FC<LeaguePickerProps> = ({ league, handleClick }) => {
   return (
     <>
       <div className="-mb-2">
+        {league === 'PremierLeague' ? (
+          <button className="button-selected">Premier League</button>
+        ) : (
+          <button
+            className="button"
+            onClick={() => {
+              handleClick('PremierLeague');
+            }}
+          >
+            Premier League
+          </button>
+        )}
         {league === 'Championship' ? (
           <button className="button-selected">Championship</button>
         ) : (

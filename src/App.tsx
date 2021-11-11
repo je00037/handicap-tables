@@ -16,11 +16,11 @@ const App: FC = () => {
     },
   };
 
-  const apiCall = async () => {
-    const response = await fetch(
-      'http://api.football-data.org/v2/competitions/2016/standings',
-      requestHeaders
-    );
+  const champEndpoint =
+    'http://api.football-data.org/v2/competitions/2016/standings';
+
+  const apiCall = async (url: string, options: object) => {
+    const response = await fetch(url, options);
     dataPlaceholder = await response.json();
     setApiData(dataPlaceholder);
     setIsLoading(false);
@@ -41,7 +41,7 @@ const App: FC = () => {
 
   useEffect(() => {
     if (isLoading === true) {
-      setTimeout(() => apiCall(), 3000);
+      setTimeout(() => apiCall(champEndpoint, requestHeaders), 3000);
     }
   }, []);
 
