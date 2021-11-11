@@ -1,4 +1,4 @@
-const colors = require('tailwindcss/colors')
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -6,11 +6,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'dosis': ['Dosis', 'sans-serif']
+        dosis: ['Dosis', 'sans-serif'],
       },
       colors: {
         orange: colors.orange,
-        lime: colors.lime
+        lime: colors.lime,
       },
     },
   },
@@ -18,4 +18,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-}
+};

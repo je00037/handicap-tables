@@ -1,739 +1,744 @@
 {
-    "bookmaker": {
-        "SkyBet": {
-            "Championship": [{
-                "id": 63,
-                "team": "Fulham",
-                "hcap": 1,
-                "ppg": 0.02
-            },
-            {
-                "id": 74,
-                "team": "WBA",
-                "hcap": 0,
-                "ppg": 0
-            },
-            {
-                "id": 356,
-                "team": "Sheff Utd",
-                "hcap": 2,
-                "ppg": 0.04
-            },
-            {
-                "id": 1044,
-                "team": "Bournemouth",
-                "hcap": 4,
-                "ppg": 0.09
-            },
-            {
-                "id": 343,
-                "team": "Middlesbrough",
-                "hcap": 10,
-                "ppg": 0.22
-            },
-            {
-                "id": 715,
-                "team": "Cardiff",
-                "hcap": 10,
-                "ppg": 0.22
-            },
-            {
-                "id": 351,
-                "team": "Notts Forest",
-                "hcap": 13,
-                "ppg": 0.28
-            },
-            {
-                "id": 72,
-                "team": "Swansea",
-                "hcap": 16,
-                "ppg": 0.35
-            },
-            {
-                "id": 70,
-                "team": "Stoke",
-                "hcap": 16,
-                "ppg": 0.35
-            },
-            {
-                "id": 357,
-                "team": "Barnsley",
-                "hcap": 14,
-                "ppg": 0.30
-            },
-            {
-                "id": 69,
-                "team": "QPR",
-                "hcap": 12,
-                "ppg": 0.26
-            },
-            {
-                "id": 59,
-                "team": "Blackburn",
-                "hcap": 20,
-                "ppg": 0.43
-            },
-            {
-                "id": 384,
-                "team": "Millwall",
-                "hcap": 16,
-                "ppg": 0.35
-            },
-            {
-                "id": 355,
-                "team": "Reading",
-                "hcap": 19,
-                "ppg": 0.41
-            },
-            {
-                "id": 389,
-                "team": "Luton",
-                "hcap": 20,
-                "ppg": 0.43
-            },
-            {
-                "id": 387,
-                "team": "Bristol City",
-                "hcap": 23,
-                "ppg": 0.50
-            },
-            {
-                "id": 322,
-                "team": "Hull City",
-                "hcap": 24,
-                "ppg": 0.52
-            },
-            {
-                "id": 332,
-                "team": "Birmingham",
-                "hcap": 22,
-                "ppg": 0.48
-            },
-            {
-                "id": 1081,
-                "team": "Preston NE",
-                "hcap": 24,
-                "ppg": 0.52
-            },
-            {
-                "id": 1076,
-                "team": "Coventry",
-                "hcap": 25,
-                "ppg": 0.54
-            },
-            {
-                "id": 342,
-                "team": "Derby",
-                "hcap": 26,
-                "ppg": 0.57
-            },
-            {
-                "id": 394,
-                "team": "Huddersfield",
-                "hcap": 27,
-                "ppg": 0.59
-            },
-            {
-                "id": 336,
-                "team": "Blackpool",
-                "hcap": 28,
-                "ppg": 0.61
-            },
-            {
-                "id": 1077,
-                "team": "Peterborough",
-                "hcap": 29,
-                "ppg": 0.63
-            }
-        ]
+  "bookmaker": {
+    "SkyBet": {
+      "Championship": [
+        {
+          "id": 63,
+          "team": "Fulham",
+          "hcap": 1,
+          "ppg": 0.02
+        },
+        {
+          "id": 74,
+          "team": "WBA",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 356,
+          "team": "Sheff Utd",
+          "hcap": 2,
+          "ppg": 0.04
+        },
+        {
+          "id": 1044,
+          "team": "Bournemouth",
+          "hcap": 4,
+          "ppg": 0.09
+        },
+        {
+          "id": 343,
+          "team": "Middlesbrough",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 715,
+          "team": "Cardiff",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 351,
+          "team": "Notts Forest",
+          "hcap": 13,
+          "ppg": 0.28
+        },
+        {
+          "id": 72,
+          "team": "Swansea",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 70,
+          "team": "Stoke",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 357,
+          "team": "Barnsley",
+          "hcap": 14,
+          "ppg": 0.3
+        },
+        {
+          "id": 69,
+          "team": "QPR",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 59,
+          "team": "Blackburn",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 384,
+          "team": "Millwall",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 355,
+          "team": "Reading",
+          "hcap": 19,
+          "ppg": 0.41
+        },
+        {
+          "id": 389,
+          "team": "Luton",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 387,
+          "team": "Bristol City",
+          "hcap": 23,
+          "ppg": 0.5
+        },
+        {
+          "id": 322,
+          "team": "Hull City",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 332,
+          "team": "Birmingham",
+          "hcap": 22,
+          "ppg": 0.48
+        },
+        {
+          "id": 1081,
+          "team": "Preston NE",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 1076,
+          "team": "Coventry",
+          "hcap": 25,
+          "ppg": 0.54
+        },
+        {
+          "id": 342,
+          "team": "Derby",
+          "hcap": 26,
+          "ppg": 0.57
+        },
+        {
+          "id": 394,
+          "team": "Huddersfield",
+          "hcap": 27,
+          "ppg": 0.59
+        },
+        {
+          "id": 336,
+          "team": "Blackpool",
+          "hcap": 28,
+          "ppg": 0.61
+        },
+        {
+          "id": 1077,
+          "team": "Peterborough",
+          "hcap": 29,
+          "ppg": 0.63
+        }
+      ]
     },
     "Hills": {
-        "Championship": [{
-            "id": 63,
-            "team": "Fulham",
-            "hcap": 0,
-            "ppg": 0
+      "Championship": [
+        {
+          "id": 63,
+          "team": "Fulham",
+          "hcap": 0,
+          "ppg": 0
         },
         {
-            "id": 74,
-            "team": "WBA",
-            "hcap": 3,
-            "ppg": 0.07
+          "id": 74,
+          "team": "WBA",
+          "hcap": 3,
+          "ppg": 0.07
         },
         {
-            "id": 356,
-            "team": "Sheff Utd",
-            "hcap": 4,
-            "ppg": 0.09
+          "id": 356,
+          "team": "Sheff Utd",
+          "hcap": 4,
+          "ppg": 0.09
         },
         {
-            "id": 1044,
-            "team": "Bournemouth",
-            "hcap": 8,
-            "ppg": 0.17
+          "id": 1044,
+          "team": "Bournemouth",
+          "hcap": 8,
+          "ppg": 0.17
         },
         {
-            "id": 343,
-            "team": "Middlesbrough",
-            "hcap": 10,
-            "ppg": 0.22
+          "id": 343,
+          "team": "Middlesbrough",
+          "hcap": 10,
+          "ppg": 0.22
         },
         {
-            "id": 715,
-            "team": "Cardiff",
-            "hcap": 12,
-            "ppg": 0.26
+          "id": 715,
+          "team": "Cardiff",
+          "hcap": 12,
+          "ppg": 0.26
         },
         {
-            "id": 351,
-            "team": "Notts Forest",
-            "hcap": 12,
-            "ppg": 0.26
+          "id": 351,
+          "team": "Notts Forest",
+          "hcap": 12,
+          "ppg": 0.26
         },
         {
-            "id": 72,
-            "team": "Swansea",
-            "hcap": 12,
-            "ppg": 0.26
+          "id": 72,
+          "team": "Swansea",
+          "hcap": 12,
+          "ppg": 0.26
         },
         {
-            "id": 70,
-            "team": "Stoke",
-            "hcap": 13,
-            "ppg": 0.30
+          "id": 70,
+          "team": "Stoke",
+          "hcap": 13,
+          "ppg": 0.3
         },
         {
-            "id": 357,
-            "team": "Barnsley",
-            "hcap": 14,
-            "ppg": 0.30
+          "id": 357,
+          "team": "Barnsley",
+          "hcap": 14,
+          "ppg": 0.3
         },
         {
-            "id": 69,
-            "team": "QPR",
-            "hcap": 16,
-            "ppg": 0.35
+          "id": 69,
+          "team": "QPR",
+          "hcap": 16,
+          "ppg": 0.35
         },
         {
-            "id": 59,
-            "team": "Blackburn",
-            "hcap": 20,
-            "ppg": 0.43
+          "id": 59,
+          "team": "Blackburn",
+          "hcap": 20,
+          "ppg": 0.43
         },
         {
-            "id": 384,
-            "team": "Millwall",
-            "hcap": 20,
-            "ppg": 0.43
+          "id": 384,
+          "team": "Millwall",
+          "hcap": 20,
+          "ppg": 0.43
         },
         {
-            "id": 355,
-            "team": "Reading",
-            "hcap": 20,
-            "ppg": 0.43
+          "id": 355,
+          "team": "Reading",
+          "hcap": 20,
+          "ppg": 0.43
         },
         {
-            "id": 389,
-            "team": "Luton",
-            "hcap": 20,
-            "ppg": 0.43
+          "id": 389,
+          "team": "Luton",
+          "hcap": 20,
+          "ppg": 0.43
         },
         {
-            "id": 387,
-            "team": "Bristol City",
-            "hcap": 22,
-            "ppg": 0.48
+          "id": 387,
+          "team": "Bristol City",
+          "hcap": 22,
+          "ppg": 0.48
         },
         {
-            "id": 322,
-            "team": "Hull City",
-            "hcap": 22,
-            "ppg": 0.48
+          "id": 322,
+          "team": "Hull City",
+          "hcap": 22,
+          "ppg": 0.48
         },
         {
-            "id": 332,
-            "team": "Birmingham",
-            "hcap": 22,
-            "ppg": 0.48
+          "id": 332,
+          "team": "Birmingham",
+          "hcap": 22,
+          "ppg": 0.48
         },
         {
-            "id": 1081,
-            "team": "Preston NE",
-            "hcap": 22,
-            "ppg": 0.48
+          "id": 1081,
+          "team": "Preston NE",
+          "hcap": 22,
+          "ppg": 0.48
         },
         {
-            "id": 1076,
-            "team": "Coventry",
-            "hcap": 24,
-            "ppg": 0.52
+          "id": 1076,
+          "team": "Coventry",
+          "hcap": 24,
+          "ppg": 0.52
         },
         {
-            "id": 342,
-            "team": "Derby",
-            "hcap": 26,
-            "ppg": 0.57
+          "id": 342,
+          "team": "Derby",
+          "hcap": 26,
+          "ppg": 0.57
         },
         {
-            "id": 394,
-            "team": "Huddersfield",
-            "hcap": 26,
-            "ppg": 0.57
+          "id": 394,
+          "team": "Huddersfield",
+          "hcap": 26,
+          "ppg": 0.57
         },
         {
-            "id": 336,
-            "team": "Blackpool",
-            "hcap": 28,
-            "ppg": 0.61
+          "id": 336,
+          "team": "Blackpool",
+          "hcap": 28,
+          "ppg": 0.61
         },
         {
-            "id": 1077,
-            "team": "Peterborough",
-            "hcap": 28,
-            "ppg": 0.61
+          "id": 1077,
+          "team": "Peterborough",
+          "hcap": 28,
+          "ppg": 0.61
         }
-    ]
-},
-"PPBF": {
-    "Championship": [{
-        "id": 63,
-        "team": "Fulham",
-        "hcap": 1,
-        "ppg": 0.02
+      ]
     },
-    {
-        "id": 74,
-        "team": "WBA",
-        "hcap": 0,
-        "ppg": 0
+    "PPBF": {
+      "Championship": [
+        {
+          "id": 63,
+          "team": "Fulham",
+          "hcap": 1,
+          "ppg": 0.02
+        },
+        {
+          "id": 74,
+          "team": "WBA",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 356,
+          "team": "Sheff Utd",
+          "hcap": 2,
+          "ppg": 0.04
+        },
+        {
+          "id": 1044,
+          "team": "Bournemouth",
+          "hcap": 4,
+          "ppg": 0.09
+        },
+        {
+          "id": 343,
+          "team": "Middlesbrough",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 715,
+          "team": "Cardiff",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 351,
+          "team": "Notts Forest",
+          "hcap": 13,
+          "ppg": 0.28
+        },
+        {
+          "id": 72,
+          "team": "Swansea",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 70,
+          "team": "Stoke",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 357,
+          "team": "Barnsley",
+          "hcap": 14,
+          "ppg": 0.3
+        },
+        {
+          "id": 69,
+          "team": "QPR",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 59,
+          "team": "Blackburn",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 384,
+          "team": "Millwall",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 355,
+          "team": "Reading",
+          "hcap": 19,
+          "ppg": 0.41
+        },
+        {
+          "id": 389,
+          "team": "Luton",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 387,
+          "team": "Bristol City",
+          "hcap": 23,
+          "ppg": 0.5
+        },
+        {
+          "id": 322,
+          "team": "Hull City",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 332,
+          "team": "Birmingham",
+          "hcap": 22,
+          "ppg": 0.48
+        },
+        {
+          "id": 1081,
+          "team": "Preston NE",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 1076,
+          "team": "Coventry",
+          "hcap": 25,
+          "ppg": 0.54
+        },
+        {
+          "id": 342,
+          "team": "Derby",
+          "hcap": 26,
+          "ppg": 0.57
+        },
+        {
+          "id": 394,
+          "team": "Huddersfield",
+          "hcap": 27,
+          "ppg": 0.59
+        },
+        {
+          "id": 336,
+          "team": "Blackpool",
+          "hcap": 28,
+          "ppg": 0.61
+        },
+        {
+          "id": 1077,
+          "team": "Peterborough",
+          "hcap": 29,
+          "ppg": 0.63
+        }
+      ]
     },
-    {
-        "id": 356,
-        "team": "Sheff Utd",
-        "hcap": 2,
-        "ppg": 0.04
+    "Ladbrokes": {
+      "Championship": [
+        {
+          "id": 63,
+          "team": "Fulham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 74,
+          "team": "WBA",
+          "hcap": 2,
+          "ppg": 0.04
+        },
+        {
+          "id": 356,
+          "team": "Sheff Utd",
+          "hcap": 4,
+          "ppg": 0.09
+        },
+        {
+          "id": 1044,
+          "team": "Bournemouth",
+          "hcap": 5,
+          "ppg": 0.11
+        },
+        {
+          "id": 343,
+          "team": "Middlesbrough",
+          "hcap": 11,
+          "ppg": 0.24
+        },
+        {
+          "id": 715,
+          "team": "Cardiff",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 351,
+          "team": "Notts Forest",
+          "hcap": 13,
+          "ppg": 0.28
+        },
+        {
+          "id": 72,
+          "team": "Swansea",
+          "hcap": 14,
+          "ppg": 0.3
+        },
+        {
+          "id": 70,
+          "team": "Stoke",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 357,
+          "team": "Barnsley",
+          "hcap": 14,
+          "ppg": 0.3
+        },
+        {
+          "id": 69,
+          "team": "QPR",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 59,
+          "team": "Blackburn",
+          "hcap": 18,
+          "ppg": 0.39
+        },
+        {
+          "id": 384,
+          "team": "Millwall",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 355,
+          "team": "Reading",
+          "hcap": 19,
+          "ppg": 0.41
+        },
+        {
+          "id": 389,
+          "team": "Luton",
+          "hcap": 17,
+          "ppg": 0.37
+        },
+        {
+          "id": 387,
+          "team": "Bristol City",
+          "hcap": 21,
+          "ppg": 0.46
+        },
+        {
+          "id": 322,
+          "team": "Hull City",
+          "hcap": 22,
+          "ppg": 0.48
+        },
+        {
+          "id": 332,
+          "team": "Birmingham",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 1081,
+          "team": "Preston NE",
+          "hcap": 22,
+          "ppg": 0.48
+        },
+        {
+          "id": 1076,
+          "team": "Coventry",
+          "hcap": 23,
+          "ppg": 0.5
+        },
+        {
+          "id": 342,
+          "team": "Derby",
+          "hcap": 26,
+          "ppg": 0.57
+        },
+        {
+          "id": 394,
+          "team": "Huddersfield",
+          "hcap": 26,
+          "ppg": 0.57
+        },
+        {
+          "id": 336,
+          "team": "Blackpool",
+          "hcap": 27,
+          "ppg": 0.59
+        },
+        {
+          "id": 1077,
+          "team": "Peterborough",
+          "hcap": 26,
+          "ppg": 0.57
+        }
+      ]
     },
-    {
-        "id": 1044,
-        "team": "Bournemouth",
-        "hcap": 4,
-        "ppg": 0.09
-    },
-    {
-        "id": 343,
-        "team": "Middlesbrough",
-        "hcap": 10,
-        "ppg": 0.22
-    },
-    {
-        "id": 715,
-        "team": "Cardiff",
-        "hcap": 10,
-        "ppg": 0.22
-    },
-    {
-        "id": 351,
-        "team": "Notts Forest",
-        "hcap": 13,
-        "ppg": 0.28
-    },
-    {
-        "id": 72,
-        "team": "Swansea",
-        "hcap": 16,
-        "ppg": 0.35
-    },
-    {
-        "id": 70,
-        "team": "Stoke",
-        "hcap": 16,
-        "ppg": 0.35
-    },
-    {
-        "id": 357,
-        "team": "Barnsley",
-        "hcap": 14,
-        "ppg": 0.30
-    },
-    {
-        "id": 69,
-        "team": "QPR",
-        "hcap": 12,
-        "ppg": 0.26
-    },
-    {
-        "id": 59,
-        "team": "Blackburn",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 384,
-        "team": "Millwall",
-        "hcap": 16,
-        "ppg": 0.35
-    },
-    {
-        "id": 355,
-        "team": "Reading",
-        "hcap": 19,
-        "ppg": 0.41
-    },
-    {
-        "id": 389,
-        "team": "Luton",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 387,
-        "team": "Bristol City",
-        "hcap": 23,
-        "ppg": 0.50
-    },
-    {
-        "id": 322,
-        "team": "Hull City",
-        "hcap": 24,
-        "ppg": 0.52
-    },
-    {
-        "id": 332,
-        "team": "Birmingham",
-        "hcap": 22,
-        "ppg": 0.48
-    },
-    {
-        "id": 1081,
-        "team": "Preston NE",
-        "hcap": 24,
-        "ppg": 0.52
-    },
-    {
-        "id": 1076,
-        "team": "Coventry",
-        "hcap": 25,
-        "ppg": 0.54
-    },
-    {
-        "id": 342,
-        "team": "Derby",
-        "hcap": 26,
-        "ppg": 0.57
-    },
-    {
-        "id": 394,
-        "team": "Huddersfield",
-        "hcap": 27,
-        "ppg": 0.59
-    },
-    {
-        "id": 336,
-        "team": "Blackpool",
-        "hcap": 28,
-        "ppg": 0.61
-    },
-    {
-        "id": 1077,
-        "team": "Peterborough",
-        "hcap": 29,
-        "ppg": 0.63
+    "Bet365": {
+      "Championship": [
+        {
+          "id": 63,
+          "team": "Fulham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 74,
+          "team": "WBA",
+          "hcap": 4,
+          "ppg": 0.09
+        },
+        {
+          "id": 356,
+          "team": "Sheff Utd",
+          "hcap": 4,
+          "ppg": 0.09
+        },
+        {
+          "id": 1044,
+          "team": "Bournemouth",
+          "hcap": 8,
+          "ppg": 0.17
+        },
+        {
+          "id": 343,
+          "team": "Middlesbrough",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 715,
+          "team": "Cardiff",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 351,
+          "team": "Notts Forest",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 72,
+          "team": "Swansea",
+          "hcap": 14,
+          "ppg": 0.3
+        },
+        {
+          "id": 70,
+          "team": "Stoke",
+          "hcap": 12,
+          "ppg": 0.26
+        },
+        {
+          "id": 357,
+          "team": "Barnsley",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 69,
+          "team": "QPR",
+          "hcap": 18,
+          "ppg": 0.39
+        },
+        {
+          "id": 59,
+          "team": "Blackburn",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 384,
+          "team": "Millwall",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 355,
+          "team": "Reading",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 389,
+          "team": "Luton",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 387,
+          "team": "Bristol City",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 322,
+          "team": "Hull City",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 332,
+          "team": "Birmingham",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 1081,
+          "team": "Preston NE",
+          "hcap": 22,
+          "ppg": 0.48
+        },
+        {
+          "id": 1076,
+          "team": "Coventry",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 342,
+          "team": "Derby",
+          "hcap": 24,
+          "ppg": 0.52
+        },
+        {
+          "id": 394,
+          "team": "Huddersfield",
+          "hcap": 28,
+          "ppg": 0.61
+        },
+        {
+          "id": 336,
+          "team": "Blackpool",
+          "hcap": 28,
+          "ppg": 0.61
+        },
+        {
+          "id": 1077,
+          "team": "Peterborough",
+          "hcap": 28,
+          "ppg": 0.61
+        }
+      ]
     }
-]
-},
-"Ladbrokes": {
-    "Championship": [{
-        "id": 63,
-        "team": "Fulham",
-        "hcap": 0,
-        "ppg": 0
-    },
-    {
-        "id": 74,
-        "team": "WBA",
-        "hcap": 2,
-        "ppg": 0.04
-    },
-    {
-        "id": 356,
-        "team": "Sheff Utd",
-        "hcap": 4,
-        "ppg": 0.09
-    },
-    {
-        "id": 1044,
-        "team": "Bournemouth",
-        "hcap": 5,
-        "ppg": 0.11
-    },
-    {
-        "id": 343,
-        "team": "Middlesbrough",
-        "hcap": 11,
-        "ppg": 0.24
-    },
-    {
-        "id": 715,
-        "team": "Cardiff",
-        "hcap": 10,
-        "ppg": 0.22
-    },
-    {
-        "id": 351,
-        "team": "Notts Forest",
-        "hcap": 13,
-        "ppg": 0.28
-    },
-    {
-        "id": 72,
-        "team": "Swansea",
-        "hcap": 14,
-        "ppg": 0.30
-    },
-    {
-        "id": 70,
-        "team": "Stoke",
-        "hcap": 12,
-        "ppg": 0.26
-    },
-    {
-        "id": 357,
-        "team": "Barnsley",
-        "hcap": 14,
-        "ppg": 0.30
-    },
-    {
-        "id": 69,
-        "team": "QPR",
-        "hcap": 12,
-        "ppg": 0.26
-    },
-    {
-        "id": 59,
-        "team": "Blackburn",
-        "hcap": 18,
-        "ppg": 0.39
-    },
-    {
-        "id": 384,
-        "team": "Millwall",
-        "hcap": 16,
-        "ppg": 0.35
-    },
-    {
-        "id": 355,
-        "team": "Reading",
-        "hcap": 19,
-        "ppg": 0.41
-    },
-    {
-        "id": 389,
-        "team": "Luton",
-        "hcap": 17,
-        "ppg": 0.37
-    },
-    {
-        "id": 387,
-        "team": "Bristol City",
-        "hcap": 21,
-        "ppg": 0.46
-    },
-    {
-        "id": 322,
-        "team": "Hull City",
-        "hcap": 22,
-        "ppg": 0.48
-    },
-    {
-        "id": 332,
-        "team": "Birmingham",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 1081,
-        "team": "Preston NE",
-        "hcap": 22,
-        "ppg": 0.48
-    },
-    {
-        "id": 1076,
-        "team": "Coventry",
-        "hcap": 23,
-        "ppg": 0.50
-    },
-    {
-        "id": 342,
-        "team": "Derby",
-        "hcap": 26,
-        "ppg": 0.57
-    },
-    {
-        "id": 394,
-        "team": "Huddersfield",
-        "hcap": 26,
-        "ppg": 0.57
-    },
-    {
-        "id": 336,
-        "team": "Blackpool",
-        "hcap": 27,
-        "ppg": 0.59
-    },
-    {
-        "id": 1077,
-        "team": "Peterborough",
-        "hcap": 26,
-        "ppg": 0.57
-    }
-]
-},
-"Bet365": {
-    "Championship": [{
-        "id": 63,
-        "team": "Fulham",
-        "hcap": 0,
-        "ppg": 0
-    },
-    {
-        "id": 74,
-        "team": "WBA",
-        "hcap": 4,
-        "ppg": 0.09
-    },
-    {
-        "id": 356,
-        "team": "Sheff Utd",
-        "hcap": 4,
-        "ppg": 0.09
-    },
-    {
-        "id": 1044,
-        "team": "Bournemouth",
-        "hcap": 8,
-        "ppg": 0.17
-    },
-    {
-        "id": 343,
-        "team": "Middlesbrough",
-        "hcap": 12,
-        "ppg": 0.26
-    },
-    {
-        "id": 715,
-        "team": "Cardiff",
-        "hcap": 10,
-        "ppg": 0.22
-    },
-    {
-        "id": 351,
-        "team": "Notts Forest",
-        "hcap": 12,
-        "ppg": 0.26
-    },
-    {
-        "id": 72,
-        "team": "Swansea",
-        "hcap": 14,
-        "ppg": 0.30
-    },
-    {
-        "id": 70,
-        "team": "Stoke",
-        "hcap": 12,
-        "ppg": 0.26
-    },
-    {
-        "id": 357,
-        "team": "Barnsley",
-        "hcap": 16,
-        "ppg": 0.35
-    },
-    {
-        "id": 69,
-        "team": "QPR",
-        "hcap": 18,
-        "ppg": 0.39
-    },
-    {
-        "id": 59,
-        "team": "Blackburn",
-        "hcap": 16,
-        "ppg": 0.35
-    },
-    {
-        "id": 384,
-        "team": "Millwall",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 355,
-        "team": "Reading",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 389,
-        "team": "Luton",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 387,
-        "team": "Bristol City",
-        "hcap": 20,
-        "ppg": 0.43
-    },
-    {
-        "id": 322,
-        "team": "Hull City",
-        "hcap": 24,
-        "ppg": 0.52
-    },
-    {
-        "id": 332,
-        "team": "Birmingham",
-        "hcap": 24,
-        "ppg": 0.52
-    },
-    {
-        "id": 1081,
-        "team": "Preston NE",
-        "hcap": 22,
-        "ppg": 0.48
-    },
-    {
-        "id": 1076,
-        "team": "Coventry",
-        "hcap": 24,
-        "ppg": 0.52
-    },
-    {
-        "id": 342,
-        "team": "Derby",
-        "hcap": 24,
-        "ppg": 0.52
-    },
-    {
-        "id": 394,
-        "team": "Huddersfield",
-        "hcap": 28,
-        "ppg": 0.61
-    },
-    {
-        "id": 336,
-        "team": "Blackpool",
-        "hcap": 28,
-        "ppg": 0.61
-    },
-    {
-        "id": 1077,
-        "team": "Peterborough",
-        "hcap": 28,
-        "ppg": 0.61
-    }
-]
-}
-}
+  }
 }

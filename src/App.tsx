@@ -1,117 +1,61 @@
 import React, { FC, useState, useEffect } from 'react';
+import { ApiData } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
 import BookiePicker from './components/BookiePicker';
 import LeaguePicker from './components/LeaguePicker';
 import LoadingDots from './components/LoadingDots';
-interface ApiData {
-    filters: object,
-    competition: ApiDataCompetition,
-    season: ApiDataSeason,
-    standings: Array<ApiDataStandings>,
-}
-
-interface ApiDataTeam {
-    id: number,
-    name: string,
-    crestURL: string,
-}
-
-interface ApiDataTable {
-    position: number,
-    team: ApiDataTeam,
-    playedGames: number,
-    form?: any,
-    won: number,
-    draw: number,
-    lost: number,
-    points: number,
-    goalsFor: number,
-    goalsAgainst: number,
-    goalDifference: number,
-}
-
-interface ApiDataStandings {
-    stage: string,
-    type: string,
-    group?: any,
-    table: Array<ApiDataTable>
-}
-
-interface ApiDataSeason {
-    id: number,
-    startDate: string,
-    endDate: string,
-    currentMatchday: number,
-    winner?: string
-}
-
-interface ApiDataArea {
-    id: number,
-    name: string,
-}
-
-interface ApiDataCompetition {
-    id: number,
-    area: ApiDataArea,
-    name: string,
-    code: string,
-    plan: string,
-    lastUpdated: string,
-}
 
 const App: FC = () => {
+  let dataPlaceholder: ApiData;
 
-    // add a state variable to track the selected bookie. Select Sky Bet by default
-    // add a new function like onClick which takes an argument of a new bookie and updates the selected bookie state
-    // pass this onClick function to the Bookie Picker as a prop
-    // pass the currently selected bookie as a prop to Standings and to Bookie Picker so the selected button style can be updated
-    // Standings will use that selected bookie for retrieving the handicap values in getStandingsArray
-    // in Bookie Picker each button needs to call onClick with the dynamic value of that button, the argument passed to it being a variable which holds the value of the button?
+  const requestHeaders = {
+    headers: {
+      'X-Auth-Token': '05b09d4d6ebf494aae53d256c80fc85a',
+    },
+  };
 
-    let dataPlaceholder: ApiData;
+  const apiCall = async () => {
+    const response = await fetch(
+      'http://api.football-data.org/v2/competitions/2016/standings',
+      requestHeaders
+    );
+    dataPlaceholder = await response.json();
+    setApiData(dataPlaceholder);
+    setIsLoading(false);
+  };
 
-    const requestHeaders = {
-        headers: {
-            'X-Auth-Token': '05b09d4d6ebf494aae53d256c80fc85a'
-        }
+  const [apiData, setApiData] = useState<ApiData | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentBookie, setCurrentBookie] = useState('SkyBet');
+  const [currentLeague, setCurrentLeague] = useState('Championship');
+
+  const clickHandlerBookie = (newBookie: string) => {
+    setCurrentBookie(newBookie);
+  };
+
+  const clickHandlerLeague = (newLeague: string) => {
+    setCurrentLeague(newLeague);
+  };
+
+  useEffect(() => {
+    if (isLoading === true) {
+      setTimeout(() => apiCall(), 3000);
     }
+  }, []);
 
-    const apiCall = async () => {
-        const response = await fetch('http://api.football-data.org/v2/competitions/2016/standings', requestHeaders);
-        dataPlaceholder = await response.json();
-        setApiData(dataPlaceholder);
-        setIsLoading(false);
-    }
-
-    const [apiData, setApiData] = useState<ApiData | null >(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [currentBookie, setCurrentBookie] = useState('SkyBet');
-    const [currentLeague, setCurrentLeague] = useState('Championship');
-
-    const clickHandlerBookie = (newBookie: string) => {
-        setCurrentBookie(newBookie);
-    }
-
-    const clickHandlerLeague = (newLeague: string) => {
-        setCurrentLeague(newLeague);
-    }
-
-    useEffect (() => {
-        if (isLoading === true) {
-            setTimeout(() => apiCall(), 3000);
-        }
-    }, []);
-
-    return isLoading ? <LoadingDots /> :
-    <div className='h-screen flex flex-col justify-between items-center'>
-        <Header />
-        <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
-        <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
-        <Standings data={apiData} bookie={currentBookie} league={currentLeague} />
-        <Footer />
+  return isLoading ? (
+    <LoadingDots />
+  ) : (
+    <div className="h-screen flex flex-col justify-between items-center">
+      <Header />
+      <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
+      <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
+      <Standings data={apiData} bookie={currentBookie} league={currentLeague} />
+      <Footer />
     </div>
-}
+  );
+};
 
 export default App;
