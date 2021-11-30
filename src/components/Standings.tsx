@@ -8,8 +8,9 @@ import {
 import handicaps from '../handicaps-2.json';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
+import { useFetch } from '../utils/useFetch';
+import LoadingDots from './LoadingDots';
 interface StandingsProps {
-  data: ApiData | null;
   bookie: string;
   league: string;
 }
@@ -19,10 +20,26 @@ const handicapData: HandicapData = handicaps;
 let standingsArray: Array<RowData> = [];
 
 const Standings: FC<StandingsProps> = ({
-  data,
   bookie = 'SkyBet',
   league = 'Championship',
 }) => {
+  // have the league passed in from clickhandler on league picker
+  // have state variable for data for each league
+  // when league prop is passed in to standings, check whether we have data for that league
+  // if no data for that league, go get it using usefetch and set it into that state variable
+  // if data exists for that league in that state variable, just use it
+
+  const requestHeaders = {
+    headers: {
+      'X-Auth-Token': '05b09d4d6ebf494aae53d256c80fc85a',
+    },
+  };
+  const champEndpoint =
+    'http://api.football-data.org/v2/competitions/2016/standings';
+  const { data, error, loading } = useFetch(champEndpoint, requestHeaders);
+
+  if (error) console.log(error);
+
   const getStandingsArray = (data: ApiData) => {
     standingsArray = [];
     for (let i = 0; i < 24; i++) {
@@ -66,7 +83,9 @@ const Standings: FC<StandingsProps> = ({
 
   if (data) getStandingsArray(data);
 
-  return (
+  return loading ? (
+    <LoadingDots />
+  ) : (
     <>
       <table className="table-auto w-6/12 text-center text-green-50">
         <thead>

@@ -44,27 +44,17 @@ const endpointBuilder = (league: string) => {
   return endpoint;
 };
 
-const requestHeaders = {
-  headers: {
-    'X-Auth-Token': '05b09d4d6ebf494aae53d256c80fc85a',
-  },
-};
-
-const champEndpoint =
-  'http://api.football-data.org/v2/competitions/2016/standings';
-
 const App: FC = () => {
   // const [apiData, setApiData] = useState<ApiData | null>(null);
   // const [isLoading, setIsLoading] = useState(true);
   const [currentBookie, setCurrentBookie] = useState<Bookies>('SkyBet');
-  const [currentLeague, setCurrentLeague] = useState<Leagues>('Championship');
+  const [currentLeague, setCurrentLeague] = useState<Leagues>(null);
   // const apiCall = async (url: string, options: object) => {
   //   const res = await fetch(url, options);
   //   dataPlaceholder = await res.json();
   //   setApiData(dataPlaceholder);
   //   setIsLoading(false);
   // };
-  const { response, error, loading } = useFetch(champEndpoint, requestHeaders);
 
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
@@ -78,19 +68,21 @@ const App: FC = () => {
   //     setTimeout(() => apiCall(champEndpoint, requestHeaders), 3000);
   //   }
   // }, []);
-  if (error) console.log(error);
-  return loading ? (
-    <LoadingDots />
+
+  return currentLeague ? (
+    <div className="h-screen flex flex-col justify-between items-center">
+      <Header />
+      <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
+      <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
+      <Standings bookie={currentBookie} league={currentLeague} />
+      <Footer />
+    </div>
   ) : (
     <div className="h-screen flex flex-col justify-between items-center">
       <Header />
       <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
       <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
-      <Standings
-        data={response}
-        bookie={currentBookie}
-        league={currentLeague}
-      />
+      <p>Click a league to get started!</p>
       <Footer />
     </div>
   );

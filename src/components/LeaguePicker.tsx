@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Leagues } from '../interfaces';
 
 interface LeaguePickerProps {
-  league: string;
+  league: string | null;
   handleClick: (newLeague: Leagues) => void;
 }
 
