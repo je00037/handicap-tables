@@ -24,20 +24,17 @@ const App: FC = () => {
   // const [isLoading, setIsLoading] = useState(true);
   const [currentBookie, setCurrentBookie] = useState<Bookies>('SkyBet');
   const [currentLeague, setCurrentLeague] = useState<Leagues>('Championship');
-
   // const apiCall = async (url: string, options: object) => {
   //   const res = await fetch(url, options);
   //   dataPlaceholder = await res.json();
   //   setApiData(dataPlaceholder);
   //   setIsLoading(false);
   // };
-
   const { response, error, loading } = useFetch(champEndpoint, requestHeaders);
 
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
   };
-
   const clickHandlerLeague = (newLeague: Leagues) => {
     setCurrentLeague(newLeague);
   };

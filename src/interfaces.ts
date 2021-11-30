@@ -22,7 +22,7 @@ export interface ApiDataTable {
   position: number;
   team: ApiDataTeam;
   playedGames: number;
-  form?: any;
+  form?: string;
   won: number;
   draw: number;
   lost: number;
@@ -35,7 +35,7 @@ export interface ApiDataTable {
 export interface ApiDataStandings {
   stage: string;
   type: string;
-  group?: any;
+  group?: string;
   table: Array<ApiDataTable>;
 }
 

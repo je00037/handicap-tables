@@ -23,36 +23,34 @@ const Standings: FC<StandingsProps> = ({
   bookie = 'SkyBet',
   league = 'Championship',
 }) => {
-  // could memoize this function I think?...
-  const getStandingsArray = (data: ApiData | null) => {
+  const getStandingsArray = (data: ApiData) => {
     standingsArray = [];
     for (let i = 0; i < 24; i++) {
-      let currentTeamId: number;
-      let currentTeamHandicapObject: HandicapTeamObject;
-      currentTeamId = data!.standings[0].table[i].team.id;
-      currentTeamHandicapObject = handicapData.bookmaker[bookie][league].find(
-        (item) => item.id === currentTeamId
-      )!;
-      let currentTeamHandicap = currentTeamHandicapObject.hcap;
-      let currentTeamHppg = currentTeamHandicapObject.ppg;
-      let currentTeamGamesPlayed = data!.standings[0].table[i].playedGames;
-      let currentTeamCurrentHcap = currentTeamGamesPlayed * currentTeamHppg!;
+      const currentTeamId: number = data.standings[0].table[i].team.id;
+      const currentTeamHandicapObject: HandicapTeamObject | undefined =
+        handicapData.bookmaker[bookie][league].find(
+          (item) => item.id === currentTeamId
+        );
+      const currentTeamHandicap = currentTeamHandicapObject!.hcap;
+      const currentTeamHppg = currentTeamHandicapObject!.ppg;
+      const currentTeamGamesPlayed = data.standings[0].table[i].playedGames;
+      const currentTeamCurrentHcap = currentTeamGamesPlayed * currentTeamHppg;
       let currentTeamTotal =
-        data!.standings[0].table[i].points + currentTeamCurrentHcap;
+        data.standings[0].table[i].points + currentTeamCurrentHcap;
       currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2; // round to two decimal places
 
       const teamObject: RowData = {
-        crest: data!.standings[0].table[i].team.crestUrl,
-        position: data!.standings[0].table[i].position,
+        crest: data.standings[0].table[i].team.crestUrl,
+        position: data.standings[0].table[i].position,
         team: currentTeamHandicapObject!.team,
-        played: data!.standings[0].table[i].playedGames,
-        won: data!.standings[0].table[i].won,
-        drawn: data!.standings[0].table[i].draw,
-        lost: data!.standings[0].table[i].lost,
-        scored: data!.standings[0].table[i].goalsFor,
-        conceded: data!.standings[0].table[i].goalsAgainst,
-        difference: data!.standings[0].table[i].goalDifference,
-        points: data!.standings[0].table[i].points,
+        played: data.standings[0].table[i].playedGames,
+        won: data.standings[0].table[i].won,
+        drawn: data.standings[0].table[i].draw,
+        lost: data.standings[0].table[i].lost,
+        scored: data.standings[0].table[i].goalsFor,
+        conceded: data.standings[0].table[i].goalsAgainst,
+        difference: data.standings[0].table[i].goalDifference,
+        points: data.standings[0].table[i].points,
         handicap: currentTeamHandicap,
         hppg: currentTeamHppg,
         total: currentTeamTotal,
@@ -66,7 +64,7 @@ const Standings: FC<StandingsProps> = ({
     return standingsArray;
   };
 
-  getStandingsArray(data);
+  if (data) getStandingsArray(data);
 
   return (
     <>
@@ -76,7 +74,7 @@ const Standings: FC<StandingsProps> = ({
         </thead>
         <tbody>
           {standingsArray.map((item, index) => {
-            let hcapPos = index + 1;
+            const hcapPos = index + 1;
             return <Row rowData={item} key={index} hcapPos={hcapPos} />;
           })}
         </tbody>

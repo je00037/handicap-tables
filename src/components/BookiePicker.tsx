@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import { Bookies } from '../interfaces';
 
 interface BookiePickerProps {
   bookie: string;
-  handleClick: any;
+  handleClick: (newBookie: Bookies) => void;
 }
 
 const BookiePicker: FC<BookiePickerProps> = ({ bookie, handleClick }) => {

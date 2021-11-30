@@ -1,13 +1,13 @@
 import { ApiData } from '../interfaces';
 import { useState, useEffect } from 'react';
-export const useFetch = (url: string, options: object) => {
+
+export const useFetch = (url: string, options: Record<string, unknown>) => {
   const [response, setResponse] = useState<ApiData | null>(null);
-  const [error, setError] = useState<any>(null);
+  const [error, setError] = useState<unknown>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
-      //   setLoading(true);
       try {
         const result = await fetch(url, options);
         const json = await result.json();

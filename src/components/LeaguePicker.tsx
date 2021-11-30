@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
+import { Leagues } from '../interfaces';
 
 interface LeaguePickerProps {
   league: string;
-  handleClick: any;
+  handleClick: (newLeague: Leagues) => void;
 }
 
 const LeaguePicker: FC<LeaguePickerProps> = ({ league, handleClick }) => {
