@@ -146,6 +146,152 @@
           "hcap": 29,
           "ppg": 0.63
         }
+      ],
+      "League 1": [
+        {
+          "id": 73,
+          "team": "Rotherham",
+          "hcap": 6,
+          "ppg": 0.13
+        },
+        {
+          "id": 61,
+          "team": "Wigan",
+          "hcap": 7,
+          "ppg": 0.15
+        },
+        {
+          "id": 1358,
+          "team": "Wycombe",
+          "hcap": 11,
+          "ppg": 0.24
+        },
+        {
+          "id": 1357,
+          "team": "Plymouth",
+          "hcap": 21,
+          "ppg": 0.46
+        },
+        {
+          "id": 746,
+          "team": "Sunderland",
+          "hcap": 1,
+          "ppg": 0.02
+        },
+        {
+          "id": 1348,
+          "team": "MK Dons",
+          "hcap": 18,
+          "ppg": 0.39
+        },
+        {
+          "id": 74,
+          "team": "Sheff Weds",
+          "hcap": 4,
+          "ppg": 0.09
+        },
+        {
+          "id": 1338,
+          "team": "Oxford United",
+          "hcap": 9,
+          "ppg": 0.2
+        },
+        {
+          "id": 1355,
+          "team": "Portsmouth",
+          "hcap": 6,
+          "ppg": 0.13
+        },
+        {
+          "id": 748,
+          "team": "Burton Albion",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 57,
+          "team": "Ipswich",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1372,
+          "team": "Cheltenham",
+          "hcap": 26,
+          "ppg": 0.57
+        },
+        {
+          "id": 68,
+          "team": "Bolton",
+          "hcap": 11,
+          "ppg": 0.24
+        },
+        {
+          "id": 1360,
+          "team": "Accrington Stanley",
+          "hcap": 16,
+          "ppg": 0.35
+        },
+        {
+          "id": 1355,
+          "team": "Charlton",
+          "hcap": 6,
+          "ppg": 0.13
+        },
+        {
+          "id": 1370,
+          "team": "Cambridge United",
+          "hcap": 26,
+          "ppg": 0.57
+        },
+        {
+          "id": 1333,
+          "team": "AFC Wimbledon",
+          "hcap": 28,
+          "ppg": 0.61
+        },
+        {
+          "id": 1379,
+          "team": "Lincoln",
+          "hcap": 10,
+          "ppg": 0.22
+        },
+        {
+          "id": 1352,
+          "team": "Shrewsbury",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 1375,
+          "team": "Morecambe",
+          "hcap": 29,
+          "ppg": 0.63
+        },
+        {
+          "id": 1347,
+          "team": "Gillingham",
+          "hcap": 18,
+          "ppg": 0.39
+        },
+        {
+          "id": 1336,
+          "team": "Fleetwood Town",
+          "hcap": 20,
+          "ppg": 0.43
+        },
+        {
+          "id": 1354,
+          "team": "Doncaster",
+          "hcap": 17,
+          "ppg": 0.37
+        },
+        {
+          "id": 1363,
+          "team": "Crewe",
+          "hcap": 18,
+          "ppg": 0.39
+        }
       ]
     },
     "Hills": {
@@ -293,6 +439,152 @@
           "team": "Peterborough",
           "hcap": 28,
           "ppg": 0.61
+        }
+      ],
+      "League 1": [
+        {
+          "id": 73,
+          "team": "Rotherham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 61,
+          "team": "Wigan",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1358,
+          "team": "Wycombe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1357,
+          "team": "Plymouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 746,
+          "team": "Sunderland",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1348,
+          "team": "MK Dons",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 74,
+          "team": "Sheff Weds",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1338,
+          "team": "Oxford United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Portsmouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 748,
+          "team": "Burton Albion",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 57,
+          "team": "Ipswich",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1372,
+          "team": "Cheltenham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 68,
+          "team": "Bolton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1360,
+          "team": "Accrington Stanley",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Charlton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1370,
+          "team": "Cambridge United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1333,
+          "team": "AFC Wimbledon",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1379,
+          "team": "Lincoln",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1352,
+          "team": "Shrewsbury",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1375,
+          "team": "Morecambe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1347,
+          "team": "Gillingham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1336,
+          "team": "Fleetwood Town",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1354,
+          "team": "Doncaster",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1363,
+          "team": "Crewe",
+          "hcap": 0,
+          "ppg": 0
         }
       ]
     },
@@ -442,6 +734,152 @@
           "hcap": 29,
           "ppg": 0.63
         }
+      ],
+      "League 1": [
+        {
+          "id": 73,
+          "team": "Rotherham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 61,
+          "team": "Wigan",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1358,
+          "team": "Wycombe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1357,
+          "team": "Plymouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 746,
+          "team": "Sunderland",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1348,
+          "team": "MK Dons",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 74,
+          "team": "Sheff Weds",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1338,
+          "team": "Oxford United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Portsmouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 748,
+          "team": "Burton Albion",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 57,
+          "team": "Ipswich",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1372,
+          "team": "Cheltenham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 68,
+          "team": "Bolton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1360,
+          "team": "Accrington Stanley",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Charlton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1370,
+          "team": "Cambridge United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1333,
+          "team": "AFC Wimbledon",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1379,
+          "team": "Lincoln",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1352,
+          "team": "Shrewsbury",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1375,
+          "team": "Morecambe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1347,
+          "team": "Gillingham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1336,
+          "team": "Fleetwood Town",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1354,
+          "team": "Doncaster",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1363,
+          "team": "Crewe",
+          "hcap": 0,
+          "ppg": 0
+        }
       ]
     },
     "Ladbrokes": {
@@ -590,6 +1028,152 @@
           "hcap": 26,
           "ppg": 0.57
         }
+      ],
+      "League 1": [
+        {
+          "id": 73,
+          "team": "Rotherham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 61,
+          "team": "Wigan",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1358,
+          "team": "Wycombe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1357,
+          "team": "Plymouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 746,
+          "team": "Sunderland",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1348,
+          "team": "MK Dons",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 74,
+          "team": "Sheff Weds",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1338,
+          "team": "Oxford United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Portsmouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 748,
+          "team": "Burton Albion",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 57,
+          "team": "Ipswich",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1372,
+          "team": "Cheltenham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 68,
+          "team": "Bolton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1360,
+          "team": "Accrington Stanley",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Charlton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1370,
+          "team": "Cambridge United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1333,
+          "team": "AFC Wimbledon",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1379,
+          "team": "Lincoln",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1352,
+          "team": "Shrewsbury",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1375,
+          "team": "Morecambe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1347,
+          "team": "Gillingham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1336,
+          "team": "Fleetwood Town",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1354,
+          "team": "Doncaster",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1363,
+          "team": "Crewe",
+          "hcap": 0,
+          "ppg": 0
+        }
       ]
     },
     "Bet365": {
@@ -737,6 +1321,152 @@
           "team": "Peterborough",
           "hcap": 28,
           "ppg": 0.61
+        }
+      ],
+      "League 1": [
+        {
+          "id": 73,
+          "team": "Rotherham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 61,
+          "team": "Wigan",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1358,
+          "team": "Wycombe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1357,
+          "team": "Plymouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 746,
+          "team": "Sunderland",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1348,
+          "team": "MK Dons",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 74,
+          "team": "Sheff Weds",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1338,
+          "team": "Oxford United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Portsmouth",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 748,
+          "team": "Burton Albion",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 57,
+          "team": "Ipswich",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1372,
+          "team": "Cheltenham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 68,
+          "team": "Bolton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1360,
+          "team": "Accrington Stanley",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1355,
+          "team": "Charlton",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1370,
+          "team": "Cambridge United",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1333,
+          "team": "AFC Wimbledon",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1379,
+          "team": "Lincoln",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1352,
+          "team": "Shrewsbury",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1375,
+          "team": "Morecambe",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1347,
+          "team": "Gillingham",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1336,
+          "team": "Fleetwood Town",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1354,
+          "team": "Doncaster",
+          "hcap": 0,
+          "ppg": 0
+        },
+        {
+          "id": 1363,
+          "team": "Crewe",
+          "hcap": 0,
+          "ppg": 0
         }
       ]
     }
