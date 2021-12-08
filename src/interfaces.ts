@@ -5,7 +5,7 @@ export type Leagues =
   | 'Championship'
   | 'League 1'
   | 'League 2'
-  | null;
+  | undefined;
 export interface ApiData {
   filters: object;
   competition: ApiDataCompetition;
