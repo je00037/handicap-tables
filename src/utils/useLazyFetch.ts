@@ -6,7 +6,7 @@ export const useLazyFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
 
-  const getData = async (league: string) => {
+  const getData = async (league: string | number) => {
     setLoading(true);
     const url = endpointBuilder(league);
     const options = {

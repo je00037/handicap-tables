@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import {
   ApiData,
   HandicapData,
@@ -13,124 +13,101 @@ import HeadingsRow from './HeadingsRow';
 import { useFetch } from '../utils/useFetch';
 import LoadingDots from './LoadingDots';
 import { useLazyFetch } from '../utils/useLazyFetch';
-import newData from '../new-api-response.json';
 import { supportedLeagues } from '.././constants';
+import premData from '../new-api-response-prem.json';
+import champData from '../new-api-response-champ.json';
+import leagueOneData from '../new-api-response-league1.json';
+import leagueTwoData from '../new-api-response-league2.json';
+
 interface StandingsProps {
-  bookie: string;
+  bookie: Bookies;
   league: string | number;
 }
-
-const newApiData = newData;
 
 const handicapData: HandicapData = handicaps;
 
 let standingsArray: Array<RowData> = [];
 
-// new api and hcap data notation
-// for (let i = 0; i < 24; i++) {
-//   const newDataTeamId: number =
-//     newData.response[0].league.standings[0][i].team.id;
-//   const newDataCurrentTeamGamesPlayed =
-//     newData.response[0].league.standings[0][i].all.played;
-//   console.log(newDataTeamId, newDataCurrentTeamGamesPlayed);
-// }
+const cacheArray = [premData, champData, leagueOneData, leagueTwoData];
 
 const Standings: FC<StandingsProps> = ({ bookie, league }) => {
-  // have the league passed in from app, based on clickhandler on league picker
-  // have state variable for data for each league
-  // when league prop is passed in to standings, check whether we have data for that league
-  // if no data for that league, go get it using usefetch and set it into that state variable
-  // if data exists for that league in that state variable, just use it
+  const { getData, lazydata, loading, error } = useLazyFetch();
+  const [cache, setCache] = useState<Array<Record<any, any>>>(cacheArray);
+  const [currentData, setCurrentData] = useState();
 
-  // const { premData, setPremData } = useState(null);
-  // const { champData, setChampData } = useState(null);
-  // const { leagueOneData, setLeagueOneData } = useState(null);
-  // const { leagueTwoData, setLeagueTwoData } = useState(null);
+  const leagueData: any = cache.find(
+    (item: any) => item.response[0].league.id === league
+  );
 
-  // if (league === 'PremierLeague' && !premData) {
-  //   const { data, error, loading } = useFetch( ... );
-  //   setPremData(data);
-  // }
+  useEffect(() => {
+    console.log('useeffect triggered', league);
+    // HAVE WE GOT THE LEAGUE'S DATA IN THE CACHE ALREADY?
 
-  const requestHeaders = {
-    headers: {
-      'X-Auth-Token': '05b09d4d6ebf494aae53d256c80fc85a',
-    },
-  };
-  const champEndpoint =
-    'http://api.football-data.org/v2/competitions/2016/standings';
+    // const leagueData: any = cache.find(
+    //   (item: any) => item.response[0].league.id === league
+    // );
 
-  const { data, error, loading } = useFetch(champEndpoint, requestHeaders);
+    // console.log(leagueData);
+
+    // IF !leagueData, GO GET THE DATA
+
+    // const asyncDataFetch = async () => {
+    //   const data = await getData(league);
+    //   console.log(data);
+    // };
+    // ADD THE NEW DATA TO THE CACHE
+    // setCache((cache: <Array<Record<any, any>>>) => [...cache, data]);
+
+    // CALL THE FUNCTION IF !leagueData. WILL GET DATA, SET CACHE, RE-RENDER, THIS TIME DATA WILL BE IN CACHE AND leagueData WILL BE INITIALISED
+    // asyncDataFetch();
+
+    // PASS leagueData TO STANDINGS
+  });
 
   if (error) console.log(error);
 
-  const getStandingsArray = (newApiData: any) => {
+  const getStandingsArray = (leagueData: any) => {
     standingsArray = [];
+
     const getLeagueString = (league: number | string) => {
-      return supportedLeagues.find((obj) => obj.id === league)?.name;
+      return supportedLeagues.find((obj) => obj.apiId === league)?.name;
     };
+
     const leagueStr = getLeagueString(league);
-    for (let i = 0; i < 24; i++) {
-      // old team ID: const currentTeamId: number = data.standings[0].table[i].team.id;
+    const leagueCount = league === 39 ? 20 : 24;
+
+    for (let i = 0; i < leagueCount; i++) {
       const currentTeamId =
-        newApiData.response[0].league.standings[0][i].team.id;
-      const currentTeamHandicapObject = handicapData.bookmaker[bookie][
-        leagueStr as string
-      ].find((item: any) => item.id === currentTeamId) as HandicapTeamObject;
-      console.log(currentTeamHandicapObject);
+        leagueData.response[0].league.standings[0][i].team.id;
+      console.log(currentTeamId);
+      const currentTeamHandicapObject = handicapData.bookmaker[
+        bookie as string
+      ][leagueStr as string].find(
+        (item: any) => item.id === currentTeamId
+      ) as HandicapTeamObject;
       const currentTeamHandicap = currentTeamHandicapObject.hcap;
       const currentTeamHppg = currentTeamHandicapObject.ppg;
-      // old team games played: const currentTeamGamesPlayed = data.standings[0].table[i].playedGames;
       const currentTeamGamesPlayed =
-        newApiData.response[0].league.standings[0][i].all.played;
+        leagueData.response[0].league.standings[0][i].all.played;
       const currentTeamCurrentHcap = currentTeamGamesPlayed * currentTeamHppg;
       let currentTeamTotal =
-        newApiData.response[0].league.standings[0][i].points +
+        leagueData.response[0].league.standings[0][i].points +
         currentTeamCurrentHcap;
       currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2; // round to two decimal places
 
-      // original team object
-      // const teamObject: RowData = {
-      //   crest: data.standings[0].table[i].team.crestUrl,
-      //   position: data.standings[0].table[i].position,
-      //   team: currentTeamHandicapObject.team,
-      //   played: data.standings[0].table[i].playedGames,
-      //   won: data.standings[0].table[i].won,
-      //   drawn: data.standings[0].table[i].draw,
-      //   lost: data.standings[0].table[i].lost,
-      //   scored: data.standings[0].table[i].goalsFor,
-      //   conceded: data.standings[0].table[i].goalsAgainst,
-      //   difference: data.standings[0].table[i].goalDifference,
-      //   points: data.standings[0].table[i].points,
-      //   handicap: currentTeamHandicap,
-      //   hppg: currentTeamHppg,
-      //   total: currentTeamTotal,
-      // };
-
-      // new api team object
       const teamObject: RowData = {
-        crest: newApiData.response[0].league.standings[0][i].team.logo,
-        // newData.response[0].league.standings[0][i].team.logo
-        position: newApiData.response[0].league.standings[0][i].rank,
-        // newData.response[0].league.standings[0][i].rank
+        crest: leagueData.response[0].league.standings[0][i].team.logo,
+        position: leagueData.response[0].league.standings[0][i].rank,
         team: currentTeamHandicapObject.team,
-        played: newApiData.response[0].league.standings[0][i].all.played,
-        // newData.response[0].league.standings[0][i].all.played
-        won: newApiData.response[0].league.standings[0][i].all.win,
-        // newData.response[0].league.standings[0][i].all.win
-        drawn: newApiData.response[0].league.standings[0][i].all.draw,
-        // newData.response[0].league.standings[0][i].all.draw
-        lost: newApiData.response[0].league.standings[0][i].all.lose,
-        // newData.response[0].league.standings[0][i].all.lose
-        scored: newApiData.response[0].league.standings[0][i].all.goals.for,
-        // newData.response[0].league.standings[0][i].all.goals.for
+        played: leagueData.response[0].league.standings[0][i].all.played,
+        won: leagueData.response[0].league.standings[0][i].all.win,
+        drawn: leagueData.response[0].league.standings[0][i].all.draw,
+        lost: leagueData.response[0].league.standings[0][i].all.lose,
+        scored: leagueData.response[0].league.standings[0][i].all.goals.for,
         conceded:
-          newApiData.response[0].league.standings[0][i].all.goals.against,
-        // newData.response[0].league.standings[0][i].all.goals.against
-        difference: newApiData.response[0].league.standings[0][i].goalsDiff,
-        // newData.response[0].league.standings[0][i].goalsDiff
-        points: newApiData.response[0].league.standings[0][i].points,
-        // newData.response[0].league.standings[0][i].points
+          leagueData.response[0].league.standings[0][i].all.goals.against,
+        difference: leagueData.response[0].league.standings[0][i].goalsDiff,
+        points: leagueData.response[0].league.standings[0][i].points,
         handicap: currentTeamHandicap,
         hppg: currentTeamHppg,
         total: currentTeamTotal,
@@ -141,31 +118,12 @@ const Standings: FC<StandingsProps> = ({ bookie, league }) => {
     standingsArray.sort((a, b) => {
       return b.total - a.total;
     });
-    // will need to set the state for each league's data at this point?
     return standingsArray;
   };
 
-  if (newApiData) getStandingsArray(newApiData);
-
-  // switch (league) {
-  //   case 'PremierLeague':
-  //     if (premData) break;
-  //     getStandingsArray(premData);
-  //     break;
-  //   case 'Championship':
-  //     getStandingsArray(champData);
-  //     break;
-  //   case 'LeagueOne':
-  //     getStandingsArray(leagueOneData);
-  //     break;
-  //   case 'LeagueTwo':
-  //     getStandingsArray(leagueTwoData);
-  //     break;
-  //   default:
-  //     console.log('invalid league name');
-  // }
-
-  // how to use the correct league's data in the map below?
+  getStandingsArray(leagueData);
+  // if (lazydata !== undefined) getStandingsArray(lazydata);
+  // NEED TO WAIT TIL NEW DATA IS GOT BEFORE CALLING THIS
 
   return loading ? (
     <LoadingDots />

@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { Bookies } from '../interfaces';
 
 interface BookiePickerProps {
-  bookie: string;
+  bookie: Bookies;
   handleClick: (newBookie: Bookies) => void;
 }
 

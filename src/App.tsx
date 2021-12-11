@@ -8,7 +8,9 @@ import BookiePicker from './components/BookiePicker';
 import LeaguePicker from './components/LeaguePicker';
 import LoadingDots from './components/LoadingDots';
 import { useLazyFetch } from './utils/useLazyFetch';
-import newData from './new-api-response.json';
+import newData from './new-api-response-league1.json';
+
+// TO DO: insert the league 1 hcap ppg etc, refactor the click handlers on league selection for data management, and refactor bookie switcher like league switcher
 
 // let dataPlaceholder: ApiData;
 
@@ -26,7 +28,7 @@ import newData from './new-api-response.json';
 const App: FC = () => {
   // const [apiData, setApiData] = useState<ApiData | null>(null);
   // const [isLoading, setIsLoading] = useState(true);
-  const [currentBookie, setCurrentBookie] = useState<Bookies>('SkyBet');
+  const [currentBookie, setCurrentBookie] = useState<Bookies>();
   const [currentLeague, setCurrentLeague] = useState<number>();
   // const apiCall = async (url: string, options: object) => {
   //   const res = await fetch(url, options);
@@ -34,6 +36,7 @@ const App: FC = () => {
   //   setApiData(dataPlaceholder);
   //   setIsLoading(false);
   // };
+
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
   };
@@ -49,13 +52,17 @@ const App: FC = () => {
 
   return (
     <div className="h-screen flex flex-col justify-between items-center">
-      <Header />
-      <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
-      <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
-      {currentLeague ? (
+      <div className="flex flex-col justify-center items-center">
+        <Header />
+        <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
+        <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
+      </div>
+      {currentLeague && currentBookie ? (
         <Standings bookie={currentBookie} league={currentLeague} />
       ) : (
-        <p>Click a league to get started!</p>
+        <p className="text-center text-2xl font-bold">
+          Click a league and bookie to get started!
+        </p>
       )}
       <Footer />
     </div>

@@ -1,4 +1,10 @@
-export type Bookies = 'SkyBet' | 'PPBF' | 'Ladbrokes' | 'Hills' | 'Bet365';
+export type Bookies =
+  | 'SkyBet'
+  | 'PPBF'
+  | 'Ladbrokes'
+  | 'Hills'
+  | 'Bet365'
+  | undefined;
 
 export type Leagues =
   | 'PremierLeague'
