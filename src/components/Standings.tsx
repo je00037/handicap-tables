@@ -27,6 +27,9 @@ const handicapData: HandicapData = handicaps;
 let standingsArray: Array<RowData> = [];
 
 const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
+  console.log('bookie', bookie);
+  console.log('league', league);
+  console.log('data', data);
   // HAVE WE GOT THE LEAGUE'S DATA IN THE CACHE ALREADY?
 
   // const leagueData: any = cache.find(

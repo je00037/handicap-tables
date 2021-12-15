@@ -23,34 +23,56 @@ const App: FC = () => {
 
   const { getData, loading, error } = useLazyFetch(cache, setCache);
 
-  const testFetch = async (newLeague: number) => {
-    await getData(newLeague);
-  };
+  // console.log('currentLeague', currentLeague);
+  // console.log('cache', cache);
+  // console.log('currentData', currentData);
+  // console.log('loading', loading);
+
+  useEffect(() => {
+    const cacheItem = cache.find(
+      (item: any) => item.response[0].league.id === currentLeague
+    );
+    // console.log('useeffect cache item', cacheItem);
+    setCurrentData(cacheItem);
+  }, [currentLeague]);
+
+  // const testFetch = async (newLeague: number) => {
+  //   await getData(newLeague);
+  // };
 
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
   };
   const clickHandlerLeague = async (newLeague: number) => {
-    // check cache
-    const dataInCache = () => {
-      if (!cache) return false;
-      const testCacheItem = cache.find((item: any) => {
-        console.log('cache in find', cache);
-        return item.response[0].league.id === newLeague;
-      });
-      console.log('testcacheItem', testCacheItem);
-      return testCacheItem;
-    };
-
-    if (dataInCache() != undefined) {
-      setCurrentData(dataInCache());
-    } else {
-      await testFetch(newLeague);
-      console.log(cache);
-      console.log(dataInCache());
-      setCurrentData(dataInCache());
-    }
+    await getData(newLeague);
     setCurrentLeague(newLeague);
+    // const cacheItem = cache.find((item: any) => {
+    //   return item.response[0].league.id === newLeague;
+    // });
+
+    // IN THE FIND, THE CACHE IS WHAT IT WAS WHEN CACHE WAS SET ON INITIAL RENDER.
+    // THE CLICK HANDLER WHEN CREATED REFERS TO ORIGINAL VALUE OF CACHE.
+    // WHEN CLICK HANDLER COMPLETES AFTER THE FETCH, IT COMPLETES AGAINST ORIGINAL CACHE VALUE!
+
+    // let testCacheItem;
+    // // check cache
+    // const dataInCache = () => {
+    //   if (!cache) return false;
+    //   console.log('cache', cache);
+    //   testCacheItem = cache.find(
+    //     (item: any) => item.response[0].league.id === newLeague
+    //   );
+    //   console.log('testcacheItem', testCacheItem);
+    //   return testCacheItem;
+    // };
+
+    // if (testCacheItem) {
+    //   setCurrentData(testCacheItem);
+    // } else {
+    //   await testFetch(newLeague);
+    //   setCurrentData(testCacheItem);
+    // }
+    // setCurrentLeague(newLeague);
   };
 
   return (
