@@ -86,8 +86,8 @@ const App: FC = () => {
     <div
       className={
         (!currentLeague && !currentBookie) || (currentLeague && !currentBookie)
-          ? 'h-screen flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-600'
-          : 'flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-600'
+          ? 'h-screen flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-800'
+          : 'flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-800'
       }
     >
       <div className="flex flex-col justify-center items-center">
@@ -104,7 +104,7 @@ const App: FC = () => {
           loading={loading}
         />
       ) : (
-        <p className="text-center text-2xl font-bold text-blue-900 dark:text-white">
+        <p className="text-center text-2xl pb-10 text-blue-900 dark:text-white">
           Click a league and bookie to get started!
         </p>
       )}
