@@ -105,7 +105,7 @@ const App: FC = () => {
         />
       ) : (
         <p className="text-center text-2xl pb-10 text-blue-900 dark:text-white">
-          Click a league and bookie to get started!
+          Select a league and a bookie to get started!
         </p>
       )}
       <Footer />
