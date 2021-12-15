@@ -1,83 +1,97 @@
 import React, { FC, useState, useEffect } from 'react';
-import { useFetch } from './utils/useFetch';
-import { Bookies, Leagues } from './interfaces';
+import { Bookies } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
 import BookiePicker from './components/BookiePicker';
 import LeaguePicker from './components/LeaguePicker';
-import LoadingDots from './components/LoadingDots';
 import { useLazyFetch } from './utils/useLazyFetch';
 import premData from './new-api-response-prem.json';
-import champData from './new-api-response-champ.json';
-import leagueOneData from './new-api-response-league1.json';
 import leagueTwoData from './new-api-response-league2.json';
+import { useDarkMode } from './utils/useDarkMode';
+import { DarkSwitch } from './components/DarkSwitch';
 
 const someData = [premData, leagueTwoData];
 
 const App: FC = () => {
+  console.log('app rendered');
   const [currentBookie, setCurrentBookie] = useState<Bookies>();
   const [currentLeague, setCurrentLeague] = useState<number>();
   const [cache, setCache] = useState<any>(someData);
   const [currentData, setCurrentData] = useState<any>();
 
+  console.log('app', currentLeague);
+  console.log('app', currentData);
+
   const { getData, loading, error } = useLazyFetch(cache, setCache);
+  const [nextValue, setIsEnabled] = useDarkMode();
 
   // console.log('currentLeague', currentLeague);
   // console.log('cache', cache);
   // console.log('currentData', currentData);
   // console.log('loading', loading);
 
-  useEffect(() => {
-    const cacheItem = cache.find(
-      (item: any) => item.response[0].league.id === currentLeague
-    );
-    // console.log('useeffect cache item', cacheItem);
-    setCurrentData(cacheItem);
-  }, [currentLeague]);
+  // useEffect(() => {
+  //   console.log('app', cache);
+  //   const cacheItem = cache.find
+  //     (item: any) => item.response[0].league.id === currentLeague
+  //   );
+  //   // console.log('useeffect cache item', cacheItem);
+  //   if (cacheItem) setCurrentData(cacheItem);
+  // }, [currentLeague]);
 
   // const testFetch = async (newLeague: number) => {
   //   await getData(newLeague);
   // };
 
+  const clickHandlerDark = () => {
+    setIsEnabled(nextValue);
+  };
+
+  const isItemInCache = (newLeague: number) => {
+    const item = cache.find(
+      (item: any) => item.response[0].league.id === newLeague
+    );
+    return !item ? false : true;
+  };
+
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
   };
   const clickHandlerLeague = async (newLeague: number) => {
-    await getData(newLeague);
-    setCurrentLeague(newLeague);
-    // const cacheItem = cache.find((item: any) => {
-    //   return item.response[0].league.id === newLeague;
-    // });
+    if (isItemInCache(newLeague) === false) {
+      await getData(newLeague);
+      const item = cache.find(
+        (item: any) => item.response[0].league.id === newLeague
+      );
+      setCurrentLeague(newLeague);
+      setCurrentData(item); // NEED TO TEST THIS PART WHEN RATE LIMIT LIFTED
+    } else {
+      const item = cache.find(
+        (item: any) => item.response[0].league.id === newLeague
+      );
+      setCurrentLeague(newLeague);
+      setCurrentData(item);
+    }
+
+    // THE ABOVE SHOULD BE WORKING WHEN RATE LIMIT IS LIFTED, WORKING WHEN SWITCHING BETWEEN INITIALLY CACHED LEAGUES.
+    // NEED TO ENSURE THAT THE SAME LOGIC APPLIES WHEN WE DONT HAVE THE DATA AND NEED THE API.
 
     // IN THE FIND, THE CACHE IS WHAT IT WAS WHEN CACHE WAS SET ON INITIAL RENDER.
     // THE CLICK HANDLER WHEN CREATED REFERS TO ORIGINAL VALUE OF CACHE.
     // WHEN CLICK HANDLER COMPLETES AFTER THE FETCH, IT COMPLETES AGAINST ORIGINAL CACHE VALUE!
-
-    // let testCacheItem;
-    // // check cache
-    // const dataInCache = () => {
-    //   if (!cache) return false;
-    //   console.log('cache', cache);
-    //   testCacheItem = cache.find(
-    //     (item: any) => item.response[0].league.id === newLeague
-    //   );
-    //   console.log('testcacheItem', testCacheItem);
-    //   return testCacheItem;
-    // };
-
-    // if (testCacheItem) {
-    //   setCurrentData(testCacheItem);
-    // } else {
-    //   await testFetch(newLeague);
-    //   setCurrentData(testCacheItem);
-    // }
-    // setCurrentLeague(newLeague);
   };
 
   return (
-    <div className="h-screen flex flex-col justify-between items-center">
+    <div
+      className={
+        (!currentLeague && !currentBookie) || (currentLeague && !currentBookie)
+          ? 'h-screen flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-600'
+          : 'flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-600'
+      }
+    >
       <div className="flex flex-col justify-center items-center">
+        <DarkSwitch handleClick={clickHandlerDark} nextValue={nextValue} />
         <Header />
         <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
         <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
@@ -90,7 +104,7 @@ const App: FC = () => {
           loading={loading}
         />
       ) : (
-        <p className="text-center text-2xl font-bold">
+        <p className="text-center text-2xl font-bold text-blue-900 dark:text-white">
           Click a league and bookie to get started!
         </p>
       )}

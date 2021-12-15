@@ -1,18 +1,14 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC } from 'react';
 import {
-  ApiData,
   HandicapData,
   HandicapTeamObject,
   RowData,
-  Leagues,
   Bookies,
 } from '../interfaces';
 import handicaps from '../handicaps-2.json';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
-import { useFetch } from '../utils/useFetch';
 import LoadingDots from './LoadingDots';
-import { useLazyFetch } from '../utils/useLazyFetch';
 import { supportedLeagues } from '.././constants';
 
 interface StandingsProps {
@@ -27,9 +23,8 @@ const handicapData: HandicapData = handicaps;
 let standingsArray: Array<RowData> = [];
 
 const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
-  console.log('bookie', bookie);
-  console.log('league', league);
-  console.log('data', data);
+  console.log('standings', league);
+  console.log('standings', data);
   // HAVE WE GOT THE LEAGUE'S DATA IN THE CACHE ALREADY?
 
   // const leagueData: any = cache.find(

@@ -6,6 +6,7 @@ export const useLazyFetch = (cache: any, setCache: any) => {
   const [error, setError] = useState<unknown>();
 
   const getData = async (league: string | number) => {
+    console.log('getData called');
     setLoading(true);
     const url = endpointBuilder(league);
     const options = {
