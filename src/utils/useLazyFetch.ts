@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { endpointBuilder } from '../utils/endpointBuilder';
 
-export const useLazyFetch = () => {
-  const [lazydata, setLazydata] = useState();
+export const useLazyFetch = (cache: any, setCache: any) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
 
@@ -17,7 +16,7 @@ export const useLazyFetch = () => {
     try {
       const result = await fetch(url, options);
       const json = await result.json();
-      setLazydata(json);
+      setCache([...cache, json]);
       setLoading(false);
     } catch (err) {
       setError(err);
@@ -27,7 +26,6 @@ export const useLazyFetch = () => {
 
   return {
     getData,
-    lazydata,
     loading,
     error,
   };

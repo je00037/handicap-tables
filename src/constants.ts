@@ -20,3 +20,26 @@ export const supportedLeagues = [
     apiId: 42,
   },
 ];
+
+export const supportedBookies = [
+  {
+    id: 1,
+    name: 'Sky Bet',
+  },
+  {
+    id: 2,
+    name: 'PPBF',
+  },
+  {
+    id: 3,
+    name: 'Ladbrokes',
+  },
+  {
+    id: 4,
+    name: 'Hills',
+  },
+  {
+    id: 5,
+    name: 'Bet 365',
+  },
+];

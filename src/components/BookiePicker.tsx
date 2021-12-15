@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { supportedBookies } from '../constants';
 import { Bookies } from '../interfaces';
 
 interface BookiePickerProps {
@@ -10,66 +11,17 @@ const BookiePicker: FC<BookiePickerProps> = ({ bookie, handleClick }) => {
   return (
     <>
       <div className="-mt-2 mb-4">
-        {bookie === 'SkyBet' ? (
-          <button className="button-selected">Sky Bet</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => {
-              handleClick('SkyBet');
-            }}
-          >
-            Sky Bet
-          </button>
-        )}
-        {bookie === 'PPBF' ? (
-          <button className="button-selected">PP/BF</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => {
-              handleClick('PPBF');
-            }}
-          >
-            PP/BF
-          </button>
-        )}
-        {bookie === 'Ladbrokes' ? (
-          <button className="button-selected">Ladbrokes</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => {
-              handleClick('Ladbrokes');
-            }}
-          >
-            Ladbrokes
-          </button>
-        )}
-        {bookie === 'Hills' ? (
-          <button className="button-selected">William Hill</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => {
-              handleClick('Hills');
-            }}
-          >
-            William Hill
-          </button>
-        )}
-        {bookie === 'Bet365' ? (
-          <button className="button-selected">Bet 365</button>
-        ) : (
-          <button
-            className="button"
-            onClick={() => {
-              handleClick('Bet365');
-            }}
-          >
-            Bet 365
-          </button>
-        )}
+        {supportedBookies.map((item, index) => {
+          return (
+            <button
+              className={bookie === item.name ? 'button-selected' : 'button'}
+              onClick={() => handleClick(item.name as Bookies)}
+              key={index}
+            >
+              {item.name}
+            </button>
+          );
+        })}
       </div>
     </>
   );

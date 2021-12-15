@@ -1,9 +1,9 @@
 export type Bookies =
-  | 'SkyBet'
+  | 'Sky Bet'
   | 'PPBF'
   | 'Ladbrokes'
   | 'Hills'
-  | 'Bet365'
+  | 'Bet 365'
   | undefined;
 
 export type Leagues =

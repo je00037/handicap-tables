@@ -14,57 +14,40 @@ import { useFetch } from '../utils/useFetch';
 import LoadingDots from './LoadingDots';
 import { useLazyFetch } from '../utils/useLazyFetch';
 import { supportedLeagues } from '.././constants';
-import premData from '../new-api-response-prem.json';
-import champData from '../new-api-response-champ.json';
-import leagueOneData from '../new-api-response-league1.json';
-import leagueTwoData from '../new-api-response-league2.json';
 
 interface StandingsProps {
   bookie: Bookies;
   league: string | number;
+  data: any;
+  loading: boolean;
 }
 
 const handicapData: HandicapData = handicaps;
 
 let standingsArray: Array<RowData> = [];
 
-const cacheArray = [premData, champData, leagueOneData, leagueTwoData];
+const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
+  // HAVE WE GOT THE LEAGUE'S DATA IN THE CACHE ALREADY?
 
-const Standings: FC<StandingsProps> = ({ bookie, league }) => {
-  const { getData, lazydata, loading, error } = useLazyFetch();
-  const [cache, setCache] = useState<Array<Record<any, any>>>(cacheArray);
-  const [currentData, setCurrentData] = useState();
+  // const leagueData: any = cache.find(
+  //   (item: any) => item.response[0].league.id === league
+  // );
 
-  const leagueData: any = cache.find(
-    (item: any) => item.response[0].league.id === league
-  );
+  // console.log(leagueData);
 
-  useEffect(() => {
-    console.log('useeffect triggered', league);
-    // HAVE WE GOT THE LEAGUE'S DATA IN THE CACHE ALREADY?
+  // IF !leagueData, GO GET THE DATA
 
-    // const leagueData: any = cache.find(
-    //   (item: any) => item.response[0].league.id === league
-    // );
+  // const asyncDataFetch = async () => {
+  //   const data = await getData(league);
+  //   console.log(data);
+  // };
+  // ADD THE NEW DATA TO THE CACHE
+  // setCache((cache: <Array<Record<any, any>>>) => [...cache, data]);
 
-    // console.log(leagueData);
+  // CALL THE FUNCTION IF !leagueData. WILL GET DATA, SET CACHE, RE-RENDER, THIS TIME DATA WILL BE IN CACHE AND leagueData WILL BE INITIALISED
+  // asyncDataFetch();
 
-    // IF !leagueData, GO GET THE DATA
-
-    // const asyncDataFetch = async () => {
-    //   const data = await getData(league);
-    //   console.log(data);
-    // };
-    // ADD THE NEW DATA TO THE CACHE
-    // setCache((cache: <Array<Record<any, any>>>) => [...cache, data]);
-
-    // CALL THE FUNCTION IF !leagueData. WILL GET DATA, SET CACHE, RE-RENDER, THIS TIME DATA WILL BE IN CACHE AND leagueData WILL BE INITIALISED
-    // asyncDataFetch();
-
-    // PASS leagueData TO STANDINGS
-  });
-
-  if (error) console.log(error);
+  // PASS leagueData TO STANDINGS
 
   const getStandingsArray = (leagueData: any) => {
     standingsArray = [];
@@ -79,7 +62,6 @@ const Standings: FC<StandingsProps> = ({ bookie, league }) => {
     for (let i = 0; i < leagueCount; i++) {
       const currentTeamId =
         leagueData.response[0].league.standings[0][i].team.id;
-      console.log(currentTeamId);
       const currentTeamHandicapObject = handicapData.bookmaker[
         bookie as string
       ][leagueStr as string].find(
@@ -121,7 +103,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league }) => {
     return standingsArray;
   };
 
-  getStandingsArray(leagueData);
+  getStandingsArray(data);
   // if (lazydata !== undefined) getStandingsArray(lazydata);
   // NEED TO WAIT TIL NEW DATA IS GOT BEFORE CALLING THIS
 
