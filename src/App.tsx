@@ -6,47 +6,19 @@ import Standings from './components/Standings';
 import BookiePicker from './components/BookiePicker';
 import LeaguePicker from './components/LeaguePicker';
 import { useLazyFetch } from './utils/useLazyFetch';
-import premData from './new-api-response-prem.json';
-import leagueTwoData from './new-api-response-league2.json';
 import { useDarkMode } from './utils/useDarkMode';
 import { DarkSwitch } from './components/DarkSwitch';
-
-const someData = [premData, leagueTwoData];
 
 const App: FC = () => {
   console.log('app rendered');
   const [currentBookie, setCurrentBookie] = useState<Bookies>();
   const [currentLeague, setCurrentLeague] = useState<number>();
-  // const [cache, setCache] = useState<any>(someData);
-  const cache = useRef(someData);
   const [currentData, setCurrentData] = useState<any>();
 
-  console.log('cache', cache.current);
-  console.log('currentLeague', currentLeague);
-  console.log('currentData', currentData);
-
-  // const { getData, loading, error } = useLazyFetch(cache, setCache);
+  const cache = useRef([]);
 
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
-
-  // console.log('currentLeague', currentLeague);
-  // console.log('cache', cache);
-  // console.log('currentData', currentData);
-  // console.log('loading', loading);
-
-  // useEffect(() => {
-  //   console.log('app', cache);
-  //   const cacheItem = cache.find
-  //     (item: any) => item.response[0].league.id === currentLeague
-  //   );
-  //   // console.log('useeffect cache item', cacheItem);
-  //   if (cacheItem) setCurrentData(cacheItem);
-  // }, [currentLeague]);
-
-  // const testFetch = async (newLeague: number) => {
-  //   await getData(newLeague);
-  // };
 
   const clickHandlerDark = () => {
     setIsEnabled(nextValue);
@@ -63,22 +35,17 @@ const App: FC = () => {
     setCurrentBookie(newBookie);
   };
   const clickHandlerLeague = async (newLeague: number) => {
+    setCurrentLeague(newLeague);
     if (isItemInCache(newLeague) === false) {
       await getData(newLeague, cache);
       const item = cache.current.find((item: any) => {
-        console.log('cache', cache.current); // PROBLEM IS THAT THIS FUNCTION IS CREATED WITH THE ORIGINAL VALUE OF CACHE AND COMPLETES AGAINST THAT VALUE RATHER THAN THE UPDATED VALUE
-        console.log('item', item);
-        console.log('newLeague', newLeague);
         return item.response[0].league.id === newLeague;
       });
-      console.log('item', item);
-      setCurrentLeague(newLeague);
       setCurrentData(item); // PROBLEM HERE WHEN STANDINGS ALREADY RENDERED AND CHOOSING ANOTHER LEAGUE WHICH NEEDS TO FETCH - STANDINGS RERENDER BEFORE CURRENTDATA HAS BEEN SET
     } else {
       const item = cache.current.find(
         (item: any) => item.response[0].league.id === newLeague
       );
-      setCurrentLeague(newLeague);
       setCurrentData(item);
     }
 

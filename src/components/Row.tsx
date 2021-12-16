@@ -13,7 +13,9 @@ const Row: FC<RowProps> = ({ rowData, hcapPos }) => {
         <img src={rowData.crest} alt="club crest" className="w-4" />
       </td>
       <td className="text-blue-900 dark:text-white">{rowData.position}</td>
-      <td className="text-orange-400 dark:text-orange-300">{hcapPos}</td>
+      {rowData.league !== 39 ? (
+        <td className="text-orange-400 dark:text-orange-300">{hcapPos}</td>
+      ) : null}
       <td className="px-8 text-blue-900 dark:text-white">{rowData.team}</td>
       <td className="text-blue-900 dark:text-white">{rowData.played}</td>
       <td className="text-blue-900 dark:text-white">{rowData.won}</td>
@@ -23,11 +25,15 @@ const Row: FC<RowProps> = ({ rowData, hcapPos }) => {
       <td className="text-blue-900 dark:text-white">{rowData.conceded}</td>
       <td className="text-blue-900 dark:text-white">{rowData.difference}</td>
       <td className="text-blue-900 dark:text-white">{rowData.points}</td>
-      <td className="text-orange-400 dark:text-orange-300">
-        {rowData.handicap}
-      </td>
-      <td className="text-orange-400 dark:text-orange-300">{rowData.hppg}</td>
-      <td className="text-emerald-400 dark:text-lime-200">{rowData.total}</td>
+      {rowData.league !== 39 ? (
+        <td className="text-orange-400 dark:text-orange-300">
+          {rowData.handicap}
+        </td>
+      ) : null}
+      {rowData.league !== 39 ? (
+        <td className="text-orange-400 dark:text-orange-300">{rowData.hppg}</td>
+      ) : null}
+      <td className="text-cyan-500 dark:text-lime-200">{rowData.total}</td>
     </tr>
   );
 };

@@ -23,31 +23,7 @@ const handicapData: HandicapData = handicaps;
 let standingsArray: Array<RowData> = [];
 
 const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
-  console.log('standings', league);
-  console.log('standings', data);
-  // HAVE WE GOT THE LEAGUE'S DATA IN THE CACHE ALREADY?
-
-  // const leagueData: any = cache.find(
-  //   (item: any) => item.response[0].league.id === league
-  // );
-
-  // console.log(leagueData);
-
-  // IF !leagueData, GO GET THE DATA
-
-  // const asyncDataFetch = async () => {
-  //   const data = await getData(league);
-  //   console.log(data);
-  // };
-  // ADD THE NEW DATA TO THE CACHE
-  // setCache((cache: <Array<Record<any, any>>>) => [...cache, data]);
-
-  // CALL THE FUNCTION IF !leagueData. WILL GET DATA, SET CACHE, RE-RENDER, THIS TIME DATA WILL BE IN CACHE AND leagueData WILL BE INITIALISED
-  // asyncDataFetch();
-
-  // PASS leagueData TO STANDINGS
-
-  const getStandingsArray = (leagueData: any) => {
+  const getStandingsArray = (leagueData: any, bookie: any, league: any) => {
     standingsArray = [];
 
     const getLeagueString = (league: number | string) => {
@@ -76,6 +52,8 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
       currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2; // round to two decimal places
 
       const teamObject: RowData = {
+        league: league as any,
+        bookie: bookie as any,
         crest: leagueData.response[0].league.standings[0][i].team.logo,
         position: leagueData.response[0].league.standings[0][i].rank,
         team: currentTeamHandicapObject.team,
@@ -101,9 +79,17 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     return standingsArray;
   };
 
-  getStandingsArray(data);
-  // if (lazydata !== undefined) getStandingsArray(lazydata);
-  // NEED TO WAIT TIL NEW DATA IS GOT BEFORE CALLING THIS
+  const checkReady = (league: any, data: any) => {
+    if (league === data.response[0].league.id) {
+      return true;
+    } else return false;
+  };
+
+  const isReady = checkReady(league, data);
+
+  if (isReady === true) {
+    getStandingsArray(data, bookie, league);
+  }
 
   return loading ? (
     <LoadingDots />
@@ -111,7 +97,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     <>
       <table className="table-auto w-6/12 text-center text-green-50">
         <thead>
-          <HeadingsRow />
+          <HeadingsRow league={league} />
         </thead>
         <tbody>
           {standingsArray.map((item, index) => {

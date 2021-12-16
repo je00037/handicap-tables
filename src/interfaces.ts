@@ -88,6 +88,8 @@ export interface HandicapTeamObject {
 }
 
 export interface RowData {
+  league: number;
+  bookie: Bookies;
   crest: string;
   position: number | string;
   team: string;
