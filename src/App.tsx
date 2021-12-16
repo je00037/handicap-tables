@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { Bookies } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -17,14 +17,17 @@ const App: FC = () => {
   console.log('app rendered');
   const [currentBookie, setCurrentBookie] = useState<Bookies>();
   const [currentLeague, setCurrentLeague] = useState<number>();
-  const [cache, setCache] = useState<any>(someData);
+  // const [cache, setCache] = useState<any>(someData);
+  const cache = useRef(someData);
   const [currentData, setCurrentData] = useState<any>();
 
-  console.log('cache', cache);
+  console.log('cache', cache.current);
   console.log('currentLeague', currentLeague);
   console.log('currentData', currentData);
 
-  const { getData, loading, error } = useLazyFetch(cache, setCache);
+  // const { getData, loading, error } = useLazyFetch(cache, setCache);
+
+  const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
 
   // console.log('currentLeague', currentLeague);
@@ -50,7 +53,7 @@ const App: FC = () => {
   };
 
   const isItemInCache = (newLeague: number) => {
-    const item = cache.find(
+    const item = cache.current.find(
       (item: any) => item.response[0].league.id === newLeague
     );
     return !item ? false : true;
@@ -61,18 +64,18 @@ const App: FC = () => {
   };
   const clickHandlerLeague = async (newLeague: number) => {
     if (isItemInCache(newLeague) === false) {
-      await getData(newLeague);
-      const item = cache.find((item: any) => {
-        console.log('cache', cache); // PROBLEM IS THAT THIS FUNCTION IS CREATED WITH THE ORIGINAL VALUE OF CACHE AND COMPLETES AGAINST THAT VALUE RATHER THAN THE UPDATED VALUE
+      await getData(newLeague, cache);
+      const item = cache.current.find((item: any) => {
+        console.log('cache', cache.current); // PROBLEM IS THAT THIS FUNCTION IS CREATED WITH THE ORIGINAL VALUE OF CACHE AND COMPLETES AGAINST THAT VALUE RATHER THAN THE UPDATED VALUE
         console.log('item', item);
         console.log('newLeague', newLeague);
         return item.response[0].league.id === newLeague;
       });
       console.log('item', item);
       setCurrentLeague(newLeague);
-      setCurrentData(item);
+      setCurrentData(item); // PROBLEM HERE WHEN STANDINGS ALREADY RENDERED AND CHOOSING ANOTHER LEAGUE WHICH NEEDS TO FETCH - STANDINGS RERENDER BEFORE CURRENTDATA HAS BEEN SET
     } else {
-      const item = cache.find(
+      const item = cache.current.find(
         (item: any) => item.response[0].league.id === newLeague
       );
       setCurrentLeague(newLeague);

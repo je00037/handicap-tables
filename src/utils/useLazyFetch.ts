@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { endpointBuilder } from '../utils/endpointBuilder';
 
-export const useLazyFetch = (cache: any, setCache: any) => {
+export const useLazyFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
 
-  const getData = async (league: string | number) => {
+  const getData = async (league: string | number, cache: any) => {
     console.log('getData called');
     setLoading(true);
     const url = endpointBuilder(league);
@@ -17,7 +17,7 @@ export const useLazyFetch = (cache: any, setCache: any) => {
     try {
       const result = await fetch(url, options);
       const json = await result.json();
-      setCache([...cache, json]);
+      cache.current = [...cache.current, json];
       setLoading(false);
     } catch (err) {
       setError(err);
