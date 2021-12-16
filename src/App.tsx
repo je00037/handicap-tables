@@ -20,8 +20,9 @@ const App: FC = () => {
   const [cache, setCache] = useState<any>(someData);
   const [currentData, setCurrentData] = useState<any>();
 
-  console.log('app', currentLeague);
-  console.log('app', currentData);
+  console.log('cache', cache);
+  console.log('currentLeague', currentLeague);
+  console.log('currentData', currentData);
 
   const { getData, loading, error } = useLazyFetch(cache, setCache);
   const [nextValue, setIsEnabled] = useDarkMode();
@@ -61,11 +62,15 @@ const App: FC = () => {
   const clickHandlerLeague = async (newLeague: number) => {
     if (isItemInCache(newLeague) === false) {
       await getData(newLeague);
-      const item = cache.find(
-        (item: any) => item.response[0].league.id === newLeague
-      );
+      const item = cache.find((item: any) => {
+        console.log('cache', cache); // PROBLEM IS THAT THIS FUNCTION IS CREATED WITH THE ORIGINAL VALUE OF CACHE AND COMPLETES AGAINST THAT VALUE RATHER THAN THE UPDATED VALUE
+        console.log('item', item);
+        console.log('newLeague', newLeague);
+        return item.response[0].league.id === newLeague;
+      });
+      console.log('item', item);
       setCurrentLeague(newLeague);
-      setCurrentData(item); // NEED TO TEST THIS PART WHEN RATE LIMIT LIFTED
+      setCurrentData(item);
     } else {
       const item = cache.find(
         (item: any) => item.response[0].league.id === newLeague
@@ -73,9 +78,6 @@ const App: FC = () => {
       setCurrentLeague(newLeague);
       setCurrentData(item);
     }
-
-    // THE ABOVE SHOULD BE WORKING WHEN RATE LIMIT IS LIFTED, WORKING WHEN SWITCHING BETWEEN INITIALLY CACHED LEAGUES.
-    // NEED TO ENSURE THAT THE SAME LOGIC APPLIES WHEN WE DONT HAVE THE DATA AND NEED THE API.
 
     // IN THE FIND, THE CACHE IS WHAT IT WAS WHEN CACHE WAS SET ON INITIAL RENDER.
     // THE CLICK HANDLER WHEN CREATED REFERS TO ORIGINAL VALUE OF CACHE.
