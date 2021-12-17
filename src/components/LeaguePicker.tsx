@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { Leagues } from '../interfaces';
 import { supportedLeagues } from '../constants';
 
 interface LeaguePickerProps {

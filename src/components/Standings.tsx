@@ -5,11 +5,12 @@ import {
   RowData,
   Bookies,
 } from '../interfaces';
-import handicaps from '../handicaps-2.json';
+import handicaps from '../handicaps.json';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import LoadingDots from './LoadingDots';
 import { supportedLeagues } from '.././constants';
+import { Transition } from '@headlessui/react';
 
 interface StandingsProps {
   bookie: Bookies;
@@ -23,13 +24,12 @@ const handicapData: HandicapData = handicaps;
 let standingsArray: Array<RowData> = [];
 
 const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
+  const getLeagueString = (league: number | string) => {
+    return supportedLeagues.find((obj) => obj.apiId === league)?.name;
+  };
+
   const getStandingsArray = (leagueData: any, bookie: any, league: any) => {
     standingsArray = [];
-
-    const getLeagueString = (league: number | string) => {
-      return supportedLeagues.find((obj) => obj.apiId === league)?.name;
-    };
-
     const leagueStr = getLeagueString(league);
     const leagueCount = league === 39 ? 20 : 24;
 

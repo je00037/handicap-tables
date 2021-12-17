@@ -1,13 +1,27 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useRef } from 'react';
+import { Transition } from '@headlessui/react';
 import { Bookies } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
 import BookiePicker from './components/BookiePicker';
 import LeaguePicker from './components/LeaguePicker';
-import { useLazyFetch } from './utils/useLazyFetch';
-import { useDarkMode } from './utils/useDarkMode';
+import { useLazyFetch } from './hooks/useLazyFetch';
+import { useDarkMode } from './hooks/useDarkMode';
 import { DarkSwitch } from './components/DarkSwitch';
+
+// TO DO:
+// - animate standings
+// - extract getStandingsArray into own util
+// - fix typing
+// - handle error api response
+// - consolidate/optimise the css classes
+// - check for render optimisation
+// - tidy up files and imports
+// - sort out mobile responsiveness
+// - background colour height bug / height in general
+// - implement GA
+// - write some tests
 
 const App: FC = () => {
   console.log('app rendered');
@@ -76,9 +90,17 @@ const App: FC = () => {
           loading={loading}
         />
       ) : (
-        <p className="text-center text-2xl pb-10 text-blue-900 dark:text-white">
-          Select a league and a bookie to get started!
-        </p>
+        <Transition
+          appear={true}
+          show={true}
+          enter="transition-opacity duration-500"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+        >
+          <p className="text-center text-2xl pb-10 text-blue-900 dark:text-white">
+            Select a league and a bookie to get started!
+          </p>
+        </Transition>
       )}
       <Footer />
     </div>
