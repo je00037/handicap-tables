@@ -8,6 +8,13 @@ export type Bookies =
   | 'Bet 365'
   | undefined;
 
+export type SupportedLeagues = Array<SupportedLeagueObject>;
+export interface SupportedLeagueObject {
+  id: number;
+  name: string;
+  apiId: number;
+}
+
 export type ApiDataResponse = Array<ApiDataLeagueObject> | null;
 export interface ApiDataLeagueObject {
   league: ApiDataLeague;
@@ -58,7 +65,7 @@ export interface ApiDataGoals {
 
 export type Cache = Array<ApiDataResponse> | Array<null>;
 
-export type CacheTest = MutableRefObject<Cache>;
+export type CacheRef = MutableRefObject<Cache>;
 export interface HandicapData {
   bookmaker: HandicapBookmakerObject;
 }

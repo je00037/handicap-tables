@@ -1,4 +1,6 @@
-export const supportedLeagues = [
+import { SupportedLeagues } from './interfaces';
+
+export const supportedLeagues: SupportedLeagues = [
   {
     id: 1,
     name: 'Premier League',

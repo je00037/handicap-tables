@@ -13,7 +13,7 @@ import LoadingDots from './LoadingDots';
 import { supportedLeagues } from '.././constants';
 interface StandingsProps {
   bookie: Bookies;
-  league: string | number;
+  league: number;
   data: ApiDataResponse;
   loading: boolean;
 }
@@ -23,14 +23,14 @@ const handicapData: HandicapData = handicaps;
 let standingsArray: Array<RowData> = [];
 
 const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
-  const getLeagueString = (league: number | string) => {
+  const getLeagueString = (league: number) => {
     return supportedLeagues.find((obj) => obj.apiId === league)?.name;
   };
 
   const getStandingsArray = (
     leagueData: ApiDataResponse,
-    bookie: any,
-    league: any
+    bookie: Bookies,
+    league: number
   ) => {
     if (leagueData === null) {
       console.log('error, leagueData has been passed as null');
@@ -45,7 +45,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
       const currentTeamHandicapObject = handicapData.bookmaker[
         bookie as string
       ][leagueStr as string].find(
-        (item: any) => item.id === currentTeamId
+        (item: HandicapTeamObject) => item.id === currentTeamId
       ) as HandicapTeamObject;
       const currentTeamHandicap = currentTeamHandicapObject.hcap;
       const currentTeamHppg = currentTeamHandicapObject.ppg;
@@ -83,7 +83,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     return standingsArray;
   };
 
-  const checkReady = (league: any, data: ApiDataResponse) => {
+  const checkReady = (league: number, data: ApiDataResponse) => {
     if (data === null) {
       console.log('not ready, data is null');
       return;

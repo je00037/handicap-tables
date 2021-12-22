@@ -22,6 +22,7 @@ import { DarkSwitch } from './components/DarkSwitch';
 // - background colour height bug / height in general
 // - implement GA
 // - write some tests
+// - try to make the type assertion and non-null coercion better in standings
 
 const App: FC = () => {
   const [currentBookie, setCurrentBookie] = useState<Bookies>();

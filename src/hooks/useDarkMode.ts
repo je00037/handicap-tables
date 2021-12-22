@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import { Dispatch, SetStateAction, useState, useEffect } from 'react';
 
-export function useDarkMode() {
+export function useDarkMode(): readonly [
+  boolean,
+  Dispatch<SetStateAction<boolean>>
+] {
   const [isEnabled, setIsEnabled] = useState(false);
   const nextValue = isEnabled ? false : true;
 

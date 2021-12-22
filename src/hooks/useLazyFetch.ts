@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import { CacheRef } from '../interfaces';
 interface LazyFetchReturn {
-  getData: (league: string | number, cache: any) => Promise<void>;
+  getData: (league: string | number, cache: CacheRef) => Promise<void>;
   loading: boolean;
   error: unknown;
 }
@@ -9,7 +10,7 @@ export const useLazyFetch = (): LazyFetchReturn => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
 
-  const getData = async (league: string | number, cache: any) => {
+  const getData = async (league: string | number, cache: CacheRef) => {
     setLoading(true);
     const url = `https://v3.football.api-sports.io/standings?league=${league}&season=2021`;
     const options = {
