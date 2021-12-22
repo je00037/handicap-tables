@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.3.0",
-    "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
@@ -13,6 +12,7 @@
     "@types/node": "^16.10.3",
     "@types/react": "^17.0.27",
     "@types/react-dom": "^17.0.9",
+    "framer-motion": "^4.1.17",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-loading-dot": "^1.0.6",

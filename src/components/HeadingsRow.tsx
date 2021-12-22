@@ -1,12 +1,23 @@
 import React, { FC } from 'react';
+import { motion } from 'framer-motion';
 
 interface HeadingsRowProps {
   league: number | string;
 }
 
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
 const HeadingsRow: FC<HeadingsRowProps> = ({ league }) => {
   return (
-    <tr>
+    <motion.tr
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      transition={{ delay: 0.2, duration: 0.3 }}
+    >
       <th></th>
       <th className="text-blue-900 dark:text-white">#</th>
       {league !== 39 ? (
@@ -28,7 +39,7 @@ const HeadingsRow: FC<HeadingsRowProps> = ({ league }) => {
         <th className="text-orange-400 dark:text-orange-300">HPpG</th>
       ) : null}
       <th className="text-cyan-500 dark:text-lime-200">Total</th>
-    </tr>
+    </motion.tr>
   );
 };
 

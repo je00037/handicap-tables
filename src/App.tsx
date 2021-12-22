@@ -1,5 +1,5 @@
 import React, { FC, useState, useRef } from 'react';
-import { Transition } from '@headlessui/react';
+import { motion } from 'framer-motion';
 import { Bookies, ApiDataResponse } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -67,6 +67,11 @@ const App: FC = () => {
     }
   };
 
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  };
+
   return (
     <div
       className={
@@ -89,17 +94,15 @@ const App: FC = () => {
           loading={loading}
         />
       ) : (
-        <Transition
-          appear
-          show
-          enter="transition-opacity duration-1000"
-          enterFrom="opacity-0"
-          enterTo="opacity-100"
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="text-center text-2xl pb-10 text-blue-900 dark:text-white"
         >
-          <p className="text-center text-2xl pb-10 text-blue-900 dark:text-white">
-            Select a league and a bookie to get started!
-          </p>
-        </Transition>
+          Select a league and a bookie to get started!
+        </motion.p>
       )}
       <Footer />
     </div>
