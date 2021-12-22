@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import { MoonIcon, LightBulbIcon } from '@heroicons/react/solid';
 
 interface DarkSwitchProps {
-  handleClick: any;
-  nextValue: any;
+  handleClick: () => void;
+  nextValue: boolean;
 }
 
 export const DarkSwitch: FC<DarkSwitchProps> = ({ handleClick, nextValue }) => {

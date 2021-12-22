@@ -1,6 +1,6 @@
 import React, { FC, useState, useRef } from 'react';
 import { Transition } from '@headlessui/react';
-import { Bookies } from './interfaces';
+import { Bookies, ApiDataResponse } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
@@ -24,12 +24,13 @@ import { DarkSwitch } from './components/DarkSwitch';
 // - write some tests
 
 const App: FC = () => {
-  console.log('app rendered');
   const [currentBookie, setCurrentBookie] = useState<Bookies>();
   const [currentLeague, setCurrentLeague] = useState<number>();
-  const [currentData, setCurrentData] = useState<any>();
+  const [currentData, setCurrentData] = useState<ApiDataResponse>(null);
 
-  const cache = useRef([]);
+  const cache: any = useRef([]); // DEFINE THE CACHE IN USELAZYFETCH AND RETURN IT
+
+  console.log(cache.current);
 
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
@@ -40,7 +41,7 @@ const App: FC = () => {
 
   const isItemInCache = (newLeague: number) => {
     const item = cache.current.find(
-      (item: any) => item.response[0].league.id === newLeague
+      (item: any) => item[0].league.id === newLeague
     );
     return !item ? false : true;
   };
@@ -52,20 +53,17 @@ const App: FC = () => {
     setCurrentLeague(newLeague);
     if (isItemInCache(newLeague) === false) {
       await getData(newLeague, cache);
+      if (error) return console.log('oh no, error!', error);
       const item = cache.current.find((item: any) => {
-        return item.response[0].league.id === newLeague;
+        return item[0].league.id === newLeague;
       });
-      setCurrentData(item); // PROBLEM HERE WHEN STANDINGS ALREADY RENDERED AND CHOOSING ANOTHER LEAGUE WHICH NEEDS TO FETCH - STANDINGS RERENDER BEFORE CURRENTDATA HAS BEEN SET
+      setCurrentData(item);
     } else {
       const item = cache.current.find(
-        (item: any) => item.response[0].league.id === newLeague
+        (item: any) => item[0].league.id === newLeague
       );
       setCurrentData(item);
     }
-
-    // IN THE FIND, THE CACHE IS WHAT IT WAS WHEN CACHE WAS SET ON INITIAL RENDER.
-    // THE CLICK HANDLER WHEN CREATED REFERS TO ORIGINAL VALUE OF CACHE.
-    // WHEN CLICK HANDLER COMPLETES AFTER THE FETCH, IT COMPLETES AGAINST ORIGINAL CACHE VALUE!
   };
 
   return (
@@ -91,9 +89,9 @@ const App: FC = () => {
         />
       ) : (
         <Transition
-          appear={true}
-          show={true}
-          enter="transition-opacity duration-500"
+          appear
+          show
+          enter="transition-opacity duration-1000"
           enterFrom="opacity-0"
           enterTo="opacity-100"
         >

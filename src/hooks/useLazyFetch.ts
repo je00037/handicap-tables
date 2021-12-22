@@ -1,5 +1,4 @@
 import { useState } from 'react';
-
 interface LazyFetchReturn {
   getData: (league: string | number, cache: any) => Promise<void>;
   loading: boolean;
@@ -11,7 +10,6 @@ export const useLazyFetch = (): LazyFetchReturn => {
   const [error, setError] = useState<unknown>();
 
   const getData = async (league: string | number, cache: any) => {
-    console.log('getData called');
     setLoading(true);
     const url = `https://v3.football.api-sports.io/standings?league=${league}&season=2021`;
     const options = {
@@ -22,7 +20,8 @@ export const useLazyFetch = (): LazyFetchReturn => {
     try {
       const result = await fetch(url, options);
       const json = await result.json();
-      cache.current = [...cache.current, json];
+      const response = json.response;
+      cache.current = [...cache.current, response];
       setLoading(false);
     } catch (err) {
       setError(err);

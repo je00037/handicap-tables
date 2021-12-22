@@ -1,3 +1,5 @@
+import { MutableRefObject } from 'react';
+
 export type Bookies =
   | 'Sky Bet'
   | 'PPBF'
@@ -6,68 +8,57 @@ export type Bookies =
   | 'Bet 365'
   | undefined;
 
-export type Leagues =
-  | 'PremierLeague'
-  | 'Championship'
-  | 'League 1'
-  | 'League 2'
-  | undefined;
-export interface ApiData {
-  filters: object;
-  competition: ApiDataCompetition;
-  season: ApiDataSeason;
-  standings: Array<ApiDataStandings>;
+export type ApiDataResponse = Array<ApiDataLeagueObject> | null;
+export interface ApiDataLeagueObject {
+  league: ApiDataLeague;
+}
+export interface ApiDataLeague {
+  id: number;
+  name: string;
+  country: string;
+  logo: string;
+  flag: string;
+  season: number;
+  standings: Array<Array<ApiDataStandings>>;
+}
+
+export interface ApiDataStandings {
+  rank: number;
+  team: ApiDataTeam;
+  points: number;
+  goalsDiff: number;
+  group: string;
+  form: string;
+  status: string;
+  description: string;
+  all: ApiDataBaseStats;
+  home: ApiDataBaseStats;
+  away: ApiDataBaseStats;
+  update: string;
 }
 
 export interface ApiDataTeam {
   id: number;
   name: string;
-  crestUrl: string;
+  logo: string;
 }
 
-export interface ApiDataTable {
-  position: number;
-  team: ApiDataTeam;
-  playedGames: number;
-  form?: string;
-  won: number;
+export interface ApiDataBaseStats {
+  played: number;
+  win: number;
   draw: number;
-  lost: number;
-  points: number;
-  goalsFor: number;
-  goalsAgainst: number;
-  goalDifference: number;
+  lose: number;
+  goals: ApiDataGoals;
 }
 
-export interface ApiDataStandings {
-  stage: string;
-  type: string;
-  group?: string;
-  table: Array<ApiDataTable>;
+export interface ApiDataGoals {
+  for: number;
+  against: number;
 }
 
-export interface ApiDataSeason {
-  id: number;
-  startDate: string;
-  endDate: string;
-  currentMatchday: number;
-  winner?: string;
-}
+export type Cache = Array<ApiDataResponse> | Array<null>;
 
-export interface ApiDataArea {
-  id: number;
-  name: string;
-}
-
-export interface ApiDataCompetition {
-  id: number;
-  area: ApiDataArea;
-  name: string;
-  code: string;
-  plan: string;
-  lastUpdated: string;
-}
-
+export type CacheTest = MutableRefObject<Cache>;
 export interface HandicapData {
   bookmaker: HandicapBookmakerObject;
 }
