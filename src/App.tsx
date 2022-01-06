@@ -1,6 +1,6 @@
 import React, { FC, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Bookies, ApiDataResponse } from './interfaces';
+import { Bookies, ApiDataResponse, CacheRef } from './interfaces';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Standings from './components/Standings';
@@ -29,7 +29,7 @@ const App: FC = () => {
   const [currentLeague, setCurrentLeague] = useState<number>();
   const [currentData, setCurrentData] = useState<ApiDataResponse>(null);
 
-  const cache: any = useRef([]); // DEFINE THE CACHE IN USELAZYFETCH AND RETURN IT
+  const cache: CacheRef = useRef([]); // DEFINE THE CACHE IN USELAZYFETCH AND RETURN IT
 
   console.log(cache.current);
 
@@ -58,11 +58,13 @@ const App: FC = () => {
       const item = cache.current.find((item: any) => {
         return item[0].league.id === newLeague;
       });
+      if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     } else {
       const item = cache.current.find(
         (item: any) => item[0].league.id === newLeague
       );
+      if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     }
   };
