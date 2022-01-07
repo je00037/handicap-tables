@@ -41,9 +41,10 @@ const App: FC = () => {
   };
 
   const isItemInCache = (newLeague: number) => {
-    const item = cache.current.find(
-      (item: any) => item[0].league.id === newLeague
-    );
+    const item = cache.current.find((item: ApiDataResponse) => {
+      if (item === null) return false;
+      return item[0].league.id === newLeague;
+    });
     return !item ? false : true;
   };
 
@@ -55,15 +56,17 @@ const App: FC = () => {
     if (isItemInCache(newLeague) === false) {
       await getData(newLeague, cache);
       if (error) return console.log('oh no, error!', error);
-      const item = cache.current.find((item: any) => {
+      const item = cache.current.find((item: ApiDataResponse) => {
+        if (item === null) return console.log('error, item was null!');
         return item[0].league.id === newLeague;
       });
       if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     } else {
-      const item = cache.current.find(
-        (item: any) => item[0].league.id === newLeague
-      );
+      const item = cache.current.find((item: ApiDataResponse) => {
+        if (item === null) return console.log('error, item was null!');
+        return item[0].league.id === newLeague;
+      });
       if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     }
