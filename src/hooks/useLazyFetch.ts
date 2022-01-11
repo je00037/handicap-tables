@@ -12,6 +12,10 @@ export const useLazyFetch = (): LazyFetchReturn => {
 
   const getData = async (league: string | number, cache: CacheRef) => {
     setLoading(true);
+    window.gtag('event', 'Data Request', {
+      event_category: 'API Call',
+      event_label: `${league}`,
+    });
     const url = `https://v3.football.api-sports.io/standings?league=${league}&season=2021`;
     const options = {
       headers: {

@@ -38,6 +38,10 @@ const App: FC = () => {
 
   const clickHandlerDark = () => {
     setIsEnabled(nextValue);
+    window.gtag('event', 'Toggle', {
+      event_category: 'Dark Mode',
+      event_label: `${nextValue}`,
+    });
   };
 
   const isItemInCache = (newLeague: number) => {
@@ -50,9 +54,18 @@ const App: FC = () => {
 
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
+    window.gtag('event', 'Picker', {
+      event_category: 'Bookie',
+      event_label: `${newBookie}`,
+    });
   };
+
   const clickHandlerLeague = async (newLeague: number) => {
     setCurrentLeague(newLeague);
+    window.gtag('event', 'Picker', {
+      event_category: 'League',
+      event_label: `${newLeague}`,
+    });
     if (isItemInCache(newLeague) === false) {
       await getData(newLeague, cache);
       if (error) return console.log('oh no, error!', error);
@@ -63,6 +76,10 @@ const App: FC = () => {
       if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     } else {
+      window.gtag('event', 'Data Request', {
+        event_category: 'Cache',
+        event_label: `${newLeague}`,
+      });
       const item = cache.current.find((item: ApiDataResponse) => {
         if (item === null) return console.log('error, item was null!');
         return item[0].league.id === newLeague;
