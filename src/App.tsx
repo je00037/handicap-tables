@@ -11,16 +11,13 @@ import { useDarkMode } from './hooks/useDarkMode';
 import { DarkSwitch } from './components/DarkSwitch';
 
 // TO DO:
-// - animate standings
 // - extract getStandingsArray into own util
-// - fix typing
 // - handle error api response
 // - consolidate/optimise the css classes
 // - check for render optimisation
 // - tidy up files and imports
 // - sort out mobile responsiveness
 // - background colour height bug / height in general
-// - implement GA
 // - write some tests
 // - try to make the type assertion and non-null coercion better in standings
 

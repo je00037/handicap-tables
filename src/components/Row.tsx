@@ -8,18 +8,17 @@ interface RowProps {
 }
 
 const variants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1 },
+  initial: {
+    opacity: 0,
+  },
+  animate: {
+    opacity: 1,
+  },
 };
 
 const Row: FC<RowProps> = ({ rowData, hcapPos }) => {
   return (
-    <motion.tr
-      initial="hidden"
-      animate="visible"
-      variants={variants}
-      transition={{ delay: 0.2, duration: 0.3 }}
-    >
+    <motion.tr variants={variants}>
       <td>
         <img src={rowData.crest} alt="club crest" className="w-4" />
       </td>
@@ -44,7 +43,7 @@ const Row: FC<RowProps> = ({ rowData, hcapPos }) => {
       {rowData.league !== 39 ? (
         <td className="text-orange-400 dark:text-orange-300">{rowData.hppg}</td>
       ) : null}
-      <td className="text-cyan-500 dark:text-lime-200">{rowData.total}</td>
+      <td className="text-emerald-400 dark:text-lime-200">{rowData.total}</td>
     </motion.tr>
     // <tr>
     //   <td>

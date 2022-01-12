@@ -11,6 +11,7 @@ import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import LoadingDots from './LoadingDots';
 import { supportedLeagues } from '.././constants';
+import { motion } from 'framer-motion';
 interface StandingsProps {
   bookie: Bookies;
   league: number;
@@ -99,22 +100,30 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     getStandingsArray(data, bookie, league);
   }
 
+  const variants = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: { staggerChildren: 0.06, staggerDirection: 1 },
+    },
+  };
+
   return loading ? (
     <LoadingDots />
   ) : (
-    <>
-      <table className="table-auto w-6/12 text-center text-green-50">
-        <thead>
-          <HeadingsRow league={league} />
-        </thead>
-        <tbody>
-          {standingsArray.map((item, index) => {
-            const hcapPos = index + 1;
-            return <Row rowData={item} key={index} hcapPos={hcapPos} />;
-          })}
-        </tbody>
-      </table>
-    </>
+    <table className="table-auto w-6/12 text-center text-green-50">
+      <thead>
+        <HeadingsRow league={league} />
+      </thead>
+      <motion.tbody variants={variants} initial="initial" animate="animate">
+        {standingsArray.map((item, index) => {
+          const hcapPos = index + 1;
+          return <Row rowData={item} key={index} hcapPos={hcapPos} />;
+        })}
+      </motion.tbody>
+    </table>
   );
 };
 
