@@ -1,17 +1,10 @@
 import React, { FC } from 'react';
-import {
-  HandicapData,
-  HandicapTeamObject,
-  RowData,
-  Bookies,
-  ApiDataResponse,
-} from '../interfaces';
-import handicaps from '../handicaps.json';
+import { RowData, Bookies, ApiDataResponse } from '../interfaces';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import LoadingDots from './LoadingDots';
-import { supportedLeagues } from '.././constants';
 import { motion } from 'framer-motion';
+import { getStandingsArray } from '../utils/getStandingsArray';
 interface StandingsProps {
   bookie: Bookies;
   league: number;
@@ -19,71 +12,9 @@ interface StandingsProps {
   loading: boolean;
 }
 
-const handicapData: HandicapData = handicaps;
-
-let standingsArray: Array<RowData> = [];
+let standingsArray: Array<RowData> | undefined = [];
 
 const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
-  const getLeagueString = (league: number) => {
-    return supportedLeagues.find((obj) => obj.apiId === league)?.name;
-  };
-
-  const getStandingsArray = (
-    leagueData: ApiDataResponse,
-    bookie: Bookies,
-    league: number
-  ) => {
-    if (leagueData === null) {
-      console.log('error, leagueData has been passed as null');
-      return;
-    }
-    standingsArray = [];
-    const leagueStr = getLeagueString(league);
-    const leagueCount = league === 39 ? 20 : 24;
-
-    for (let i = 0; i < leagueCount; i++) {
-      const currentTeamId = leagueData[0].league.standings[0][i].team.id;
-      const currentTeamHandicapObject = handicapData.bookmaker[
-        bookie as string
-      ][leagueStr as string].find(
-        (item: HandicapTeamObject) => item.id === currentTeamId
-      ) as HandicapTeamObject;
-      const currentTeamHandicap = currentTeamHandicapObject.hcap;
-      const currentTeamHppg = currentTeamHandicapObject.ppg;
-      const currentTeamGamesPlayed =
-        leagueData[0].league.standings[0][i].all.played;
-      const currentTeamCurrentHcap = currentTeamGamesPlayed * currentTeamHppg;
-      let currentTeamTotal =
-        leagueData[0].league.standings[0][i].points + currentTeamCurrentHcap;
-      currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2; // round to two decimal places
-
-      const teamObject: RowData = {
-        league: league,
-        bookie: bookie,
-        crest: leagueData[0].league.standings[0][i].team.logo,
-        position: leagueData[0].league.standings[0][i].rank,
-        team: currentTeamHandicapObject.team,
-        played: leagueData[0].league.standings[0][i].all.played,
-        won: leagueData[0].league.standings[0][i].all.win,
-        drawn: leagueData[0].league.standings[0][i].all.draw,
-        lost: leagueData[0].league.standings[0][i].all.lose,
-        scored: leagueData[0].league.standings[0][i].all.goals.for,
-        conceded: leagueData[0].league.standings[0][i].all.goals.against,
-        difference: leagueData[0].league.standings[0][i].goalsDiff,
-        points: leagueData[0].league.standings[0][i].points,
-        handicap: currentTeamHandicap,
-        hppg: currentTeamHppg,
-        total: currentTeamTotal,
-      };
-      standingsArray.push(teamObject);
-    }
-    // sort the array here based on total (points + hcap)
-    standingsArray.sort((a, b) => {
-      return b.total - a.total;
-    });
-    return standingsArray;
-  };
-
   const checkReady = (league: number, data: ApiDataResponse) => {
     if (data === null) {
       console.log('not ready, data is null');
@@ -97,7 +28,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
   const isReady = checkReady(league, data);
 
   if (isReady === true) {
-    getStandingsArray(data, bookie, league);
+    standingsArray = getStandingsArray(data, bookie, league);
   }
 
   const variants = {
@@ -107,6 +38,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     animate: {
       opacity: 1,
       transition: { staggerChildren: 0.06, staggerDirection: 1 },
+      default: { staggerChildren: 0.06, staggerDirection: 1 },
     },
   };
 
@@ -118,10 +50,12 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
         <HeadingsRow league={league} />
       </thead>
       <motion.tbody variants={variants} initial="initial" animate="animate">
-        {standingsArray.map((item, index) => {
-          const hcapPos = index + 1;
-          return <Row rowData={item} key={index} hcapPos={hcapPos} />;
-        })}
+        {standingsArray !== undefined
+          ? standingsArray.map((item, index) => {
+              const hcapPos = index + 1;
+              return <Row rowData={item} key={index} hcapPos={hcapPos} />;
+            })
+          : null}
       </motion.tbody>
     </table>
   );

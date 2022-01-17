@@ -11,13 +11,10 @@ import { useDarkMode } from './hooks/useDarkMode';
 import { DarkSwitch } from './components/DarkSwitch';
 
 // TO DO:
-// - extract getStandingsArray into own util
 // - handle error api response
 // - consolidate/optimise the css classes
 // - check for render optimisation
-// - tidy up files and imports
 // - sort out mobile responsiveness
-// - background colour height bug / height in general
 // - write some tests
 // - try to make the type assertion and non-null coercion better in standings
 
@@ -94,9 +91,7 @@ const App: FC = () => {
   return (
     <div
       className={
-        (!currentLeague && !currentBookie) || (currentLeague && !currentBookie)
-          ? 'h-screen flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-800'
-          : 'flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-800'
+        'min-h-screen flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-800'
       }
     >
       <div className="flex flex-col justify-center items-center">
