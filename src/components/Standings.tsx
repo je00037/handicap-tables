@@ -32,28 +32,51 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
   }
 
   const variants = {
+    // initial: {
+    //   opacity: 0,
+    // },
+    // animate: {
+    //   opacity: 1,
+    //   transition: {
+    //     staggerChildren: 0.06,
+    //     staggerDirection: 1,
+    //   },
+    //   default: { staggerChildren: 0.06, staggerDirection: 1 },
+    // },
     initial: {
       opacity: 0,
     },
     animate: {
       opacity: 1,
-      transition: { staggerChildren: 0.06, staggerDirection: 1 },
-      default: { staggerChildren: 0.06, staggerDirection: 1 },
     },
   };
 
   return loading ? (
     <LoadingDots />
   ) : (
-    <table className="table-auto w-6/12 text-center text-green-50">
+    <table className="table-auto mx-2 w-6/12 text-center text-xs sm:text-sm">
       <thead>
         <HeadingsRow league={league} />
       </thead>
-      <motion.tbody variants={variants} initial="initial" animate="animate">
+      {console.log('Standings component rendered')}
+      <motion.tbody
+        variants={variants}
+        initial="initial"
+        animate="animate"
+        layout
+      >
         {standingsArray !== undefined
           ? standingsArray.map((item, index) => {
+              console.log('Standings array mapper ' + index);
               const hcapPos = index + 1;
-              return <Row rowData={item} key={index} hcapPos={hcapPos} />;
+              return (
+                <Row
+                  rowData={item}
+                  key={index}
+                  hcapPos={hcapPos}
+                  rowIndex={index}
+                />
+              );
             })
           : null}
       </motion.tbody>

@@ -25,8 +25,6 @@ const App: FC = () => {
 
   const cache: CacheRef = useRef([]); // DEFINE THE CACHE IN USELAZYFETCH AND RETURN IT
 
-  console.log(cache.current);
-
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
 
@@ -113,7 +111,7 @@ const App: FC = () => {
           animate="visible"
           variants={variants}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center text-2xl pb-10 text-blue-900 dark:text-white"
+          className="text-center text-xl pb-10 text-blue-900 dark:text-white"
         >
           Select a league and a bookie to get started!
         </motion.p>

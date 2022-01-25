@@ -14,7 +14,7 @@ export const getStandingsArray = (
   leagueData: ApiDataResponse,
   bookie: Bookies,
   league: number
-) => {
+): Array<RowData> | undefined => {
   if (leagueData === null) {
     console.log('error, leagueData has been passed as null');
     return;

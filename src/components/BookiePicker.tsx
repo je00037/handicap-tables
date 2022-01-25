@@ -10,7 +10,7 @@ interface BookiePickerProps {
 const BookiePicker: FC<BookiePickerProps> = ({ bookie, handleClick }) => {
   return (
     <>
-      <div className="-mt-2 mb-4">
+      <div className="flex flex-row flex-wrap justify-center mb-4 -mt-2">
         {supportedBookies.map((item, index) => {
           return (
             <button

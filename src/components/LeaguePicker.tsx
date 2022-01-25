@@ -9,7 +9,7 @@ interface LeaguePickerProps {
 const LeaguePicker: FC<LeaguePickerProps> = ({ league, handleClick }) => {
   return (
     <>
-      <div className="-mb-2">
+      <div className="flex flex-row flex-wrap justify-center mb-2">
         {supportedLeagues.map((item, index) => {
           return (
             <button
