@@ -32,22 +32,26 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
   }
 
   const variants = {
-    // initial: {
-    //   opacity: 0,
-    // },
-    // animate: {
-    //   opacity: 1,
-    //   transition: {
-    //     staggerChildren: 0.06,
-    //     staggerDirection: 1,
-    //   },
-    //   default: { staggerChildren: 0.06, staggerDirection: 1 },
-    // },
     initial: {
       opacity: 0,
     },
     animate: {
       opacity: 1,
+      transition: {
+        delay: 0.2,
+      },
+    },
+  };
+
+  const variants2 = {
+    initial: {
+      opacity: 0,
+    },
+    animate: {
+      opacity: 1,
+      transition: {
+        delay: 0.1,
+      },
     },
   };
 
@@ -55,16 +59,11 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     <LoadingDots />
   ) : (
     <table className="table-auto mx-2 w-6/12 text-center text-xs sm:text-sm">
-      <thead>
+      <motion.thead variants={variants2} initial="initial" animate="animate">
         <HeadingsRow league={league} />
-      </thead>
+      </motion.thead>
       {console.log('Standings component rendered')}
-      <motion.tbody
-        variants={variants}
-        initial="initial"
-        animate="animate"
-        layout
-      >
+      <motion.tbody variants={variants} initial="initial" animate="animate">
         {standingsArray !== undefined
           ? standingsArray.map((item, index) => {
               console.log('Standings array mapper ' + index);

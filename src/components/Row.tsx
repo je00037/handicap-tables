@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { RowData } from '../interfaces';
-import { motion } from 'framer-motion';
 interface RowProps {
   rowData: RowData;
   key: number;
@@ -8,31 +7,13 @@ interface RowProps {
   rowIndex: number;
 }
 
-// const variants = {
-//   initial: {
-//     opacity: 0,
-//   },
-//   animate: {
-//     opacity: 1,
-//   },
-// };
-
 const Row: FC<RowProps> = ({ rowData, hcapPos, rowIndex }) => {
   return (
     <>
       {console.log('Row component rendered ' + rowIndex)}
-      <motion.tr
-        layout
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.1, delay: rowIndex * (0.1 + 0.02) }}
-      >
+      <tr>
         <td>
-          <img
-            src={rowData.crest}
-            alt="club crest"
-            className="hidden sm:table-cell w-4"
-          />
+          <img src={rowData.crest} alt="club crest" className="w-4" />
         </td>
         <td className="text-blue-900 dark:text-white">{rowData.position}</td>
         {rowData.league !== 39 ? (
@@ -72,7 +53,7 @@ const Row: FC<RowProps> = ({ rowData, hcapPos, rowIndex }) => {
           </td>
         ) : null}
         <td className="text-emerald-400 dark:text-lime-200">{rowData.total}</td>
-      </motion.tr>
+      </tr>
     </>
   );
 };
