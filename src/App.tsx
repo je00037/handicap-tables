@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef } from 'react';
+import React, { FC, useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Bookies, ApiDataResponse, CacheRef } from './interfaces';
 import Header from './components/Header';
@@ -9,6 +9,7 @@ import LeaguePicker from './components/LeaguePicker';
 import { useLazyFetch } from './hooks/useLazyFetch';
 import { useDarkMode } from './hooks/useDarkMode';
 import { DarkSwitch } from './components/DarkSwitch';
+import { useSheetsApi } from './hooks/useSheetsApi';
 
 // TO DO:
 // - handle error api response
@@ -27,6 +28,13 @@ const App: FC = () => {
 
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
+
+  const { data: sheetsData, loading: sheetsLoading } = useSheetsApi(2);
+
+  useEffect(() => {
+    console.log(sheetsLoading);
+    console.log(sheetsData);
+  }, [sheetsData]);
 
   const clickHandlerDark = () => {
     setIsEnabled(nextValue);

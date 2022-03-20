@@ -58,7 +58,7 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
   return loading ? (
     <LoadingDots />
   ) : (
-    <table className="table-auto mx-2 w-6/12 text-center text-xs sm:text-sm">
+    <table className="table-auto mx-2 w-10/12 text-center text-xs sm:text-sm">
       <motion.thead variants={variants2} initial="initial" animate="animate">
         <HeadingsRow league={league} />
       </motion.thead>
