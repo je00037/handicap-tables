@@ -29,12 +29,12 @@ const App: FC = () => {
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
 
-  const { data: sheetsData, loading: sheetsLoading } = useSheetsApi(2);
+  const { handicaps, loading: sheetsLoading } = useSheetsApi(2, 'ROWS');
 
   useEffect(() => {
-    console.log(sheetsLoading);
-    console.log(sheetsData);
-  }, [sheetsData]);
+    console.log('sheetsLoading:', sheetsLoading);
+    console.log('handicaps:', handicaps);
+  }, [handicaps]);
 
   const clickHandlerDark = () => {
     setIsEnabled(nextValue);
