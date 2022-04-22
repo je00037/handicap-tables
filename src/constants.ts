@@ -13,12 +13,12 @@ export const supportedLeagues: SupportedLeagues = [
   },
   {
     id: 3,
-    name: 'League 1',
+    name: 'League One',
     apiId: 41,
   },
   {
     id: 4,
-    name: 'League 2',
+    name: 'League Two',
     apiId: 42,
   },
 ];

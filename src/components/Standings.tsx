@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { RowData, Bookies, ApiDataResponse } from '../interfaces';
+import { RowData, Bookies, ApiDataResponse, HandicapData } from '../interfaces';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import LoadingDots from './LoadingDots';
@@ -10,26 +10,42 @@ interface StandingsProps {
   league: number;
   data: ApiDataResponse;
   loading: boolean;
+  handicaps: HandicapData | undefined;
+  sheetsLoading: boolean;
 }
 
 let standingsArray: Array<RowData> | undefined = [];
 
-const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
-  const checkReady = (league: number, data: ApiDataResponse) => {
-    if (data === null) {
+const Standings: FC<StandingsProps> = ({
+  bookie,
+  league,
+  data,
+  loading,
+  handicaps,
+  sheetsLoading,
+}) => {
+  const checkReady = (
+    league: number,
+    data: ApiDataResponse,
+    handicaps: HandicapData | undefined,
+    bookie: string | undefined
+  ) => {
+    if (!data || !bookie || !handicaps) {
       console.log('not ready, data is null');
       return;
     }
-    if (league === data[0].league.id) {
+    if (league === data[0].league.id && handicaps.leagueID === league) {
       return true;
     } else return false;
   };
 
-  const isReady = checkReady(league, data);
+  const isReady = checkReady(league, data, handicaps, bookie);
 
   if (isReady === true) {
-    standingsArray = getStandingsArray(data, bookie, league);
+    standingsArray = getStandingsArray(data, bookie, league, handicaps);
   }
+
+  const eitherLoading = loading || sheetsLoading;
 
   const variants = {
     initial: {
@@ -55,18 +71,17 @@ const Standings: FC<StandingsProps> = ({ bookie, league, data, loading }) => {
     },
   };
 
-  return loading ? (
+  return eitherLoading ? (
     <LoadingDots />
   ) : (
     <table className="table-auto mx-2 w-10/12 text-center text-xs sm:text-sm">
       <motion.thead variants={variants2} initial="initial" animate="animate">
-        <HeadingsRow league={league} />
+        <HeadingsRow />
       </motion.thead>
       {console.log('Standings component rendered')}
       <motion.tbody variants={variants} initial="initial" animate="animate">
         {standingsArray !== undefined
           ? standingsArray.map((item, index) => {
-              console.log('Standings array mapper ' + index);
               const hcapPos = index + 1;
               return (
                 <Row

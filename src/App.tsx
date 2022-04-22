@@ -1,4 +1,4 @@
-import React, { FC, useState, useRef, useEffect } from 'react';
+import React, { FC, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Bookies, ApiDataResponse, CacheRef } from './interfaces';
 import Header from './components/Header';
@@ -29,12 +29,10 @@ const App: FC = () => {
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
 
-  const { handicaps, loading: sheetsLoading } = useSheetsApi(2, 'ROWS');
-
-  useEffect(() => {
-    console.log('sheetsLoading:', sheetsLoading);
-    console.log('handicaps:', handicaps);
-  }, [handicaps]);
+  const { handicaps, loading: sheetsLoading } = useSheetsApi(
+    currentLeague,
+    'ROWS'
+  );
 
   const clickHandlerDark = () => {
     setIsEnabled(nextValue);
@@ -93,7 +91,6 @@ const App: FC = () => {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
-
   return (
     <div
       className={
@@ -112,6 +109,8 @@ const App: FC = () => {
           league={currentLeague}
           data={currentData}
           loading={loading}
+          sheetsLoading={sheetsLoading}
+          handicaps={handicaps}
         />
       ) : (
         <motion.p

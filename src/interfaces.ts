@@ -67,6 +67,7 @@ export type Cache = Array<ApiDataResponse> | Array<null>;
 
 export type CacheRef = MutableRefObject<Cache>;
 export interface HandicapData {
+  leagueID: number;
   bookmaker: HandicapBookmakerObject;
 }
 
@@ -79,9 +80,9 @@ export interface HandicapLeagueArray {
 }
 
 export interface HandicapTeamObject {
-  id: number;
-  team: string;
-  hcap: number;
+  id: string | number;
+  team: string | number;
+  hcap: string | number;
   ppg: number;
 }
 
@@ -90,7 +91,7 @@ export interface RowData {
   bookie: Bookies;
   crest: string;
   position: number | string;
-  team: string;
+  team: string | number;
   played: number | string;
   won: number | string;
   drawn: number | string;

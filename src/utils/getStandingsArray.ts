@@ -5,18 +5,20 @@ import {
   ApiDataResponse,
   HandicapData,
 } from '../interfaces';
-import handicaps from '../handicaps.json';
 import { supportedLeagues } from '.././constants';
-
-const handicapData: HandicapData = handicaps;
 
 export const getStandingsArray = (
   leagueData: ApiDataResponse,
   bookie: Bookies,
-  league: number
+  league: number,
+  handicaps: HandicapData | undefined
 ): Array<RowData> | undefined => {
   if (leagueData === null) {
     console.log('error, leagueData has been passed as null');
+    return;
+  }
+  if (handicaps === undefined) {
+    console.log('error, handicap data is undefined');
     return;
   }
   const standingsArray = [];
@@ -28,10 +30,11 @@ export const getStandingsArray = (
 
   for (let i = 0; i < leagueCount; i++) {
     const currentTeamId = leagueData[0].league.standings[0][i].team.id;
-    const currentTeamHandicapObject = handicapData.bookmaker[bookie as string][
+    const currentTeamHandicapObject = handicaps.bookmaker[bookie as string][
       leagueStr as string
     ].find(
-      (item: HandicapTeamObject) => item.id === currentTeamId
+      (item: HandicapTeamObject) =>
+        parseInt(item.id as string) === currentTeamId
     ) as HandicapTeamObject;
     const currentTeamHandicap = currentTeamHandicapObject.hcap;
     const currentTeamHppg = currentTeamHandicapObject.ppg;
