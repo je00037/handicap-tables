@@ -10,12 +10,12 @@ import { useLazyFetch } from './hooks/useLazyFetch';
 import { useDarkMode } from './hooks/useDarkMode';
 import { DarkSwitch } from './components/DarkSwitch';
 import { useSheetsApi } from './hooks/useSheetsApi';
+import { fireAnalytics } from './utils/fireAnalytics';
 
 // TO DO:
 // - handle error api response
 // - consolidate/optimise the css classes
 // - check for render optimisation
-// - sort out mobile responsiveness
 // - write some tests
 // - try to make the type assertion and non-null coercion better in standings
 
@@ -36,10 +36,7 @@ const App: FC = () => {
 
   const clickHandlerDark = () => {
     setIsEnabled(nextValue);
-    window.gtag('event', 'Toggle', {
-      event_category: 'Dark Mode',
-      event_label: `${nextValue}`,
-    });
+    fireAnalytics('Dark Mode', `${nextValue}`, 'Toggle');
   };
 
   const isItemInCache = (newLeague: number) => {
@@ -52,18 +49,12 @@ const App: FC = () => {
 
   const clickHandlerBookie = (newBookie: Bookies) => {
     setCurrentBookie(newBookie);
-    window.gtag('event', 'Picker', {
-      event_category: 'Bookie',
-      event_label: `${newBookie}`,
-    });
+    fireAnalytics('Bookie', `${newBookie}`, 'Picker');
   };
 
   const clickHandlerLeague = async (newLeague: number) => {
     setCurrentLeague(newLeague);
-    window.gtag('event', 'Picker', {
-      event_category: 'League',
-      event_label: `${newLeague}`,
-    });
+    fireAnalytics('League', `${newLeague}`, 'Picker');
     if (isItemInCache(newLeague) === false) {
       await getData(newLeague, cache);
       if (error) return console.log('oh no, error!', error);
@@ -74,10 +65,7 @@ const App: FC = () => {
       if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     } else {
-      window.gtag('event', 'Data Request', {
-        event_category: 'Cache',
-        event_label: `${newLeague}`,
-      });
+      fireAnalytics('Cache', `${newLeague}`, 'Data Request');
       const item = cache.current.find((item: ApiDataResponse) => {
         if (item === null) return console.log('error, item was null!');
         return item[0].league.id === newLeague;

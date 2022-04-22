@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { HandicapData } from '../interfaces';
+import { fireAnalytics } from '../utils/fireAnalytics';
 
 type SheetsDimension = 'ROWS' | 'COLUMNS';
 
@@ -71,9 +72,7 @@ export const useSheetsApi = (
   const getData = async (endpoint: string) => {
     if (leagueID === undefined) return;
     setLoading(true);
-    window.gtag('event', 'Data Request', {
-      event_category: 'Sheets API Call',
-    });
+    fireAnalytics('Sheets API Call', 'null', 'Data Request');
     try {
       const result = await fetch(endpoint);
       const json = await result.json();

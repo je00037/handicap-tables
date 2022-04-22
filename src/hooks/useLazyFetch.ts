@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { CacheRef } from '../interfaces';
+import { fireAnalytics } from '../utils/fireAnalytics';
 interface LazyFetchReturn {
   getData: (league: string | number, cache: CacheRef) => Promise<void>;
   loading: boolean;
@@ -12,10 +13,7 @@ export const useLazyFetch = (): LazyFetchReturn => {
 
   const getData = async (league: string | number, cache: CacheRef) => {
     setLoading(true);
-    window.gtag('event', 'Data Request', {
-      event_category: 'API Call',
-      event_label: `${league}`,
-    });
+    fireAnalytics('API Call', `${league}`, 'Data Request');
     const url = `https://v3.football.api-sports.io/standings?league=${league}&season=2021`;
     const options = {
       headers: {
