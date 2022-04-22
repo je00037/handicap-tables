@@ -70,7 +70,10 @@ const Standings: FC<StandingsProps> = ({
       },
     },
   };
-  if ((league === 39 || 41) && bookie === 'Hills')
+  if (
+    (league === 39 && bookie === 'Hills') ||
+    (league === 41 && bookie === 'Hills')
+  )
     return <p>We don&apos;t have handicaps for this bookie yet!</p>;
   return eitherLoading ? (
     <LoadingDots />
