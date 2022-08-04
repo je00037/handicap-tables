@@ -4,7 +4,8 @@ export function useDarkMode(): readonly [
   boolean,
   Dispatch<SetStateAction<boolean>>
 ] {
-  const [isEnabled, setIsEnabled] = useState(false);
+  // FIX THE FLASH WHEN THIS IS INITALISED TO TRUE
+  const [isEnabled, setIsEnabled] = useState(true);
   const nextValue = isEnabled ? false : true;
 
   useEffect(() => {
