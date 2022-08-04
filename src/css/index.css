@@ -4,16 +4,16 @@
 
 @layer base {
   p {
-    @apply text-black dark:text-white;
+    @apply dark:text-black text-white;
     @apply font-dosis;
   }
 }
 
 @layer components {
   .button {
-    @apply m-2 bg-blue-100 dark:bg-indigo-100 rounded-full py-1 px-6 text-black border sm:border-2 border-solid border-blue-500 dark:border-indigo-500 font-dosis text-sm sm:text-base;
+    @apply m-2 dark:bg-blue-100 bg-indigo-100 rounded-full py-1 px-6 text-black border sm:border-2 border-solid dark:border-blue-300 border-indigo-300 font-dosis text-sm sm:text-base;
   }
   .button-selected {
-    @apply m-2 bg-emerald-100 dark:bg-lime-50 rounded-full py-1 px-6 text-black border sm:border-2 border-solid border-emerald-400 dark:border-lime-300 font-dosis text-sm sm:text-base;
+    @apply m-2 dark:bg-emerald-100 bg-lime-50 rounded-full py-1 px-6 text-black border sm:border-2 border-solid dark:border-emerald-400 border-lime-300 font-dosis text-sm sm:text-base;
   }
 }

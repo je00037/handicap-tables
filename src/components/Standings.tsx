@@ -3,11 +3,13 @@ import { RowData, Bookies, ApiDataResponse, HandicapData } from '../interfaces';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
 import LoadingDots from './LoadingDots';
+import NoHandicaps from './NoHandicaps';
 import { motion } from 'framer-motion';
 import { getStandingsArray } from '../utils/getStandingsArray';
 interface StandingsProps {
   bookie: Bookies;
   league: number;
+  season: number;
   data: ApiDataResponse;
   loading: boolean;
   handicaps: HandicapData | undefined;
@@ -19,6 +21,7 @@ let standingsArray: Array<RowData> | undefined = [];
 const Standings: FC<StandingsProps> = ({
   bookie,
   league,
+  season,
   data,
   loading,
   handicaps,
@@ -26,6 +29,7 @@ const Standings: FC<StandingsProps> = ({
 }) => {
   const checkReady = (
     league: number,
+    season: number,
     data: ApiDataResponse,
     handicaps: HandicapData | undefined,
     bookie: string | undefined
@@ -34,12 +38,17 @@ const Standings: FC<StandingsProps> = ({
       console.log('not ready, data is null');
       return;
     }
-    if (league === data[0].league.id && handicaps.leagueID === league) {
+    if (
+      league === data[0].league.id &&
+      handicaps.leagueID === league &&
+      handicaps.season === data[0].league.season
+    ) {
       return true;
     } else return false;
   };
 
-  const isReady = checkReady(league, data, handicaps, bookie);
+  const isReady = checkReady(league, season, data, handicaps, bookie);
+  console.log('isReady:', isReady);
 
   if (isReady === true) {
     standingsArray = getStandingsArray(data, bookie, league, handicaps);
@@ -71,10 +80,15 @@ const Standings: FC<StandingsProps> = ({
     },
   };
   if (
-    (league === 39 && bookie === 'Hills') ||
-    (league === 41 && bookie === 'Hills')
+    (league === 39 && season === 2021 && bookie === 'Hills') ||
+    (league === 41 && season === 2021 && bookie === 'Hills') ||
+    (league === 39 && season === 2022 && bookie === 'PPBF') ||
+    (league === 39 && season === 2022 && bookie === 'Ladbrokes') ||
+    (league === 40 && season === 2022 && bookie === 'PPBF') ||
+    (league === 41 && season === 2022 && bookie === 'PPBF') ||
+    (league === 42 && season === 2022 && bookie === 'PPBF')
   )
-    return <p>We don&apos;t have handicaps for this bookie yet!</p>;
+    return <NoHandicaps />;
   return eitherLoading ? (
     <LoadingDots />
   ) : (

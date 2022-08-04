@@ -33,9 +33,9 @@ const App: FC = () => {
   const { getData, loading, error } = useLazyFetch();
   const [nextValue, setIsEnabled] = useDarkMode();
 
-  // NEED TO GIVE THIS THE SEASON AS WELL
   const { handicaps, loading: sheetsLoading } = useSheetsApi(
     currentLeague,
+    currentSeason,
     'ROWS'
   );
 
@@ -45,17 +45,11 @@ const App: FC = () => {
   };
 
   const isItemInCache = (league: number, season: number) => {
-    console.log(`passed league is ${league}, passed season is ${season}`);
-    console.log(
-      `currentLeague is ${currentLeague}, currentSeason is ${currentSeason}`
-    );
-    console.log('cache is:', cache.current);
     const item = cache.current.find((item: ApiDataResponse) => {
       if (item === null) return false;
       return item[0].league.id === league && item[0].league.season === season;
     });
     const result = !item ? false : true;
-    console.log('cache check result', result);
     return result;
   };
 
@@ -98,25 +92,19 @@ const App: FC = () => {
     setCurrentLeague(newLeague);
     fireAnalytics('League', `${newLeague}`, 'Picker');
     if (!currentSeason) return;
-    console.log('cache check:', isItemInCache(newLeague, currentSeason));
     if (isItemInCache(newLeague, currentSeason) === false) {
-      console.log('item not in cache, about to fetch data...');
       await getData(newLeague, currentSeason, cache);
-      console.log('cache after getData', cache.current);
       if (error) return console.log('oh no, error!', error);
-      const item = cache.current.find((item: ApiDataResponse, index) => {
+      const item = cache.current.find((item: ApiDataResponse) => {
         if (item === null) return console.log('error, item was null!');
-        console.log(`item ${index} from cache`, item);
         return (
           item[0].league.id === newLeague &&
           item[0].league.season === currentSeason
         );
       });
-      console.log('item', item);
       if (item === undefined) return console.log('error, item was undefined!');
       setCurrentData(item);
     } else {
-      console.log('item should be in cache, retrieving...');
       fireAnalytics('Cache', `${newLeague}`, 'Data Request');
       const item = cache.current.find((item: ApiDataResponse) => {
         if (item === null) return console.log('error, item was null!');
@@ -138,7 +126,7 @@ const App: FC = () => {
   return (
     <div
       className={
-        'min-h-screen flex flex-col justify-between items-center bg-gray-200 dark:bg-gray-800'
+        'min-h-screen flex flex-col justify-between items-center dark:bg-gray-200 bg-gray-800'
       }
     >
       <div className="flex flex-col justify-center items-center">
@@ -151,10 +139,11 @@ const App: FC = () => {
         <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
         <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
       </div>
-      {currentLeague && currentBookie ? (
+      {currentSeason && currentLeague && currentBookie ? (
         <Standings
           bookie={currentBookie}
           league={currentLeague}
+          season={currentSeason}
           data={currentData}
           loading={loading}
           sheetsLoading={sheetsLoading}
@@ -166,7 +155,7 @@ const App: FC = () => {
           animate="visible"
           variants={variants}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="text-center text-xl pb-10 text-blue-900 dark:text-white"
+          className="text-center text-xl pb-10 dark:text-blue-900 text-white"
         >
           Select a league and a bookie to get started!
         </motion.p>

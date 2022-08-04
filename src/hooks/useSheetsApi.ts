@@ -16,6 +16,7 @@ type SheetsItemArray = Array<string | number>;
 
 export const useSheetsApi = (
   leagueID: number | undefined,
+  seasonID: number | undefined,
   dimension: SheetsDimension
 ): SheetsReturn => {
   const [data, setData] = useState<SheetsArray | undefined>();
@@ -23,25 +24,44 @@ export const useSheetsApi = (
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<unknown>();
 
-  const getTabName = (id: number | undefined) => {
-    switch (id) {
-      case 39:
+  const getTabName = (
+    leagueID: number | undefined,
+    seasonID: number | undefined
+  ) => {
+    const variables = {
+      league: leagueID,
+      season: seasonID,
+    };
+
+    switch (true) {
+      case variables.league === 39 && variables.season === 2021:
         return 'Premier League handicaps';
         break;
-      case 40:
+      case variables.league === 40 && variables.season === 2021:
         return 'Championship handicaps';
         break;
-      case 41:
+      case variables.league === 41 && variables.season === 2021:
         return 'League One handicaps';
         break;
-      case 42:
+      case variables.league === 42 && variables.season === 2021:
         return 'League Two handicaps';
+        break;
+      case variables.league === 39 && variables.season === 2022:
+        return '2223 Prem';
+        break;
+      case variables.league === 40 && variables.season === 2022:
+        return '2223 Champ';
+        break;
+      case variables.league === 41 && variables.season === 2022:
+        return '2223 League 1';
+        break;
+      case variables.league === 42 && variables.season === 2022:
+        return '2223 League 2';
         break;
       default:
         return 'invalid league ID provided';
     }
   };
-
   const getLeagueName = (id: number | undefined) => {
     switch (id) {
       case 39:
@@ -61,13 +81,13 @@ export const useSheetsApi = (
     }
   };
 
-  const tabString = getTabName(leagueID);
+  const tabString = getTabName(leagueID, seasonID);
   const sheetID = '1mngknAhWe5KJYhSZSTSVAXMOU5OfBTmPK1W2UBicMTI';
   const apiKey = 'AIzaSyB9mpWO03Q5TQpoFd4OzKf0KkA_VGJuQNo';
   const endpoint =
-    leagueID === 1
-      ? `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:H21?key=${apiKey}&majorDimension=${dimension}`
-      : `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:H25?key=${apiKey}&majorDimension=${dimension}`;
+    leagueID === 39
+      ? `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:I21?key=${apiKey}&majorDimension=${dimension}`
+      : `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:I25?key=${apiKey}&majorDimension=${dimension}`;
 
   const getData = async (endpoint: string) => {
     if (leagueID === undefined) return;
@@ -89,6 +109,7 @@ export const useSheetsApi = (
   const transformData = (data: SheetsArray | undefined) => {
     if (data === undefined) return;
     const newHandicaps: HandicapData = {
+      season: parseInt(data[1][8] as string),
       leagueID: parseInt(data[1][0] as string),
       bookmaker: {
         'Sky Bet': {
@@ -163,7 +184,7 @@ export const useSheetsApi = (
   useEffect(() => {
     if (leagueID === undefined) return;
     getData(endpoint);
-  }, [leagueID]);
+  }, [leagueID, seasonID]); // MAYBE NEED TO ADD SEASON INTO HERE TOO
 
   useEffect(() => {
     if (data === undefined) return;

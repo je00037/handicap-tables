@@ -67,6 +67,7 @@ export type Cache = Array<ApiDataResponse> | Array<null>;
 
 export type CacheRef = MutableRefObject<Cache>;
 export interface HandicapData {
+  season: number;
   leagueID: number;
   bookmaker: HandicapBookmakerObject;
 }

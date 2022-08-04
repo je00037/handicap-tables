@@ -3,9 +3,8 @@ import { Loading } from 'react-loading-dot';
 const LoadingDots: FC = () => {
   return (
     <div>
-      {console.log('loading dots rendered')}
       <Loading
-        background={'rgb(30,58,138)'}
+        background={'rgb(165,180,252)'}
         margin={'0.5rem'}
         size={'1.5rem'}
       />
