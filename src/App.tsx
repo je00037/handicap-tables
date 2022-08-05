@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import React, { FC, useRef, useState } from 'react';
 import BookiePicker from './components/BookiePicker';
+import Coffee from './components/Coffee';
 import { DarkSwitch } from './components/DarkSwitch';
 import Footer from './components/Footer';
 import Header from './components/Header';
@@ -132,6 +133,7 @@ const App: FC = () => {
       }
     >
       <div className="flex flex-col justify-center items-center">
+        <Coffee />
         <DarkSwitch handleClick={clickHandlerDark} nextValue={nextValue} />
         <Header />
         <SeasonPicker
