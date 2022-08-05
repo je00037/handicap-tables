@@ -115,7 +115,7 @@ export const useSheetsApi = (
         'Sky Bet': {
           [leagueName]: [],
         },
-        Ladbrokes: {
+        'Lads Coral': {
           [leagueName]: [],
         },
         PPBF: {
@@ -124,7 +124,7 @@ export const useSheetsApi = (
         Hills: {
           [leagueName]: [],
         },
-        'Bet 365': {
+        bet365: {
           [leagueName]: [],
         },
       },
@@ -173,10 +173,10 @@ export const useSheetsApi = (
         ppg: Math.round(ppgBet365 * 1e2) / 1e2,
       };
       newHandicaps.bookmaker['Sky Bet'][leagueName].push(teamSky);
-      newHandicaps.bookmaker['Ladbrokes'][leagueName].push(teamLads);
+      newHandicaps.bookmaker['Lads Coral'][leagueName].push(teamLads);
       newHandicaps.bookmaker['PPBF'][leagueName].push(teamPpbf);
       newHandicaps.bookmaker['Hills'][leagueName].push(teamHills);
-      newHandicaps.bookmaker['Bet 365'][leagueName].push(teamBet365);
+      newHandicaps.bookmaker['bet365'][leagueName].push(teamBet365);
     });
     setHandicaps(newHandicaps);
   };

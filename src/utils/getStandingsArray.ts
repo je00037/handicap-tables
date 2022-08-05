@@ -13,10 +13,6 @@ export const getStandingsArray = (
   league: number,
   handicaps: HandicapData | undefined
 ): Array<RowData> | undefined => {
-  console.log('leagueData', leagueData);
-  console.log('bookie', bookie);
-  console.log('league', league);
-  console.log('handicaps', handicaps);
   if (leagueData === null) {
     console.log('error, leagueData has been passed as null');
     return;
@@ -37,11 +33,8 @@ export const getStandingsArray = (
     const currentTeamHandicapObject = handicaps.bookmaker[bookie as string][
       leagueStr as string
     ].find((item: HandicapTeamObject) => {
-      console.log('item id from find', parseInt(item.id as string));
-      console.log('current team id from find', currentTeamId);
       return parseInt(item.id as string) === currentTeamId;
     }) as HandicapTeamObject;
-    console.log('current team hcap obj', currentTeamHandicapObject);
     const currentTeamHandicap = currentTeamHandicapObject.hcap;
     const currentTeamHppg = currentTeamHandicapObject.ppg;
     const currentTeamGamesPlayed =

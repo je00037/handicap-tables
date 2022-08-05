@@ -34,7 +34,7 @@ export const supportedBookies = [
   },
   {
     id: 3,
-    name: 'Ladbrokes',
+    name: 'Lads Coral',
   },
   {
     id: 4,
@@ -42,6 +42,6 @@ export const supportedBookies = [
   },
   {
     id: 5,
-    name: 'Bet 365',
+    name: 'bet365',
   },
 ];
