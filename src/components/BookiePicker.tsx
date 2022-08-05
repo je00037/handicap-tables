@@ -4,17 +4,28 @@ import { Bookies } from '../interfaces';
 
 interface BookiePickerProps {
   bookie: Bookies;
+  season: number | undefined;
   handleClick: (newBookie: Bookies) => void;
 }
 
-const BookiePicker: FC<BookiePickerProps> = ({ bookie, handleClick }) => {
+const BookiePicker: FC<BookiePickerProps> = ({
+  bookie,
+  season,
+  handleClick,
+}) => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center mb-4 -mt-2">
         {supportedBookies.map((item, index) => {
           return (
             <button
-              className={bookie === item.name ? 'button-selected' : 'button'}
+              className={
+                !season
+                  ? 'button-disabled'
+                  : bookie === item.name
+                  ? 'button-selected'
+                  : 'button'
+              }
               onClick={() => handleClick(item.name as Bookies)}
               key={index}
             >

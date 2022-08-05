@@ -84,11 +84,13 @@ const App: FC = () => {
   };
 
   const clickHandlerBookie = (newBookie: Bookies) => {
+    if (!currentSeason) return;
     setCurrentBookie(newBookie);
     fireAnalytics('Bookie', `${newBookie}`, 'Picker');
   };
 
   const clickHandlerLeague = async (newLeague: number) => {
+    if (!currentSeason) return;
     setCurrentLeague(newLeague);
     fireAnalytics('League', `${newLeague}`, 'Picker');
     if (!currentSeason) return;
@@ -136,8 +138,16 @@ const App: FC = () => {
           seasonID={currentSeason}
           handleClick={clickHandlerSeason}
         />
-        <LeaguePicker league={currentLeague} handleClick={clickHandlerLeague} />
-        <BookiePicker bookie={currentBookie} handleClick={clickHandlerBookie} />
+        <LeaguePicker
+          league={currentLeague}
+          season={currentSeason}
+          handleClick={clickHandlerLeague}
+        />
+        <BookiePicker
+          bookie={currentBookie}
+          season={currentSeason}
+          handleClick={clickHandlerBookie}
+        />
       </div>
       {currentSeason && currentLeague && currentBookie ? (
         <Standings
@@ -157,7 +167,7 @@ const App: FC = () => {
           transition={{ delay: 0.2, duration: 0.5 }}
           className="text-center text-xl pb-10 dark:text-blue-900 text-white"
         >
-          Select a league and a bookie to get started!
+          Choose a Season to get started!
         </motion.p>
       )}
       <Footer />

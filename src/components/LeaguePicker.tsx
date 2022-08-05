@@ -3,17 +3,28 @@ import { supportedLeagues } from '../constants';
 
 interface LeaguePickerProps {
   league: number | undefined;
+  season: number | undefined;
   handleClick: (newLeague: number) => void;
 }
 
-const LeaguePicker: FC<LeaguePickerProps> = ({ league, handleClick }) => {
+const LeaguePicker: FC<LeaguePickerProps> = ({
+  league,
+  season,
+  handleClick,
+}) => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-center mb-2">
         {supportedLeagues.map((item, index) => {
           return (
             <button
-              className={league === item.apiId ? 'button-selected' : 'button'}
+              className={
+                !season
+                  ? 'button-disabled'
+                  : league === item.apiId
+                  ? 'button-selected'
+                  : 'button'
+              }
               onClick={() => handleClick(item.apiId)}
               key={index}
             >
