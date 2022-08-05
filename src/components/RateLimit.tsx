@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import JugglingImage from '../images/juggling.png';
 
 const RateLimit: FC = () => (
   <div>
