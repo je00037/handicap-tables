@@ -5,9 +5,10 @@ interface RowProps {
   key: number;
   hcapPos: number;
   rowIndex: number;
+  fullHcap: boolean;
 }
 
-const Row: FC<RowProps> = ({ rowData, hcapPos }) => {
+const Row: FC<RowProps> = ({ rowData, hcapPos, fullHcap }) => {
   return (
     <>
       <tr>
@@ -43,7 +44,15 @@ const Row: FC<RowProps> = ({ rowData, hcapPos }) => {
           {rowData.handicap}
         </td>
         <td className="dark:text-orange-400 text-orange-300">{rowData.hppg}</td>
-        <td className="dark:text-emerald-400 text-lime-200">{rowData.total}</td>
+        {fullHcap ? (
+          <td className="dark:text-emerald-400 text-lime-200">
+            {rowData.totalWithHcap}
+          </td>
+        ) : (
+          <td className="dark:text-emerald-400 text-lime-200">
+            {rowData.total}
+          </td>
+        )}
       </tr>
     </>
   );

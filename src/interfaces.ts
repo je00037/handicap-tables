@@ -3,9 +3,9 @@ import { MutableRefObject } from 'react';
 export type Bookies =
   | 'Sky Bet'
   | 'PPBF'
-  | 'Ladbrokes'
+  | 'Lads Coral'
   | 'Hills'
-  | 'Bet 365'
+  | 'bet 365'
   | undefined;
 
 export type SupportedLeagues = Array<SupportedLeagueObject>;
@@ -104,4 +104,5 @@ export interface RowData {
   handicap: number | string;
   hppg: number | string;
   total: number;
+  totalWithHcap: number;
 }

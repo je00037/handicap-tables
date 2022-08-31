@@ -28,6 +28,7 @@ const App: FC = () => {
   const [currentLeague, setCurrentLeague] = useState<number>();
   const [currentData, setCurrentData] = useState<ApiDataResponse>(null);
   const [currentSeason, setCurrentSeason] = useState<number>();
+  const [fullHcapToggle, setFullHcapToggle] = useState(false);
 
   const cache: CacheRef = useRef([]); // DEFINE THE CACHE IN USELAZYFETCH AND RETURN IT
 
@@ -121,6 +122,10 @@ const App: FC = () => {
     }
   };
 
+  const clickHandlerHcapToggle = () => {
+    setFullHcapToggle((prevState) => !prevState);
+  };
+
   const variants = {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -160,6 +165,8 @@ const App: FC = () => {
           loading={loading}
           sheetsLoading={sheetsLoading}
           handicaps={handicaps}
+          fullHcapToggle={fullHcapToggle}
+          hcapToggleHandler={clickHandlerHcapToggle}
         />
       ) : (
         <motion.p

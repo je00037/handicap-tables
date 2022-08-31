@@ -11,7 +11,8 @@ export const getStandingsArray = (
   leagueData: ApiDataResponse,
   bookie: Bookies,
   league: number,
-  handicaps: HandicapData | undefined
+  handicaps: HandicapData | undefined,
+  fullHcap: boolean
 ): Array<RowData> | undefined => {
   if (leagueData === null) {
     console.log('error, leagueData has been passed as null');
@@ -43,7 +44,10 @@ export const getStandingsArray = (
     let currentTeamTotal =
       leagueData[0].league.standings[0][i].points + currentTeamCurrentHcap;
     currentTeamTotal = Math.round(currentTeamTotal * 1e2) / 1e2; // round to two decimal places
-
+    const currentTeamHandicapInt =
+      typeof currentTeamHandicap === 'string'
+        ? parseInt(currentTeamHandicap)
+        : currentTeamHandicap;
     const teamObject: RowData = {
       league: league,
       bookie: bookie,
@@ -61,12 +65,13 @@ export const getStandingsArray = (
       handicap: currentTeamHandicap,
       hppg: currentTeamHppg,
       total: currentTeamTotal,
+      totalWithHcap:
+        leagueData[0].league.standings[0][i].points + currentTeamHandicapInt,
     };
     standingsArray.push(teamObject);
   }
-  // sort the array here based on total (points + hcap)
   standingsArray.sort((a, b) => {
-    return b.total - a.total;
+    return fullHcap ? b.totalWithHcap - a.totalWithHcap : b.total - a.total;
   });
   return standingsArray;
 };

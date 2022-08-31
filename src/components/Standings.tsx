@@ -14,6 +14,8 @@ interface StandingsProps {
   loading: boolean;
   handicaps: HandicapData | undefined;
   sheetsLoading: boolean;
+  fullHcapToggle: boolean;
+  hcapToggleHandler: () => void;
 }
 
 let standingsArray: Array<RowData> | undefined = [];
@@ -26,6 +28,8 @@ const Standings: FC<StandingsProps> = ({
   loading,
   handicaps,
   sheetsLoading,
+  fullHcapToggle,
+  hcapToggleHandler,
 }) => {
   const checkReady = (
     league: number,
@@ -48,10 +52,15 @@ const Standings: FC<StandingsProps> = ({
   };
 
   const isReady = checkReady(league, season, data, handicaps, bookie);
-  console.log('isReady:', isReady);
 
   if (isReady === true) {
-    standingsArray = getStandingsArray(data, bookie, league, handicaps);
+    standingsArray = getStandingsArray(
+      data,
+      bookie,
+      league,
+      handicaps,
+      fullHcapToggle
+    );
   }
 
   const eitherLoading = loading || sheetsLoading;
@@ -83,7 +92,7 @@ const Standings: FC<StandingsProps> = ({
     (league === 39 && season === 2021 && bookie === 'Hills') ||
     (league === 41 && season === 2021 && bookie === 'Hills') ||
     (league === 39 && season === 2022 && bookie === 'PPBF') ||
-    (league === 39 && season === 2022 && bookie === 'Ladbrokes') ||
+    (league === 39 && season === 2022 && bookie === 'Lads Coral') ||
     (league === 40 && season === 2022 && bookie === 'PPBF') ||
     (league === 41 && season === 2022 && bookie === 'PPBF') ||
     (league === 42 && season === 2022 && bookie === 'PPBF')
@@ -94,9 +103,8 @@ const Standings: FC<StandingsProps> = ({
   ) : (
     <table className="table-auto mx-2 w-10/12 text-center text-xs sm:text-sm">
       <motion.thead variants={variants2} initial="initial" animate="animate">
-        <HeadingsRow />
+        <HeadingsRow handler={hcapToggleHandler} />
       </motion.thead>
-      {console.log('Standings component rendered')}
       <motion.tbody variants={variants} initial="initial" animate="animate">
         {standingsArray !== undefined
           ? standingsArray.map((item, index) => {
@@ -107,6 +115,7 @@ const Standings: FC<StandingsProps> = ({
                   key={index}
                   hcapPos={hcapPos}
                   rowIndex={index}
+                  fullHcap={fullHcapToggle}
                 />
               );
             })

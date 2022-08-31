@@ -1,6 +1,10 @@
 import React, { FC } from 'react';
 
-const HeadingsRow: FC = () => {
+interface HeadingsRowProps {
+  handler: () => void;
+}
+
+const HeadingsRow: FC<HeadingsRowProps> = ({ handler }) => {
   return (
     <tr>
       <th></th>
@@ -29,7 +33,14 @@ const HeadingsRow: FC = () => {
       <th className="px-1 dark:text-blue-900 text-white">Pts</th>
       <th className="px-1 dark:text-orange-400 text-orange-300">Hcap</th>
       <th className="px-1 dark:text-orange-400 text-orange-300">PpG</th>
-      <th className="px-1 dark:text-emerald-400 text-lime-200">Total</th>
+      <th className="px-1 dark:text-emerald-400 text-lime-200">
+        <div
+          className="py-1 px-1 border border-lime-200 dark:border-emerald-400 rounded-md bg-gray-800 dark:bg-gray-200 cursor-pointer"
+          onClick={() => handler()}
+        >
+          Total
+        </div>
+      </th>
     </tr>
   );
 };
