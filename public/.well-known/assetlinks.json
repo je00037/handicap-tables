@@ -1,3 +1,12 @@
-{
-  "test": "test"
-}
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bskyb.skyservice",
+      "sha256_cert_fingerprints": [
+        "98:12:22:C2:3A:96:26:F7:3C:B3:8A:C7:47:09:32:6E:C1:DF:C3:E8:B4:1A:E8:E0:65:27:AB:FC:DB:9C:C0:E6"
+      ]
+    }
+  }
+]
