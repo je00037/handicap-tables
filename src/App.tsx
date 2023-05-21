@@ -139,6 +139,10 @@ const App: FC = () => {
     >
       <div className="flex flex-col justify-center items-center">
         <Coffee />
+        <p className="text-center px-2 text-yellow-400">
+          Thank you for your support this season. Apologies if the standings
+          have been blank sometimes - we will fix for this for next season.
+        </p>
         <DarkSwitch handleClick={clickHandlerDark} nextValue={nextValue} />
         <Header />
         <SeasonPicker
