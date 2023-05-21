@@ -156,7 +156,12 @@ const App: FC = () => {
           handleClick={clickHandlerBookie}
         />
       </div>
-      {currentSeason && currentLeague && currentBookie ? (
+      {error ? (
+        <p>
+          Sorry, there has been a problem fetching the data today . Please try
+          again tomorrow.
+        </p>
+      ) : currentSeason && currentLeague && currentBookie ? (
         <Standings
           bookie={currentBookie}
           league={currentLeague}
