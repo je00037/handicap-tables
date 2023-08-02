@@ -23,9 +23,9 @@ export const useLazyFetch = (): LazyFetchReturn => {
     setLoading(true);
     fireAnalytics('API Call', `${league}`, 'Data Request');
     const url =
-      season === 2021
-        ? `https://v3.football.api-sports.io/standings?league=${league}&season=2021`
-        : `https://v3.football.api-sports.io/standings?league=${league}&season=2022`;
+      season === 2022
+        ? `https://v3.football.api-sports.io/standings?league=${league}&season=2022`
+        : `https://v3.football.api-sports.io/standings?league=${league}&season=2023`;
     const options = {
       headers: {
         'x-apisports-key': '1ee142cfc34ceae31ba7758c4bd972f4',
@@ -35,8 +35,14 @@ export const useLazyFetch = (): LazyFetchReturn => {
       const result = await fetch(url, options);
       const json = await result.json();
       const response = json.response;
-      cache.current = [...cache.current, response];
-      setLoading(false);
+      const isError = response?.errors?.length > 0 || response?.results === 0;
+      if (isError) {
+        setError(true);
+        setLoading(false);
+      } else {
+        cache.current = [...cache.current, response];
+        setLoading(false);
+      }
     } catch (err) {
       setError(err);
       setLoading(false);

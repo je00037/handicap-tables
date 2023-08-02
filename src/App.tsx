@@ -95,7 +95,6 @@ const App: FC = () => {
     if (!currentSeason) return;
     setCurrentLeague(newLeague);
     fireAnalytics('League', `${newLeague}`, 'Picker');
-    if (!currentSeason) return;
     if (isItemInCache(newLeague, currentSeason) === false) {
       await getData(newLeague, currentSeason, cache);
       if (error) return console.log('oh no, error!', error);
@@ -138,11 +137,10 @@ const App: FC = () => {
       }
     >
       <div className="flex flex-col justify-center items-center">
-        <Coffee />
-        <p className="text-center px-2 text-yellow-400">
-          Thank you for your support this season. Apologies if the standings
-          have been blank sometimes - we will fix for this for next season.
+        <p className="my-2 text-yellow-200 dark:text-blue-900">
+          &#x1F389; &nbsp; The new football season has arrived, finally!
         </p>
+        <Coffee />
         <DarkSwitch handleClick={clickHandlerDark} nextValue={nextValue} />
         <Header />
         <SeasonPicker
@@ -162,7 +160,7 @@ const App: FC = () => {
       </div>
       {error ? (
         <p>
-          Sorry, there has been a problem fetching the data today . Please try
+          Sorry, there has been a problem fetching the data today. Please try
           again tomorrow.
         </p>
       ) : currentSeason && currentLeague && currentBookie ? (

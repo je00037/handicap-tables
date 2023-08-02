@@ -89,13 +89,11 @@ const Standings: FC<StandingsProps> = ({
     },
   };
   if (
-    (league === 39 && season === 2021 && bookie === 'Hills') ||
-    (league === 41 && season === 2021 && bookie === 'Hills') ||
-    (league === 39 && season === 2022 && bookie === 'PPBF') ||
+    (league === 39 && (season === 2022 || 2023) && bookie === 'PPBF') ||
     (league === 39 && season === 2022 && bookie === 'Lads Coral') ||
-    (league === 40 && season === 2022 && bookie === 'PPBF') ||
-    (league === 41 && season === 2022 && bookie === 'PPBF') ||
-    (league === 42 && season === 2022 && bookie === 'PPBF')
+    (league === 40 && (season === 2022 || 2023) && bookie === 'PPBF') ||
+    (league === 41 && (season === 2022 || 2023) && bookie === 'PPBF') ||
+    (league === 42 && (season === 2022 || 2023) && bookie === 'PPBF')
   )
     return <NoHandicaps />;
   return eitherLoading ? (

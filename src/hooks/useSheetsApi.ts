@@ -34,18 +34,6 @@ export const useSheetsApi = (
     };
 
     switch (true) {
-      case variables.league === 39 && variables.season === 2021:
-        return 'Premier League handicaps';
-        break;
-      case variables.league === 40 && variables.season === 2021:
-        return 'Championship handicaps';
-        break;
-      case variables.league === 41 && variables.season === 2021:
-        return 'League One handicaps';
-        break;
-      case variables.league === 42 && variables.season === 2021:
-        return 'League Two handicaps';
-        break;
       case variables.league === 39 && variables.season === 2022:
         return '2223 Prem';
         break;
@@ -57,6 +45,18 @@ export const useSheetsApi = (
         break;
       case variables.league === 42 && variables.season === 2022:
         return '2223 League 2';
+        break;
+      case variables.league === 39 && variables.season === 2023:
+        return '2024 Prem';
+        break;
+      case variables.league === 40 && variables.season === 2023:
+        return '2024 Champ';
+        break;
+      case variables.league === 41 && variables.season === 2023:
+        return '2024 League 1';
+        break;
+      case variables.league === 42 && variables.season === 2023:
+        return '2024 League 2';
         break;
       default:
         return 'invalid league ID provided';
@@ -184,7 +184,7 @@ export const useSheetsApi = (
   useEffect(() => {
     if (leagueID === undefined) return;
     getData(endpoint);
-  }, [leagueID, seasonID]); // MAYBE NEED TO ADD SEASON INTO HERE TOO
+  }, [leagueID, seasonID]);
 
   useEffect(() => {
     if (data === undefined) return;
