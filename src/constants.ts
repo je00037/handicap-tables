@@ -44,4 +44,8 @@ export const supportedBookies = [
     id: 5,
     name: 'bet365',
   },
+  {
+    id: 6,
+    name: 'Betfred',
+  },
 ];

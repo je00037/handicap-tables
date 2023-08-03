@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { RowData, Bookies, ApiDataResponse, HandicapData } from '../interfaces';
 import Row from './Row';
 import HeadingsRow from './HeadingsRow';
-import LoadingDots from './LoadingDots';
 import NoHandicaps from './NoHandicaps';
 import { motion } from 'framer-motion';
 import { getStandingsArray } from '../utils/getStandingsArray';
@@ -89,6 +88,7 @@ const Standings: FC<StandingsProps> = ({
     },
   };
   if (
+    (season === 2022 && bookie === 'Betfred') ||
     (league === 39 && (season === 2022 || 2023) && bookie === 'PPBF') ||
     (league === 39 && season === 2022 && bookie === 'Lads Coral') ||
     (league === 40 && (season === 2022 || 2023) && bookie === 'PPBF') ||
@@ -97,7 +97,7 @@ const Standings: FC<StandingsProps> = ({
   )
     return <NoHandicaps />;
   return eitherLoading ? (
-    <LoadingDots />
+    <p>Loading...</p>
   ) : (
     <table className="table-auto mx-2 w-10/12 text-center text-xs sm:text-sm">
       <motion.thead variants={variants2} initial="initial" animate="animate">

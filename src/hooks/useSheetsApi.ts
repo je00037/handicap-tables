@@ -86,8 +86,8 @@ export const useSheetsApi = (
   const apiKey = 'AIzaSyB9mpWO03Q5TQpoFd4OzKf0KkA_VGJuQNo';
   const endpoint =
     leagueID === 39
-      ? `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:I21?key=${apiKey}&majorDimension=${dimension}`
-      : `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:I25?key=${apiKey}&majorDimension=${dimension}`;
+      ? `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:J21?key=${apiKey}&majorDimension=${dimension}`
+      : `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:J25?key=${apiKey}&majorDimension=${dimension}`;
 
   const getData = async (endpoint: string) => {
     if (leagueID === undefined) return;
@@ -127,9 +127,13 @@ export const useSheetsApi = (
         bet365: {
           [leagueName]: [],
         },
+        Betfred: {
+          [leagueName]: [],
+        },
       },
     };
     data.forEach((item: SheetsItemArray, index: number) => {
+      console.log({ item });
       if (index === 0) return;
       const ppgSky =
         leagueID !== 39 ? (item[3] as number) / 46 : (item[3] as number) / 38;
@@ -141,6 +145,8 @@ export const useSheetsApi = (
         leagueID !== 39 ? (item[6] as number) / 46 : (item[6] as number) / 38;
       const ppgBet365 =
         leagueID !== 39 ? (item[7] as number) / 46 : (item[7] as number) / 38;
+      const ppgBetfred =
+        leagueID !== 39 ? (item[9] as number) / 46 : (item[9] as number) / 38;
 
       const teamSky = {
         id: item[2],
@@ -172,11 +178,18 @@ export const useSheetsApi = (
         hcap: item[7],
         ppg: Math.round(ppgBet365 * 1e2) / 1e2,
       };
+      const teamBetfred = {
+        id: item[2],
+        team: item[1],
+        hcap: item[9],
+        ppg: Math.round(ppgBetfred * 1e2) / 1e2,
+      };
       newHandicaps.bookmaker['Sky Bet'][leagueName].push(teamSky);
       newHandicaps.bookmaker['Lads Coral'][leagueName].push(teamLads);
       newHandicaps.bookmaker['PPBF'][leagueName].push(teamPpbf);
       newHandicaps.bookmaker['Hills'][leagueName].push(teamHills);
       newHandicaps.bookmaker['bet365'][leagueName].push(teamBet365);
+      newHandicaps.bookmaker['Betfred'][leagueName].push(teamBetfred);
     });
     setHandicaps(newHandicaps);
   };
@@ -189,6 +202,7 @@ export const useSheetsApi = (
   useEffect(() => {
     if (data === undefined) return;
     transformData(data);
+    console.log({ data });
   }, [data]);
 
   return {

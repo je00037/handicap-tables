@@ -6,6 +6,7 @@ export type Bookies =
   | 'Lads Coral'
   | 'Hills'
   | 'bet 365'
+  | 'Betfred'
   | undefined;
 
 export type SupportedLeagues = Array<SupportedLeagueObject>;
