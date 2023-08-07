@@ -201,7 +201,6 @@ export const useSheetsApi = (
   useEffect(() => {
     if (data === undefined) return;
     transformData(data);
-    console.log({ data });
   }, [data]);
 
   return {
