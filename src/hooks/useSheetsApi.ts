@@ -82,8 +82,8 @@ export const useSheetsApi = (
   };
 
   const tabString = getTabName(leagueID, seasonID);
-  const sheetID = '1mngknAhWe5KJYhSZSTSVAXMOU5OfBTmPK1W2UBicMTI';
-  const apiKey = 'AIzaSyB9mpWO03Q5TQpoFd4OzKf0KkA_VGJuQNo';
+  const sheetID = process.env.REACT_APP_SHEETS_ID;
+  const apiKey = process.env.REACT_APP_SHEETS_API_KEY;
   const endpoint =
     leagueID === 39
       ? `https://sheets.googleapis.com/v4/spreadsheets/${sheetID}/values/'${tabString}'!A1:J21?key=${apiKey}&majorDimension=${dimension}`
@@ -133,7 +133,6 @@ export const useSheetsApi = (
       },
     };
     data.forEach((item: SheetsItemArray, index: number) => {
-      console.log({ item });
       if (index === 0) return;
       const ppgSky =
         leagueID !== 39 ? (item[3] as number) / 46 : (item[3] as number) / 38;

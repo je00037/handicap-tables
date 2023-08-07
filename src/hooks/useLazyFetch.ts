@@ -28,7 +28,7 @@ export const useLazyFetch = (): LazyFetchReturn => {
         : `https://v3.football.api-sports.io/standings?league=${league}&season=2023`;
     const options = {
       headers: {
-        'x-apisports-key': '1ee142cfc34ceae31ba7758c4bd972f4',
+        'x-apisports-key': process.env.REACT_APP_FOOTBALL_API_KEY ?? '',
       },
     };
     try {
