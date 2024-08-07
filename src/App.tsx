@@ -48,7 +48,7 @@ const App: FC = () => {
 
   const isItemInCache = (league: number, season: number) => {
     const item = cache.current.find((item: ApiDataResponse) => {
-      if (item === null) return false;
+      if (!item || item.length === 0) return false;
       return item[0].league.id === league && item[0].league.season === season;
     });
     const result = !item ? false : true;
@@ -62,7 +62,8 @@ const App: FC = () => {
       await getData(currentLeague, newSeason, cache);
       if (error) return console.log('oh no, error!', error);
       const item = cache.current.find((item: ApiDataResponse) => {
-        if (item === null) return console.log('error, item was null!');
+        if (!item || item.length === 0)
+          return console.log('error, item was null!');
         return (
           item[0].league.id === currentLeague &&
           item[0].league.season === newSeason
@@ -73,7 +74,8 @@ const App: FC = () => {
     } else {
       fireAnalytics('Cache', `${newSeason}`, 'Data Request');
       const item = cache.current.find((item: ApiDataResponse) => {
-        if (item === null) return console.log('error, item was null!');
+        if (!item || item.length === 0)
+          return console.log('error, item was null!');
         return (
           item[0].league.id === currentLeague &&
           item[0].league.season === newSeason
@@ -99,7 +101,12 @@ const App: FC = () => {
       await getData(newLeague, currentSeason, cache);
       if (error) return console.log('oh no, error!', error);
       const item = cache.current.find((item: ApiDataResponse) => {
-        if (item === null) return console.log('error, item was null!');
+        console.log(cache.current);
+        if (!item || item.length === 0) {
+          console.log('no item!');
+          return console.log('error, item was null!');
+        }
+        console.log('accessing item...');
         return (
           item[0].league.id === newLeague &&
           item[0].league.season === currentSeason
@@ -110,7 +117,8 @@ const App: FC = () => {
     } else {
       fireAnalytics('Cache', `${newLeague}`, 'Data Request');
       const item = cache.current.find((item: ApiDataResponse) => {
-        if (item === null) return console.log('error, item was null!');
+        if (!item || item.length === 0)
+          return console.log('error, item was null!');
         return (
           item[0].league.id === newLeague &&
           item[0].league.season === currentSeason
@@ -137,11 +145,22 @@ const App: FC = () => {
       }
     >
       <div className="flex flex-col justify-center items-center">
-        <p className="my-2 text-yellow-200 dark:text-blue-900">
-          &#x1F389; &nbsp; The new football season has arrived, finally!
+        <DarkSwitch handleClick={clickHandlerDark} nextValue={nextValue} />
+
+        <p className="my-2 text-yellow-200 dark:text-blue-900 text-center">
+          &#x1F389; &nbsp; <span className="font-bold">New for 2024/25:</span>
+          <br />
+          If you noticed blank tables occasionally before, this should no longer
+          happen. <br />
+          Secondly, when using the Points-per-Game total a bug with rounding for
+          the end of the season has been fixed.
+        </p>
+        <p className="my-2 text-yellow-200 dark:text-blue-900 text-center">
+          <span className="font-bold">DID YOU KNOW?!</span> Tap the Total
+          column-heading to toggle the sort method between PpG and total
+          handicap.
         </p>
         <Coffee />
-        <DarkSwitch handleClick={clickHandlerDark} nextValue={nextValue} />
         <Header />
         <SeasonPicker
           seasonID={currentSeason}

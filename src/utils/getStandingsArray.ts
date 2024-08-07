@@ -63,7 +63,7 @@ export const getStandingsArray = (
       difference: leagueData[0].league.standings[0][i].goalsDiff,
       points: leagueData[0].league.standings[0][i].points,
       handicap: currentTeamHandicap,
-      hppg: currentTeamHppg,
+      hppg: Math.round(currentTeamHppg * 1e2) / 1e2,
       total: currentTeamTotal,
       totalWithHcap:
         leagueData[0].league.standings[0][i].points + currentTeamHandicapInt,

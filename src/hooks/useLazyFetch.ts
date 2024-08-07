@@ -23,9 +23,9 @@ export const useLazyFetch = (): LazyFetchReturn => {
     setLoading(true);
     fireAnalytics('API Call', `${league}`, 'Data Request');
     const url =
-      season === 2022
-        ? `https://v3.football.api-sports.io/standings?league=${league}&season=2022`
-        : `https://v3.football.api-sports.io/standings?league=${league}&season=2023`;
+      season === 2023
+        ? `https://v3.football.api-sports.io/standings?league=${league}&season=2023`
+        : `https://v3.football.api-sports.io/standings?league=${league}&season=2024`;
     const options = {
       headers: {
         'x-apisports-key': process.env.REACT_APP_FOOTBALL_API_KEY ?? '',

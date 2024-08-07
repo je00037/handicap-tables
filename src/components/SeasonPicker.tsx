@@ -9,12 +9,12 @@ type Seasons = Record<string, string | number>[];
 
 const seasons: Seasons = [
   {
-    season: '2022/23',
-    id: 2022,
-  },
-  {
     season: '2023/24',
     id: 2023,
+  },
+  {
+    season: '2024/25',
+    id: 2024,
   },
 ];
 

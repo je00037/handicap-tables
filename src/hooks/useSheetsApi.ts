@@ -34,30 +34,22 @@ export const useSheetsApi = (
     };
 
     switch (true) {
-      case variables.league === 39 && variables.season === 2022:
-        return '2223 Prem';
-        break;
-      case variables.league === 40 && variables.season === 2022:
-        return '2223 Champ';
-        break;
-      case variables.league === 41 && variables.season === 2022:
-        return '2223 League 1';
-        break;
-      case variables.league === 42 && variables.season === 2022:
-        return '2223 League 2';
-        break;
       case variables.league === 39 && variables.season === 2023:
         return '2024 Prem';
-        break;
       case variables.league === 40 && variables.season === 2023:
         return '2024 Champ';
-        break;
       case variables.league === 41 && variables.season === 2023:
         return '2024 League 1';
-        break;
       case variables.league === 42 && variables.season === 2023:
         return '2024 League 2';
-        break;
+      case variables.league === 39 && variables.season === 2024:
+        return '2025 Prem';
+      case variables.league === 40 && variables.season === 2024:
+        return '2025 Champ';
+      case variables.league === 41 && variables.season === 2024:
+        return '2025 League 1';
+      case variables.league === 42 && variables.season === 2024:
+        return '2025 League 2';
       default:
         return 'invalid league ID provided';
     }
@@ -151,37 +143,37 @@ export const useSheetsApi = (
         id: item[2],
         team: item[1],
         hcap: item[3],
-        ppg: Math.round(ppgSky * 1e2) / 1e2,
+        ppg: ppgSky,
       };
       const teamLads = {
         id: item[2],
         team: item[1],
         hcap: item[4],
-        ppg: Math.round(ppgLads * 1e2) / 1e2,
+        ppg: ppgLads,
       };
       const teamPpbf = {
         id: item[2],
         team: item[1],
         hcap: item[5],
-        ppg: Math.round(ppgPpbf * 1e2) / 1e2,
+        ppg: ppgPpbf,
       };
       const teamHills = {
         id: item[2],
         team: item[1],
         hcap: item[6],
-        ppg: Math.round(ppgHills * 1e2) / 1e2,
+        ppg: ppgHills,
       };
       const teamBet365 = {
         id: item[2],
         team: item[1],
         hcap: item[7],
-        ppg: Math.round(ppgBet365 * 1e2) / 1e2,
+        ppg: ppgBet365,
       };
       const teamBetfred = {
         id: item[2],
         team: item[1],
         hcap: item[9],
-        ppg: Math.round(ppgBetfred * 1e2) / 1e2,
+        ppg: ppgBetfred,
       };
       newHandicaps.bookmaker['Sky Bet'][leagueName].push(teamSky);
       newHandicaps.bookmaker['Lads Coral'][leagueName].push(teamLads);
